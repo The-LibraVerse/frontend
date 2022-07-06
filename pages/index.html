@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+  <head>
+    <title>Libraverse</title>
+    <meta charset="utf-8" name="viewport" content= "width=device-width, initial-scale=1.0">
+    <link href='/styles/general.css' rel='stylesheet' />
+    <link href='/styles/home.css' rel='stylesheet' />
+    <script src="/dependencies/vue3.global.js"></script>
+  </head>
+
+  <body>
+    <div id='menu'></div>
+    <h1>Libraverse</h1>
+    <p>Welcome to the library verse. Whether you want to create and/or read books, this is the perfect place for you</p>
+
+    <div id='book-grid'>
+      <a v-for='book in books' :href='"/books/" + book.id'>
+        <div>
+          <img v-if='book.cover' :src='book.cover' class='book-cover' />
+          <div class='book-cover'>
+            <p>{{ book.title }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <script type='module' src='/home.vue.js'></script>
+    <script type='module' src='/shared/menu.vue.js'></script>
+  </body>
+</html>
+
