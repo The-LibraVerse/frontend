@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+  <head>
+    <title>Dashboard | Libraverse</title>
+    <meta charset="utf-8" name="viewport" content= "width=device-width, initial-scale=1.0">
+    <link href='./styles/general.css' rel='stylesheet' />
+    <script src="/dependencies/vue3.global.js"></script>
+  </head>
+
+  <body>
+    <div id='menu'></div>
+
+    <div id='book-app'></div>
+
+    <div id='dashboard'>
+      <div class='dashboard-actions' v-if='actions'>
+        Actions {{ actions }}
+        <button v-for='action in actions'>
+          <span>boidaf{{ action }}</span>
+        </button>
+        <!-- <button v-for'action in actions' @click='handleAction(action.name, action.parameters)'>{{ action.title }}</button> -->
+      </div>
+
+      <div class='writer deets' v-if='writer'>
+        <p>{{ writer.name }}</p>
+        <p>@{{ writer.username }}</p>
+      </div>
+
+      <div id='reading-list'>
+        <div v-if='readingList'>
+          <h3>Reading List</h3>
+          <div v-if='readingList.length == 0'>
+            <p>You haven't started reading any books</p>
+          </div>
+          <div v-else-if='readingList.length > 0'>
+            <a v-for='book in readingList' :href='"/book/" + book.id'>
+              <div>
+                {{ book.title }}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id='written-books'>
+        <div v-if='written'>
+          <h3>Your Books</h3>
+          <div v-if='written.length == 0'>
+            <p>You haven't written any book yet</p>
+          </div>
+
+          <div v-else>
+            <a v-for='book in written' :href='"/book/" + book.id'>
+              <div>
+                {{ book.title }}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id='dashboard-actions'>
+      <button v-for='action in actions' @click='handleAction(action.name, action.parameters)'>
+        <span>{{ action.title }}</span>
+      </button>
+    </div>
+
+    <div id='new-book'>
+    </div>
+
+    <script type='module' src='/dashboard.vue.js'></script>
+    <script type='module' src='/book.vue.js'></script>
+    <script type='module' src='/shared/newBook.vue.js'></script>
+    <script type='module' src='/shared/menu.vue.js'></script>
+  </body>
+</html>
+

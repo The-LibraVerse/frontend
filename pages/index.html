@@ -14,10 +14,10 @@
     <p>Welcome to the library verse. Whether you want to create and/or read books, this is the perfect place for you</p>
 
     <div id='book-grid'>
-      <a v-for='book in books' :href='"/books/" + book.id'>
+      <a v-for='book in books' target='_blank' :href='"/book/" + book.id'>
         <div>
-          <img v-if='book.cover' :src='book.cover' class='book-cover' />
-          <div class='book-cover'>
+          <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover' />
+          <div role='img' :alt='book.title' class='book-cover'>
             <p>{{ book.title }}</p>
           </div>
         </div>

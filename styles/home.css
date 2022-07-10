@@ -1,0 +1,23 @@
+#book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 2em;
+}
+
+#book-grid .book-cover {
+    padding: 0.5em;
+    width: 80px;
+    height: 100px;
+
+    background: #b9ebdb;
+    color: black;
+
+    font-size: 0.8em;
+    word-break: break-word;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
