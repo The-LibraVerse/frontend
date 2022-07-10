@@ -4,7 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "pm2 start server.js --name libraverse-frontend",
+    "stop": "pm2 stop libraverse-frontend && pm2 delete libraverse-frontend",
+
+    "dev": "NODE_ENV=development && node server.js",
     "test": "node test.server.js"
   },
   "repository": {
