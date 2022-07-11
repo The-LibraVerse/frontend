@@ -28,6 +28,10 @@ const app = Vue.createApp({
                 <p class='title'>Sell your book on the Ethereum Blockchain</p>
                 <p>Click the button below to create an ERC1155 token of your book.
                     You will be able to sell your book tokens on any of the web3 marketplaces.</p>
+                    
+                    <label>How many tokens would you like to mint? 
+                        <input type='number' min='1' v-model='tokenMints' />
+                    </label>
                     <button @click='createBookToken'>Create your book's token</button>
             </div>
             <button @click='newChapterPopup' v-if='actions.includes("addChapter")'>Add Chapter</button>
@@ -53,6 +57,7 @@ const app = Vue.createApp({
         return {
             book: null,
             actions: [],
+            tokenMints: 1,
             chapterID: null,
             chapterIndex: null,
             showChapterEditor: false,
@@ -118,17 +123,32 @@ const app = Vue.createApp({
             this.showChapterEditor = true;
         },
         createBookToken() {
-            const metadataURI = 'asdf';
-            return libraverseToken.create(metadataURI)
+            const metadataURI = this.book.metadataURI;
+            const amount = this.tokenMints;
+
+            return libraverseToken.create(metadataURI, amount)
                 .then(res => {
-                    console.log('res:', res);
+                    console.log('token id:', res);
+                    const data = {
+                        tokenContract: libraverseToken.address,
+                        tokenID: res
+                    }
+
+                    return bookAPI.listForSale(this.book.id, data);
                 });
         },
         createChapterToken() {
             const metadataURI = 'chapter';
-            return libraverseToken.create(metadataURI)
+            const amount = this.tokenMints;
+
+            return libraverseToken.create(metadataURI, amount)
             .then(res => {
-                console.log('res:', res);
+                console.log(' sent token:', res);
+                /*
+                return res.wait()
+            }).then(res => {
+                console.log('after waiting:', res);
+                */
             });
         },
     },

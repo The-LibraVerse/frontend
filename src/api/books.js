@@ -47,3 +47,7 @@ export function addChapter(bookID, data) {
 export function fetchChapter(bookID, chapterID) {
     return server('/book/' + bookID + '/chapter/' + chapterID);
 }
+
+export function listForSale(bookID, data) {
+    return server('/book/' + bookID + '/sell', data);
+}
