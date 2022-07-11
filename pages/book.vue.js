@@ -137,20 +137,6 @@ const app = Vue.createApp({
                     return bookAPI.listForSale(this.book.id, data);
                 });
         },
-        createChapterToken() {
-            const metadataURI = 'chapter';
-            const amount = this.tokenMints;
-
-            return libraverseToken.create(metadataURI, amount)
-            .then(res => {
-                console.log(' sent token:', res);
-                /*
-                return res.wait()
-            }).then(res => {
-                console.log('after waiting:', res);
-                */
-            });
-        },
     },
     mounted() {
         const regex = /(?<=book\/)\d+/;
