@@ -39,6 +39,7 @@ export function addChapter(bookID, data) {
     .then(res => {
         const content = res.url;
         data.content = res.url;
+        console.log('dat to upload:',data);
         return server('/book/' + bookID + '/chapter', data);
     });
 }

@@ -17,7 +17,7 @@
       <a v-for='book in books' target='_blank' :href='"/book/" + book.id'>
         <div>
           <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover' />
-          <div role='img' :alt='book.title' class='book-cover'>
+          <div v-else role='img' :alt='book.title' class='book-cover'>
             <p>{{ book.title }}</p>
           </div>
         </div>

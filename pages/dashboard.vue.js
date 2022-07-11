@@ -36,6 +36,7 @@ const dashboard = Vue.createApp({
         })
         .then(res => {
             this.written = res.creations;
+            this.readingList = res.library;
         });
     }
 });

@@ -2,6 +2,9 @@ import { IPFS_API, IPFS_GATEWAY } from '/config.local.js';
 import IpfsHttpClient from '/dependencies/ipfs-http-client.js';
 
 export default function(data, name) {
+    if(!data)
+        return Promise.reject('No file');
+
     const url =  IPFS_API + '/api/v0';
     let path = name;
     if(!name)

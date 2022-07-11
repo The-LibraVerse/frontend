@@ -4,6 +4,7 @@ import * as bookAPI from '/src/api/books.js';
 import pageTitle from '/shared/pageTitle.js';
 import ChapterEditor from '/shared/chapterEditor.vue.js';
 import ChapterViewer from '/shared/chapterViewer.vue.js';
+import * as libraverseToken from '/src/api/token.js';
 
 const app = Vue.createApp({
     template: `
@@ -23,6 +24,12 @@ const app = Vue.createApp({
         </div>
 
         <div id='actions'>
+            <div>
+                <p class='title'>Sell your book on the Ethereum Blockchain</p>
+                <p>Click the button below to create an ERC1155 token of your book.
+                    You will be able to sell your book tokens on any of the web3 marketplaces.</p>
+                    <button @click='createBookToken'>Create your book's token</button>
+            </div>
             <button @click='newChapterPopup' v-if='actions.includes("addChapter")'>Add Chapter</button>
         </div>
 
@@ -109,7 +116,21 @@ const app = Vue.createApp({
         newChapterPopup() {
             chapterStore.commit('newChapter');
             this.showChapterEditor = true;
-        }
+        },
+        createBookToken() {
+            const metadataURI = 'asdf';
+            return libraverseToken.create(metadataURI)
+                .then(res => {
+                    console.log('res:', res);
+                });
+        },
+        createChapterToken() {
+            const metadataURI = 'chapter';
+            return libraverseToken.create(metadataURI)
+            .then(res => {
+                console.log('res:', res);
+            });
+        },
     },
     mounted() {
         const regex = /(?<=book\/)\d+/;
