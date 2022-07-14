@@ -9,7 +9,6 @@ const app = Vue.createApp({
     mounted() {
         return bookAPI.fetchAll()
         .then(res => {
-            console.log('res:', res);
             this.books = res.data;
         });
     }

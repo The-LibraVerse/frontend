@@ -53,9 +53,12 @@ const app = Vue.createApp({
         <div id='actions'>
             <div v-if='links.sell' ref='sell-book' class='sell-literature sell-literature--dialog'>
                 <p class='sell-literature__title'>Sell "{{ book.title }}" on the Ethereum Blockchain</p>
-                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail book-thubmnail_image' />
-                <div v-else role='img' :alt='book.title' class='book-thumbnail book-thumbnail_text'>
-                  <p>{{ book.title }}</p>
+                <div class='book-thumbnail'>
+                    <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail__cover-image' />
+                    <div v-else role='img' :alt='book.title' class='book-thumbnail__cover-text'>
+                      <p>{{ book.title }}</p>
+                    </div>
+                    <p class='book-thumbnail__for-sale-sign'>$</p>
                 </div>
                 <p class='sell-literature__content'>Click the button below to create an ERC1155 token of your book.
                     You will be able to sell your book tokens on any of the web3 marketplaces.</p>

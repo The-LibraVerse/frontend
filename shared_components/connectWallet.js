@@ -2,21 +2,20 @@ import { isLoggedIn, logout } from '/src/api/user.js';
 import {getAddress, getProvider, connect as connectWallet, disconnect as disconnectWallet} from '/src/api/wallet.js';
 
 const template =  `
-    <div>
-        <button class='button' v-if='!walletConnected' @click='connectWallet'>
-            <span v-if='title'>{{ title }}</span>
-            <div v-else-if='image'>
+    <div class='user-wallet'>
+        <span v-if='walletConnected && address' class='user-wallet__address'>{{ address }}</span>
+        <button class='button user-wallet__connect-button' v-if='!walletConnected' @click='connectWallet'>
+            <span class='user-wallet__connect-title' v-if='title'>{{ title }}</span>
+            <div class='user-wallet__image' v-else-if='image'>
                 <img :src='image' />
             </div>
             <template v-else>
-                <span>Connect Wallet</span>
+                <span class='connect-wallet-button__image'>Connect Wallet</span>
             </template>
-
         </button>
 
         <div role='image' v-else>
-            <span>{{ address }}</span>
-            <button class='button button_danger' @click='disconnectWallet'>
+            <button class='user-wallet__disconnect-button button button_danger' @click='disconnectWallet'>
                 Disconnect Wallet
             </button>
         </div>
@@ -61,6 +60,7 @@ export default {
             });
         },
         disconnectWallet() {
+            return disconnectWallet();
         },
     },
     mounted() {

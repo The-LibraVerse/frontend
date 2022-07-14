@@ -62,6 +62,10 @@ export function connect(walletType) {
 }
 
 export function disconnect() {
+    window.localStorage.removeItem('isWalletConnected');
+    window.localStorage.removeItem('walletType');
+
+    window.location.reload();
 }
 
 function main() {

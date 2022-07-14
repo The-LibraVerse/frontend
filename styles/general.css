@@ -92,16 +92,92 @@ a, a:visited, a:hover, a:focus {
 
 .link {
     color: var(--color-text-link);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.link:hover {
+    text-decoration: underline;
 }
 
+.menu-expander {
+    position: absolute;
+    top: 1rem;
+    right: 80px;
+}
 .site-header {
-    border-bottom: 1px solid var(--primary-dark);
+    border-bottom: 1px solid var(--color-primary-lite);
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-header__logo {
+    display: flex;
+    align-items: center;
+    width: min-content;
+}
+.site-header__logo-image {
+    width: 32px;
+    height: 32px;
+    object-fit:contain;
+}
+.site-header__logo-text {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-brand-main);
+    display: none;
+}
+
+.site-header__user-avatar{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-secondary-lite);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.site-header__dropdown-item {
+    align-self: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu__link {
-
+    display: block;
+    font-weight: bold;
+    padding: 0.6em;
+    color: var(--color-primary-dark);
 }
+
+.user-wallet__connect-button {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.user-wallet__address {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.site-header__item_hide {
+}
+/** Done with all in site header */
+
+.page {
+    padding: 2rem;
+}
+.page__title {
+}
+
 .book-grid {
     display: flex;
     flex-wrap: wrap;
@@ -109,6 +185,7 @@ a, a:visited, a:hover, a:focus {
 }
 
 .book-thumbnail {
+    position: relative;
     width: 120px;
     height: 180px;
     border-radius: 5px;
@@ -117,25 +194,93 @@ a, a:visited, a:hover, a:focus {
 
     background: var(--color-primary-lite);
     color: var(--color-primary-dark);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
 }
 
-.book-thumbnail_image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
+.book-thumbnail__cover-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
-.book-thumbnail_text {
+.book-thumbnail__cover-text {
     padding: 0.5em;
 
     font-size: 0.8em;
     word-break: break-word;
     text-align: center;
+}
+
+.book-thumbnail__for-sale-sign {
+    padding: 0.5em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: white;
+    background: var(--color-brand-main);
+}
+
+@media (max-width: 600px) {
+    .hide-on-mobile {
+        display: none;
+    }
+}
+@media (min-width: 600px) {
+    .hide-on-desktop {
+        display: none;
+    }
+    .mobile-only {
+        display: none;
+    }
+    .site-header {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid var(--color-primary-lite);
+        padding: 1rem;
+        padding-right: 5em;
+    }
+    .site-header__logo {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .site-header__logo-image {
+        width: 64px;
+        height: 64px;
+    }
+    .site-header__logo-text {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .site-header__user-avatar{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 28px;
+        right: 1rem;
+    }
+    .site-header__logout {
+        position: absolute;
+        right: 1rem;
+        top: 80px;
+        background: white;
+        border: 1px solid grey;
+        padding: 0.5em 1em;
+        width: 14em;
+    }
+    .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        width: calc(100% - 120px);
+    }
+    .menu__link {
+        margin: 0 3em 0 0;
+    }
+
 }
