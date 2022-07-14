@@ -1,14 +1,17 @@
 import * as bookAPI from '/src/api/books.js';
 import * as userAPI from '/src/api/user.js';
 import store from '/shared/book.store.js';
+import NewBook from '/shared/newBook.vue.js';
 // import { Written, ReadingList } from  '/shared/userBooks.vue.js';
 
 const dashboard = Vue.createApp({
+    components: {'new-book': NewBook},
     data() {
         return {
             actions: [],
             readingList: null,
             written: null,
+            links: {},
         }
     },
 
@@ -29,12 +32,14 @@ const dashboard = Vue.createApp({
             store.commit('currentWriter', writerID);
         }
 
-        return userAPI.fetch(writerID)
+        return userAPI.fetchDashboard(writerID)
         .then(res => {
-            store.commit('currentWriter', res);
-            return bookAPI.fetchUserBooks(writerID)
-        })
-        .then(res => {
+            store.commit('currentWriter', {
+                id: res.id,
+                username: res.username
+            });
+
+            this.links = res._links || {};
             this.written = res.creations;
             this.readingList = res.library;
         });
@@ -42,26 +47,3 @@ const dashboard = Vue.createApp({
 });
 
 dashboard.mount('#dashboard');
-
-const dashboardActions = Vue.createApp({
-    data() {
-        return {
-            actions: []
-        }
-    },
-
-    methods: {
-        handleAction(methodName, parameters=[]) {
-            console.log('method name:', methodName);
-        },
-    },
-
-    mounted() {
-        console.log('actions:', this.actions);
-        this.actions.push({ title: 'New Book', name: 'createBook' })
-        console.log('actions:', this.actions);
-    }
-});
-
-dashboardActions.mount('#dashboard-actions');
-

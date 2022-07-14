@@ -1,6 +1,8 @@
 import * as userAPI from '/src/api/user.js';
+import ConnectWallet from '/shared/connectWallet.js';
 
 const app = Vue.createApp({
+    components: {'connect-wallet': ConnectWallet},
     data() {
         return {
             username: null,
@@ -24,5 +26,14 @@ const app = Vue.createApp({
         }
     },
 });
+
+/*
+app.config.compilerOptions.isCustomElement = (tag) => {
+    console.log('tag:', tag, tag == 'connectwallet');
+    return tag == 'ConnectWallet';
+}
+*/
+
+// app.component('ConnectWallet', ConnectWallet);
 
 app.mount('#login');

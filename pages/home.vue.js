@@ -10,7 +10,7 @@ const app = Vue.createApp({
         return bookAPI.fetchAll()
         .then(res => {
             console.log('res:', res);
-            this.books = res;
+            this.books = res.data;
         });
     }
 });

@@ -2,7 +2,8 @@ import * as bookAPI from '/src/api/books.js';
 import ImageInput from '/shared/imageInput.vue.js';
 import ipfsUpload from '/src/api/ipfsUpload.js';
 
-const newBook = Vue.createApp({
+// const newBook = Vue.createApp({
+export default {
     components: { ImageInput },
     template: `
         <div>
@@ -39,13 +40,14 @@ const newBook = Vue.createApp({
                     if(res)
                         data.cover = res.url;
 
-                    return bookAPI.newBook(data)
+                    return bookAPI.newBook(data, false)
                 })
                 .then(res => {
                     window.location.href = '/book/' + res.id;
                 });
         }
     }
-});
+}
+// });
 
-newBook.mount('#new-book');
+// newBook.mount('#new-book');

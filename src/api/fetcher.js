@@ -1,4 +1,4 @@
-export default function(uri, body, method='POST') {
+export default function(uri, body, method) {
     let isError;
     const otherConfig = {
         credentials: 'include',
@@ -9,12 +9,17 @@ export default function(uri, body, method='POST') {
 
     return (() => {
         if(body) {
+            if(!method)
+                method = 'POST';
             body = JSON.stringify(body);
             return fetch(uri, {method, body, ...otherConfig})
 
         }
-        else
-            return fetch(uri, otherConfig)
+        else {
+            if(!method || method=='POST' || method == 'PUT')
+                method = 'GET';
+            return fetch(uri, {...otherConfig, method})
+        }
     })()
         .then(res => {
             if(!res.ok) isError = true;

@@ -26,6 +26,9 @@
         <p>@{{ writer.username }}</p>
       </div>
 
+      <new-book v-if='links.create_book'>
+      </new-book>
+
       <div id='reading-list'>
         <div v-if='readingList'>
           <h3>Reading List</h3>
@@ -60,18 +63,16 @@
       </div>
     </div>
 
-    <div id='dashboard-actions'>
-      <button v-for='action in actions' @click='handleAction(action.name, action.parameters)'>
-        <span>{{ action.title }}</span>
-      </button>
-    </div>
-
+    <!--
     <div id='new-book'>
     </div>
+    -->
 
     <script type='module' src='/dashboard.vue.js'></script>
     <script type='module' src='/book.vue.js'></script>
+    <!--
     <script type='module' src='/shared/newBook.vue.js'></script>
+    -->
     <script type='module' src='/shared/menu.vue.js'></script>
   </body>
 </html>

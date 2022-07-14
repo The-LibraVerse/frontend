@@ -1,30 +1,54 @@
 import store from '/shared/book.store.js';
 import chapterStore from '/shared/chapter.store.js';
 import * as bookAPI from '/src/api/books.js';
+import api from '/src/api/server.js';
 import pageTitle from '/shared/pageTitle.js';
 import ChapterEditor from '/shared/chapterEditor.vue.js';
-import ChapterViewer from '/shared/chapterViewer.vue.js';
+import Reader from '/shared/chapterViewer.vue.js';
 import * as libraverseToken from '/src/api/token.js';
 
 const app = Vue.createApp({
     template: `
       <div v-if='book && book.title && book.author'>
-        <h1>{{ book.title }}</h1>
-        <p>by <a target='_blank' :href='"/writer/" + book.author.id'>{{ book.author.username }}</a></p>
-        <p>{{ book.totalChapters }} chapter<span v-if='book.totalChapters != 1'>s</span>
+        <div class='book-cover'>
+            <img v-if='book.cover' :src='book.cover' class='book-cover__img' />
+        </div>
+        <h1 class='book-title'>{{ book.title }}</h1>
+        <p class='book-author'>by <a target='_blank' :href='"/writer/" + book.author.id'>@{{ book.author.username }}</a></p>
+
+        <p class='book-status__tag' :class='book.published ? "book-status__tag--true" : "book-status__tag--false"' v-if='book.published != null'>
+            <span class='book-status__tag--true' v-if='book.published'>
+                Published
+            </span>
+            <span class='book-status__tag--false' v-else>Not Published</span>
         </p>
 
-        <div v-for='(c, i) in book.chapters'>
-            <p>
-                <button @click='openChapter(c.id, i)'>{{ c.title }}</button>
-            </p>
-            <p>
-                <a v-if='c.contentURL' :href='c.contentURL' target='_blank'>Open on IPFS</a>
+        <button v-if='links.publish' @click='publish'>Publish Book</button>
+
+        <div class='book-metadata-list'>
+            <!-- <p class='book-metadata' v-for='i in 3'> -->
+            <p class='book-metadata'>
+                <span class='book-metadata__value'>{{ book.totalChapters }}</span>
+                <span class='book-metadata__title'>Chapters</span>
             </p>
         </div>
 
+        <div class='book-chapter-list'>
+            <div v-for='(c, i) in book.chapters' class='book-chapter-list__item'>
+                <p>
+                    <button v-if='c._links._self' @click='openChapter(i)' class='book-chapter-list__item'>
+                        {{ c.title }}</button>
+                </p>
+                <p>
+                    <a v-if='c.contentURL' :href='c.contentURL' target='_blank'>Open on IPFS 
+                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+
         <div id='actions'>
-            <div>
+            <div v-if='links.sell'>
                 <p class='title'>Sell your book on the Ethereum Blockchain</p>
                 <p>Click the button below to create an ERC1155 token of your book.
                     You will be able to sell your book tokens on any of the web3 marketplaces.</p>
@@ -34,15 +58,17 @@ const app = Vue.createApp({
                     </label>
                     <button @click='createBookToken'>Create your book's token</button>
             </div>
-            <button @click='newChapterPopup' v-if='actions.includes("addChapter")'>Add Chapter</button>
+            <button v-if='links.create_chapter' @click='newChapterPopup'>Add Chapter</button>
         </div>
 
         <ChapterEditor  v-if='showChapterEditor && book && book.id' :bookID='book.id'>
         </ChapterEditor>
 
         <div id='viewer'>
-            <ChapterViewer v-if='showChapterViewer && chapterID' :chapterID='chapterID' :bookID='book.id'>
-            </ChapterViewer>
+            <Reader v-if='showChapterViewer && currentChapter && currentChapter._links && currentChapter._links._self'
+                :chapter='currentChapter'
+            :bookID='book.id'>
+            </Reader>
             <!--
             <button v-if='prevChapterID' @click='prevChapter'>Previous Chapter</button>
             <button v-if='nextChapterID' @click='nextChapter'>Next Chapter</button>
@@ -52,13 +78,13 @@ const app = Vue.createApp({
         </div>
       </div>
     `,
-    components: {ChapterEditor, ChapterViewer},
+    components: {ChapterEditor, Reader},
     data() {
         return {
+            links: {},
             book: null,
-            actions: [],
             tokenMints: 1,
-            chapterID: null,
+            currentChapter: {},
             chapterIndex: null,
             showChapterEditor: false,
             showChapterViewer: false,
@@ -92,31 +118,26 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        openChapter(id, index) {
-            this.chapterID = id;
-            this.chapterIndex = index;
-            this.showChapterViewer = true;
+        openChapter(index) {
+            if(index != null) {
+                const chapter = this.book.chapters[index];
+                if(chapter) {
+                    this.currentChapter = this.book.chapters[index];
+                    this.chapterIndex = index;
+                    this.showChapterViewer = true;
+                }
+            }
         },
         openBook() {
             // calls readChapter with first chapter
         },
         nextChapter() {
             const index = this.nextChapterIndex;
-
-            if(this.nextChapterIndex != null) {
-                const chapter = this.book.chapters[index];
-                this.chapterIndex = index;
-                this.chapterID = chapter.id;
-            }
+            this.openChapter(index);
         },
         prevChapter() {
             const index = this.prevChapterIndex;
-
-            if(this.prevChapterIndex != null) {
-                const chapter = this.book.chapters[index];
-                this.chapterIndex = index;
-                this.chapterID = chapter.id;
-            }
+            this.openChapter(index);
         },
         newChapterPopup() {
             chapterStore.commit('newChapter');
@@ -137,6 +158,13 @@ const app = Vue.createApp({
                     return bookAPI.listForSale(this.book.id, data);
                 });
         },
+        publish() {
+            const data = null;
+            const link = this.links.publish;
+
+            if(link)
+                return api(link.href, data, link.method)
+        }
     },
     mounted() {
         const regex = /(?<=book\/)\d+/;
@@ -152,9 +180,7 @@ const app = Vue.createApp({
                     // console.log('res:', res);
                     document.title = pageTitle(res.title + ' - ' + res.author);
                     this.book = res;
-
-                    // if(res._links && res._links.add_chapter)
-                        this.actions.push('addChapter');
+                    this.links = res._links || {};
                 });
         }
     }

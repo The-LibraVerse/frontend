@@ -1,15 +1,18 @@
-import { isLoggedIn } from '/src/api/user.js';
-import connectWallet from '/src/api/connectWallet.js';
+import { isLoggedIn, logout } from '/src/api/user.js';
+import ConnectWallet from '/shared/connectWallet.js';
 
 const app = Vue.createApp({
+    components: {ConnectWallet},
     template: `
         <div>
             <a href='/'>Libraverse</a>
             <a v-if='!loggedIn' class='right' href='/login'>Login</a>
             <a v-if='loggedIn' class='right' href='/dashboard'>Dashboard</a>
             <a v-if='loggedIn' class='right' href='/profile'>Profile</a>
+            <button @click='logout' v-if='loggedIn' class='right'>Logout</button>
 
-            <button @click='connectWallet'>Connect Wallet</button>
+            <ConnectWallet>
+            </ConnectWallet>
         </div>
     `,
     data() {
@@ -18,7 +21,13 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        connectWallet
+        logout() {
+            return logout()
+                .then(res => {
+                    console.log('lgout response', res);
+                    window.location.reload();
+                });
+        },
     },
     mounted() {
         return isLoggedIn()

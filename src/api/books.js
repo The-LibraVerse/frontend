@@ -30,8 +30,8 @@ export function fetchWrittenBooks(userID) {
         return server('/my-books/creations');
 }
 
-export function newBook(data) {
-    return server('/books', data);
+export function newBook(data, autoReload=true) {
+    return server('/books', data, 'POST', autoReload);
 }
 
 export function addChapter(bookID, data) {
@@ -39,8 +39,7 @@ export function addChapter(bookID, data) {
     .then(res => {
         const content = res.url;
         data.content = res.url;
-        console.log('dat to upload:',data);
-        return server('/book/' + bookID + '/chapter', data);
+        return server('/book/' + bookID + '/chapters', data);
     });
 }
 
