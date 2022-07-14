@@ -5,7 +5,10 @@ const app = Vue.createApp({
     components: {ConnectWallet},
     template: `
         <div class='site-header'>
-            <a class='site-logo site-logo_text' href='/'>Libraverse</a>
+            <a class='site-logo site-logo_text' href='/'>
+                <img src='/assets/logo.png' />
+                Libraverse
+            </a>
             <a v-if='!loggedIn' class='link right' href='/login'>Login</a>
             <a v-if='loggedIn' class='link right' href='/dashboard'>Dashboard</a>
             <a v-if='loggedIn' class='link right' href='/profile'>Profile</a>

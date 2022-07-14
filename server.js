@@ -12,6 +12,8 @@ server.use('/dependencies', express.static(__dirname + '/dependencies'));
 
 server.use('/styles', express.static(__dirname + '/styles'));
 
+server.use('/assets', express.static(__dirname + '/assets'));
+
 server.use('/book/:id', function(req, res) {
     res.sendFile(__dirname + '/pages/book.html');
 });
