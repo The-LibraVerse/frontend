@@ -39,7 +39,9 @@ const app = Vue.createApp({
         <div class='book-chapter-list'>
             <div v-for='(c, i) in book.chapters' class='book-chapter-list__item'>
                 <p>
-                    <button v-if='c._links._self' @click='openChapter(i)' class='book-chapter-list__item button'>
+                    <button v-if='c._links && c._links._self' @click='openChapter(i)' class='book-chapter-list__item button'>
+                        {{ c.title }}</button>
+                    <button disabled='true' v-else class='book-chapter-list__item button'>
                         {{ c.title }}</button>
                 </p>
                 <p>

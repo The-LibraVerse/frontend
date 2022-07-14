@@ -20,7 +20,7 @@
           <div class='book-thumbnail'>
             <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-image' />
             <div v-else role='img' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-text'>
-              <p>{{ book.title }}</p>
+              <p class='book-thumbnail__title'>{{ book.title }}</p>
               <p v-if='book.author.name' class='book-thumbnail__author'>{{ book.author.name }}</p>
               <p v-else-if='book.author.username' class='book-thumbnail__author'>@{{ book.author.username }}</p>
             </div>

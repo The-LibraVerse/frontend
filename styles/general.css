@@ -208,6 +208,18 @@ a, a:visited, a:hover, a:focus {
     font-size: 0.8em;
     word-break: break-word;
     text-align: center;
+    height: 100%;
+}
+
+.book-thumbnail__title {
+    font-size: 1.3em;
+}
+
+.book-thumbnail__author {
+    position: absolute;
+    bottom: 1em;
+    width: 100%;
+    left: 0;
 }
 
 .book-thumbnail__for-sale-sign {
