@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+  <head>
+    <title>Site theme colors | Libraverse</title>
+    <meta charset="utf-8" name="viewport" content= "width=device-width, initial-scale=1.0">
+    <link href='./styles/general.css' rel='stylesheet' />
+    <link href='./styles/_site_test_colors.page.css' rel='stylesheet' />
+    <script src="/dependencies/vue3.global.js"></script>
+  </head>
+
+  <body>
+    <h1>Site Colors</h1>
+    <div id='app'>
+      <div class='color-group' v-for='color in colors'>
+        <div :class='color' class='color-pack'
+            :style='"--color: var(--color-" + color + ")"'>
+          <p class='color-name color-text'>{{ color }}</p>
+          <p class='color-name color-text black-background' class='color-name'>{{ color }}</p>
+          <div class='color-div'>
+            <p>White Text<p>
+            <p class='black-text'>Black Text<p>
+          </div>
+        </div>
+
+        <div v-for='variation in colorVariations'
+            :style='"--color: var(--color-" + color + "-" + variation + ")"'
+            :class='color + "-" + variation' class='color-pack'>
+
+          <p class='color-name color-text'>{{ color }}-{{ variation}}</p>
+          <p class='color-name color-text black-background' class='color-name'>{{ color }}-{{ variation}}</p>
+
+          <div class='color-div'>
+            <p>White Text<p>
+            <p class='black-text'>Black Text<p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand colors -->
+      <div>
+      <div v-for='color in brandColors'>
+        <div :class='color' class='color-pack'
+            :style='"--color: var(--color-brand-" + color + ")"'>
+          <p class='color-name color-text'>{{ color }}</p>
+          <p class='color-name color-text black-background' class='color-name'>{{ color }}</p>
+          <div class='color-div'>
+            <p>White Text<p>
+            <p class='black-text'>Black Text<p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script type='module'>
+      const app = Vue.createApp({
+        data() {
+          return {
+            colors: ['primary', 'secondary', 'ui-ok', 'ui-warn', 'ui-danger', ],
+            brandColors: ['main', 'orange', 'red', 'blue', 'green', 'lightblue'],
+            colorVariations: ['hilite', 'lite', 'dim', 'dark' ],
+          }
+        }
+      });
+
+      app.mount('#app');
+    </script>
+  </body>
+</html>
+

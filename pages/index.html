@@ -13,12 +13,14 @@
     <h1>Libraverse</h1>
     <p>Welcome to the library verse. Whether you want to create and/or read books, this is the perfect place for you</p>
 
-    <div id='book-grid'>
+    <div id='book-grid' class='book-grid'>
       <a v-for='book in books' target='_blank' :href='"/book/" + book.id'>
         <div>
-          <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover' />
-          <div v-else role='img' :alt='book.title' class='book-cover'>
+          <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail book-thubmnail_image' />
+          <div v-else role='img' :alt='book.title' class='book-thumbnail book-thumbnail_text'>
             <p>{{ book.title }}</p>
+            <p v-if='book.author.name' class='book-thumbnail__author'>{{ book.author.name }}</p>
+            <p v-else-if='book.author.username' class='book-thumbnail__author'>@{{ book.author.username }}</p>
           </div>
         </div>
       </a>

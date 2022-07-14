@@ -1,0 +1,49 @@
+div#app {
+    display: flex;
+    grid-gap: 3rem;
+}
+
+.color-group {
+    padding: 1rem;
+}
+
+.color-pack {
+    width: 130px;
+    --text: white;
+    margin-bottom: 2rem;
+}
+
+.black-text {
+    color: black;
+}
+
+.color-name {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.black-background {
+    background: black;
+}
+
+/**
+ * Site colors definition blocks
+ */
+.color-text {
+    color: var(--color);
+    padding: 0.4em;
+}
+
+.color-pack > div {
+    background-color: var(--color);
+    color: var(--text);
+}
+
+.color-div {
+    background-color: var(--color);
+    color: var(--text);
+    padding: 1em;
+}
+.color-div > p{
+    margin-top: 0;
+}

@@ -51,24 +51,57 @@
     box-ordinal-group: 2;
 }
 
-.book-status__tag {
+.book-status-tag {
     border-radius: 5px;
-    border: 2px solid black;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
     width: max-content;
     padding: 0.4em;
     font-size: 0.9rem;
 }
-.book-status__tag--true {
-    border-color: green;
-    color: green;
+.book-status-tag_true {
+    border-color: var(--color-ui-ok);
+    color: var(--color-ui-ok);
 }
-.book-status__tag--false {
-    border-color: red;
-    color: red;
+.book-status-tag_false {
+    border-color: var(--color-ui-dim);
+    color: var(--color-ui-danger-dim);
 }
 
 .book-chapter-list__item {
     width: 100%;
+}
+
+.chapter-reader {
+    background: white;
+}
+
+.chapter-reader_overlay {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+
+    overflow: scroll;
+}
+
+.sell-literature {
+}
+
+.sell-literature__title {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.sell-literature__input-group {
+}
+
+.sell-literature__input {
+}
+
+.sell-literature__submmit {
+}
+
+.sell-literature__content {
 }
 
 @media (min-width: 600px) {

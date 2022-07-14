@@ -4,12 +4,12 @@ import ConnectWallet from '/shared/connectWallet.js';
 const app = Vue.createApp({
     components: {ConnectWallet},
     template: `
-        <div>
-            <a href='/'>Libraverse</a>
-            <a v-if='!loggedIn' class='right' href='/login'>Login</a>
-            <a v-if='loggedIn' class='right' href='/dashboard'>Dashboard</a>
-            <a v-if='loggedIn' class='right' href='/profile'>Profile</a>
-            <button @click='logout' v-if='loggedIn' class='right'>Logout</button>
+        <div class='site-header'>
+            <a class='site-logo site-logo_text' href='/'>Libraverse</a>
+            <a v-if='!loggedIn' class='link right' href='/login'>Login</a>
+            <a v-if='loggedIn' class='link right' href='/dashboard'>Dashboard</a>
+            <a v-if='loggedIn' class='link right' href='/profile'>Profile</a>
+            <button v-if='loggedIn' class='button right' @click='logout'>Logout</button>
 
             <ConnectWallet>
             </ConnectWallet>

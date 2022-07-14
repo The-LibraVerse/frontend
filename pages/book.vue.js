@@ -14,16 +14,19 @@ const app = Vue.createApp({
             <img v-if='book.cover' :src='book.cover' class='book-cover__img' />
         </div>
         <h1 class='book-title'>{{ book.title }}</h1>
-        <p class='book-author'>by <a target='_blank' :href='"/writer/" + book.author.id'>@{{ book.author.username }}</a></p>
+        <p class='book-author'>by <a class='link' target='_blank' :href='"/writer/" + book.author.id'>@{{ book.author.username }}</a></p>
 
-        <p class='book-status__tag' :class='book.published ? "book-status__tag--true" : "book-status__tag--false"' v-if='book.published != null'>
-            <span class='book-status__tag--true' v-if='book.published'>
+        <p class='book-status-tag' :class='book.published ? "book-status-tag_true" : "book-status-tag_false"' v-if='book.published != null'>
+            <span v-if='book.published'>
                 Published
             </span>
-            <span class='book-status__tag--false' v-else>Not Published</span>
+            <span v-else>Not Published</span>
         </p>
 
-        <button v-if='links.publish' @click='publish'>Publish Book</button>
+        <button v-if='links.publish' @click='publish' class='button'>Publish Book</button>
+        <button v-if='links.sell' class='button'
+            @click="$refs['sell-book'].scrollIntoView({ behavior: 'smooth' })"
+        >Sell your book</button>
 
         <div class='book-metadata-list'>
             <!-- <p class='book-metadata' v-for='i in 3'> -->
@@ -36,11 +39,11 @@ const app = Vue.createApp({
         <div class='book-chapter-list'>
             <div v-for='(c, i) in book.chapters' class='book-chapter-list__item'>
                 <p>
-                    <button v-if='c._links._self' @click='openChapter(i)' class='book-chapter-list__item'>
+                    <button v-if='c._links._self' @click='openChapter(i)' class='book-chapter-list__item button'>
                         {{ c.title }}</button>
                 </p>
                 <p>
-                    <a v-if='c.contentURL' :href='c.contentURL' target='_blank'>Open on IPFS 
+                    <a class='link' v-if='c.contentURL' :href='c.contentURL' target='_blank'>Open on IPFS 
                         <i class="fa fa-external-link" aria-hidden="true"></i>
                     </a>
                 </p>
@@ -48,15 +51,22 @@ const app = Vue.createApp({
         </div>
 
         <div id='actions'>
-            <div v-if='links.sell'>
-                <p class='title'>Sell your book on the Ethereum Blockchain</p>
-                <p>Click the button below to create an ERC1155 token of your book.
+            <div v-if='links.sell' ref='sell-book' class='sell-literature sell-literature--dialog'>
+                <p class='sell-literature__title'>Sell "{{ book.title }}" on the Ethereum Blockchain</p>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail book-thubmnail_image' />
+                <div v-else role='img' :alt='book.title' class='book-thumbnail book-thumbnail_text'>
+                  <p>{{ book.title }}</p>
+                </div>
+                <p class='sell-literature__content'>Click the button below to create an ERC1155 token of your book.
                     You will be able to sell your book tokens on any of the web3 marketplaces.</p>
                     
-                    <label>How many tokens would you like to mint? 
-                        <input type='number' min='1' v-model='tokenMints' />
+                    <label class='sell-literature__input-group'>
+                        <span class='sell-literature__input-label'>
+                            How many tokens would you like to mint? 
+                        </span>
+                        <input class='input sell-literature__input' type='number' min='1' v-model='tokenMints' />
                     </label>
-                    <button @click='createBookToken'>Create your book's token</button>
+                    <button class='sell-literature__submit button' @click='createBookToken'>Create your book's token</button>
             </div>
             <button v-if='links.create_chapter' @click='newChapterPopup'>Add Chapter</button>
         </div>
@@ -64,8 +74,12 @@ const app = Vue.createApp({
         <ChapterEditor  v-if='showChapterEditor && book && book.id' :bookID='book.id'>
         </ChapterEditor>
 
-        <div id='viewer'>
-            <Reader v-if='showChapterViewer && currentChapter && currentChapter._links && currentChapter._links._self'
+        <div v-show='showChapterViewer' v-if='currentChapter && currentChapter._links && currentChapter._links._self'
+            class='chapter-reader chapter-reader--overlay'>
+            <div class='actions'>
+                <button @click='showChapterViewer=false' type='button' class='button'>Close</button>
+            </div>
+            <Reader
                 :chapter='currentChapter'
             :bookID='book.id'>
             </Reader>
@@ -73,8 +87,10 @@ const app = Vue.createApp({
             <button v-if='prevChapterID' @click='prevChapter'>Previous Chapter</button>
             <button v-if='nextChapterID' @click='nextChapter'>Next Chapter</button>
             -->
-            <button :disabled='prevChapterIndex == null' @click='prevChapter'>Previous Chapter</button>
-            <button :disabled='nextChapterIndex == null' @click='nextChapter'>Next Chapter</button>
+            <div class='chapter-reader__actions'>
+                <button :disabled='prevChapterIndex == null' @click='prevChapter'>Previous Chapter</button>
+                <button :disabled='nextChapterIndex == null' @click='nextChapter'>Next Chapter</button>
+            </div>
         </div>
       </div>
     `,

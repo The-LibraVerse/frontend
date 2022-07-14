@@ -3,28 +3,28 @@ import server from '/src/api/server.js';
 import chapterStore from '/shared/chapter.store.js';
 import * as libraverseToken from '/src/api/token.js';
 
-// const chapterEditor = {
 export default {
     template: `
         <div>
-            Viewing a book
-            <button @click='close' type='button'>Close</button>
-            <h3>{{ title }}</h3>
+            <div class='chapter__actions'>
+                <h3 class='chapter__title'>{{ title }}</h3>
 
-            <button v-if='links.publish' @click='publish'>Publish Chapter</button>
+                <button v-if='links.publish' @click='publish' class='button'>Publish Chapter</button>
+            </div>
 
-            <div v-if='links.list_for_sale'>
-                <p class='title'>Sell your this chapter on the Ethereum Blockchain</p>
-                <p>Click the button below to create an ERC1155 token of your book.
+            <div v-if='links.list_for_sale' class='sell-literature'>
+                <p class='sell-literature__title'>Sell your this chapter on the Ethereum Blockchain</p>
+                <p class='sell-literature__content'>Click the button below to create an ERC1155 token of your book.
                     You will be able to sell your book tokens on any of the web3 marketplaces.</p>
                     
                     <label>How many tokens would you like to mint? 
                         <input type='number' min='1' v-model='tokenMints' />
                     </label>
-                    <button @click='createToken'>Create token</button>
+                    <button class='button sell-literature__submit' @click='createToken'>Create token</button>
             </div>
-            <div class='content'>
-                {{ content }}
+            <div class='chapter__content' v-html='content'>
+            </div>
+            <div class='chapter-actions'>
             </div>
         </div>
     `,
@@ -36,11 +36,9 @@ export default {
             metadataURI: null,
             tokenMints: 1,
             links: {},
-            // bookID: null,
-            // popup: false,
         }
     },
-    props: ['bookID', 'chapterID', 'chapter'],
+    props: ['bookID', 'chapter'],
 
     computed: {
         popup: () => chapterStore.getters.showEditor
@@ -100,5 +98,3 @@ export default {
         return this.fetchChapter()
     }
 }
-
-// chapterEditor.mount('#chapter-editor');

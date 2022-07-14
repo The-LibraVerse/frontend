@@ -3,7 +3,7 @@ import {getAddress, getProvider, connect as connectWallet, disconnect as disconn
 
 const template =  `
     <div>
-        <button v-if='!walletConnected' @click='connectWallet'>
+        <button class='button' v-if='!walletConnected' @click='connectWallet'>
             <span v-if='title'>{{ title }}</span>
             <div v-else-if='image'>
                 <img :src='image' />
@@ -16,7 +16,7 @@ const template =  `
 
         <div role='image' v-else>
             <span>{{ address }}</span>
-            <button @click='disconnectWallet'>
+            <button class='button button_danger' @click='disconnectWallet'>
                 Disconnect Wallet
             </button>
         </div>
