@@ -8,6 +8,7 @@ const app = Vue.createApp({
             username: null,
             password: null,
             showSignup: true,
+            error: null,
         }
     },
 
@@ -17,13 +18,19 @@ const app = Vue.createApp({
             const password = this.password;
 
             return userAPI.login({ username, password })
+            .catch(e => {
+                this.error = e.error;
+            });
         },
         signup() {
             const username = this.username;
             const password = this.password;
 
             return userAPI.signup({ username, password })
-        }
+            .catch(e => {
+                this.error = e.error;
+            });
+        },
     },
 });
 

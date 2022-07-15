@@ -43,6 +43,19 @@
     --color-on-brand-lightblue: var(--color-primary-dark);
 
 
+    --color-ui-info: blue;
+    --color-ui-info-hilite: #00ff00;
+    --color-ui-info-lite: lightgreen;
+    --color-ui-info-dim: darkgreen;
+    --color-ui-info-dark: #033003;
+
+    --color-on-ui-info: white;
+    --color-on-ui-info-hilite: var(--color-ui-ok-dark);
+    --color-on-ui-info-lite: var(--color-ui-ok-dark);
+    --color-on-ui-info-dim: var(--color-primary-lite);
+    --color-on-ui-info-dark: var(--color-primary-lite);
+
+
     --color-ui-ok: green;
     --color-ui-ok-hilite: #00ff00;
     --color-ui-ok-lite: lightgreen;
@@ -134,10 +147,6 @@ a, a:visited, a:hover, a:focus {
 .input {
     border: 2px solid var(--color-primary);
 }
-
-.login-page {
-    background: var(--color-primary-lite);
-}
 .input-group {
     margin-top: 1em;
 }
@@ -167,6 +176,18 @@ a, a:visited, a:hover, a:focus {
 }
 .link:hover {
     text-decoration: underline;
+}
+
+.site-logo__image {
+    max-width: 100%;
+    max-height: 100%;
+}
+.site-logo__text {
+    color: var(--color-brand-main);
+    text-align: center;
+}
+.page-title {
+    text-align: center;
 }
 
 .hero {
@@ -311,6 +332,7 @@ a, a:visited, a:hover, a:focus {
     display: grid;
     grid-gap: 2em;
 }
+
 .book-preview {
     display: grid;
     grid-template-columns: 100px auto;
@@ -420,10 +442,87 @@ a, a:visited, a:hover, a:focus {
     background: var(--color-brand-main);
 }
 
+
+.form-notice {
+    border: 1px solid var(--color-ui-info);
+    background: var(--color-ui-info-hilite);
+    color: var(--color-on-ui-info-lite);
+    border-radius: 5px;
+    padding: 0.8em;
+}
+.form-notice_error {
+    border-color: var(--color-ui-danger-hilite);
+    background: var(--color-ui-danger-lite);
+    color: var(--color-on-ui-danger-lite);
+}
+
+.form-notice__message {
+    margin: 0;
+    text-align: center;
+}
+.form__submit {
+    background: var(--color-ui-ok);
+    color: var(--color-on-ui-ok);
+    border-color: var(--color-ui-ok);
+    font-size: 1.1em;
+}
+.form__submit:hover {
+    border-color: var(--color-ui-ok-lite);
+    background: var(--color-ui-ok-lite);
+    color: var(--color-on-ui-ok-lite);
+}
+.form__submit:focus {
+    border: 2px solid var(--color-on-ui-ok-lite);
+    background: var(--color-ui-ok-lite);
+    color: var(--color-on-ui-ok-lte);
+}
+.form__submit:active {
+    background: var(--color-ui-ok-dark);
+    color: var(--color-on-ui-ok-dark);
+}
+.login-page__site-logo {
+    margin: auto;
+    width: fit-content;
+    height: 100px;
+    padding-left: 2.5rem;
+}
+
+.login-page__item {
+    max-width: 85vw;
+    margin: auto;
+}
+
 .login-form {
+}
+
+.login-form__body {
+    border-radius: 5px;
+    margin: 1rem 0;
     padding: 2rem;
-    min-height: 350px;
-    max-height: 80vh;
+    background: var(--color-secondary-lite);
+    border: 1px solid var(--color-primary-hilite);
+}
+
+.login-form__input-group {
+    display: block;
+}
+.login-form__input-control {
+    width: 100%;
+    box-sizing: border-box;
+}
+.login-form__submit {
+    width: 100%;
+    margin-top: 1em;
+}
+.login-form__switch-context {
+    background: none;
+    border-color: var(--color-primary);
+}
+
+@media (min-width: 400px) {
+    .login-page__item {
+        max-width: 300px;
+    }
 }
 
 @media (max-width: 600px) {
