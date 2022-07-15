@@ -1,15 +1,29 @@
 :root {
     --color-primary: grey;
     --color-primary-hilite: #a6a6a6;
-    --color-primary-lite: lightgrey;
+    --color-primary-lite: #eaeaea;
     --color-primary-dim: #464646;
-    --color-primary-dark: #161616;
+    --color-primary-dark: #232323;
 
-    --color-secondary: grey;
-    --color-secondary-hilite: #a6a6a6;
+    --color-on-primary: white;
+    --color-on-primary-hilite: black;
+    --color-on-primary-lite: var(--color-secondary-dark);
+    --color-on-primary-dim: white;
+    --color-on-primary-dark: var(--color-primary-lite);
+
+
+    --color-secondary: #5e5555;
+    --color-secondary-hilite: #908484;
     --color-secondary-lite: lightgrey;
-    --color-secondary-dim: #464646;
-    --color-secondary-dark: #232323;
+    --color-secondary-dim: #3a3535;
+    --color-secondary-dark: #161616;
+
+    --color-on-secondary: var(--color-primary-lite);
+    --color-on-secondary-hilite: var(--color-secondary-dark);
+    --color-on-secondary-lite: var(--color-secondary-dark);
+    --color-on-secondary-dim: white;
+    --color-on-secondary-dark: var(--color-secondary-lite);
+
 
     --color-brand-main: #ae8559;
     --color-brand-orange: #e86d35;
@@ -18,11 +32,26 @@
     --color-brand-green: #9bd142;
     --color-brand-lightblue: #7bd3dd;
 
+    --color-on-brand-main: var(--color-primary-dark);
+    --color-on-brand-orange: var(--color-primary-dark);
+    --color-on-brand-red: var(--color-primary-dark);
+    --color-on-brand-blue: var(--color-primary-dark);
+    --color-on-brand-green: var(--color-primary-dark);
+    --color-on-brand-lightblue: var(--color-primary-dark);
+
+
     --color-ui-ok: green;
     --color-ui-ok-hilite: #00ff00;
     --color-ui-ok-lite: lightgreen;
     --color-ui-ok-dim: darkgreen;
     --color-ui-ok-dark: #033003;
+
+    --color-on-ui-ok: white;
+    --color-on-ui-ok-hilite: var(--color-ui-ok-dark);
+    --color-on-ui-ok-lite: var(--color-ui-ok-dark);
+    --color-on-ui-ok-dim: var(--color-primary-lite);
+    --color-on-ui-ok-dark: var(--color-primary-lite);
+
 
     --color-ui-warn: #ff6e00;
     --color-ui-warn-hilite: #f0791f;
@@ -30,11 +59,25 @@
     --color-ui-warn-dim: #8e5c35;
     --color-ui-warn-dark: #783400;
 
+    --color-on-ui-warn: var(--color-secondary-dark);
+    --color-on-ui-warn-hilite: var(--color-primary-dark);
+    --color-on-ui-warn-lite: var(--color-ui-warn-dark);
+    --color-on-ui-warn-dim: var(--color-primary-lite);
+    --color-on-ui-warn-dark: var(--color-primary-lite);
+
+
     --color-ui-danger:red;
     --color-ui-danger-hilite: #f02222;
     --color-ui-danger-lite: #dc6767;
     --color-ui-danger-dim: #6c3636;
     --color-ui-danger-dark: #5c0000;
+
+    --color-on-ui-danger: white;
+    --color-on-ui-danger-hilite: var(--color-primary-lite);
+    --color-on-ui-danger-lite: var(--color-secondary-dark);
+    --color-on-ui-danger-dim: var(--color-primary-lite);
+    --color-on-ui-danger-dark: var(--color-primary-lite);
+
 
     --color-text-link: blue;
 }

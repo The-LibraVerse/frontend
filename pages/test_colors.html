@@ -15,10 +15,10 @@
         <div :class='color' class='color-pack'
             :style='"--color: var(--color-" + color + ")"'>
           <p class='color-name color-text'>{{ color }}</p>
-          <p class='color-name color-text black-background' class='color-name'>{{ color }}</p>
           <div class='color-div'>
-            <p>White Text<p>
-            <p class='black-text'>Black Text<p>
+            <p
+              :style='"color: var(--color-on-" + color + ")"'
+            >{{ color }} "on" text<p>
           </div>
         </div>
 
@@ -27,11 +27,11 @@
             :class='color + "-" + variation' class='color-pack'>
 
           <p class='color-name color-text'>{{ color }}-{{ variation}}</p>
-          <p class='color-name color-text black-background' class='color-name'>{{ color }}-{{ variation}}</p>
 
           <div class='color-div'>
-            <p>White Text<p>
-            <p class='black-text'>Black Text<p>
+            <p
+              :style='"color: var(--color-on-" + color + "-" + variation + ")"'
+            >{{ color }}-{{ variation }} "on" text<p>
           </div>
         </div>
       </div>
@@ -44,8 +44,9 @@
           <p class='color-name color-text'>{{ color }}</p>
           <p class='color-name color-text black-background' class='color-name'>{{ color }}</p>
           <div class='color-div'>
-            <p>White Text<p>
-            <p class='black-text'>Black Text<p>
+            <p
+              :style='"color: var(--color-on-brand-" + color + ")"'
+            >{{ color }} "on" text<p>
           </div>
         </div>
       </div>
