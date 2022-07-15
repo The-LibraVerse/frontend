@@ -32,14 +32,14 @@
           <h3>Continue Reading</h2>
           <div class='carousel'>
             <a v-for='book in books.continueReading.slice(0,5)' target='_blank' :href='"/book/" + book.id' class='carousel__item'>
-              <div class='home-page__book-thumbnail book-cover book-thumbnail'>
-                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-image' />
-                <div v-else role='img' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-text'>
-                  <p class='book-thumbnail__title home-page__book-thumbnail-title'>{{ book.title }}</p>
-                  <p v-if='book.author.name' class='book-thumbnail__author'>{{ book.author.name }}</p>
-                  <p v-else-if='book.author.username' class='book-thumbnail__author'>@{{ book.author.username }}</p>
+              <div class='home-page__book-cover book-cover book-cover'>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__item book-cover__cover-image' />
+                <div v-else role='img' :alt='book.title' class='book-cover__item book-cover__cover-text'>
+                  <p class='book-cover__title home-page__book-cover-title'>{{ book.title }}</p>
+                  <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
+                  <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
                 </div>
-                <p class='book-thumbnail__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
               </div>
             </a>
           </div>
@@ -49,14 +49,14 @@
           <h3>Popular</h2>
           <div class='list book-preview-list'>
             <a v-for='book in books.popular.slice(0,3)' target='_blank' :href='"/book/" + book.id' class='book-preview list__item'>
-              <div class='home-page__book-thumbnail book-thumbnail book-preview__image'>
-                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-image' />
-                <div v-else role='img' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-text'>
-                  <p class='book-thumbnail__title'>{{ book.title }}</p>
-                  <p v-if='book.author.name' class='book-thumbnail__author'>{{ book.author.name }}</p>
-                  <p v-else-if='book.author.username' class='book-thumbnail__author'>@{{ book.author.username }}</p>
+              <div class='home-page__book-cover book-cover book-preview__image'>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__item book-cover__cover-image' />
+                <div v-else role='img' :alt='book.title' class='book-cover__item book-cover__cover-text'>
+                  <p class='book-cover__title home-page__book-cover-title'>{{ book.title }}</p>
+                  <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
+                  <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
                 </div>
-                <p class='book-thumbnail__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
               </div>
               <div class='book-preview__text'>
                 <p class='book-preview__book-title'>{{ book.title }}</p>
@@ -70,14 +70,14 @@
           <h3>Top Free</h2>
           <div class='carousel'>
             <a v-for='book in books.topFree.slice(0,5)' target='_blank' :href='"/book/" + book.id' class='carousel__item'>
-              <div class='home-page__book-thumbnail book-thumbnail'>
-                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-image' />
-                <div v-else role='img' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-text'>
-                  <p class='book-thumbnail__title'>{{ book.title }}</p>
-                  <p v-if='book.author.name' class='book-thumbnail__author'>{{ book.author.name }}</p>
-                  <p v-else-if='book.author.username' class='book-thumbnail__author'>@{{ book.author.username }}</p>
+              <div class='home-page__book-cover book-cover'>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__item book-cover__cover-image' />
+                <div v-else role='img' :alt='book.title' class='book-cover__item book-cover__cover-text'>
+                  <p class='book-cover__title home-page__book-cover-title'>{{ book.title }}</p>
+                  <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
+                  <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
                 </div>
-                <p class='book-thumbnail__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
               </div>
             </a>
           </div>
@@ -87,14 +87,14 @@
           <h3>Top Paid</h2>
           <div id='book-grid' class='grid'>
             <a v-for='book in books.topPaid.slice(0,5)' target='_blank' :href='"/book/" + book.id'>
-              <div class='home-page__book-thumbnail book-thumbnail'>
-                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-image' />
-                <div v-else role='img' :alt='book.title' class='book-thumbnail__item book-thumbnail__cover-text'>
-                  <p class='book-thumbnail__title'>{{ book.title }}</p>
-                  <p v-if='book.author.name' class='book-thumbnail__author'>{{ book.author.name }}</p>
-                  <p v-else-if='book.author.username' class='book-thumbnail__author'>@{{ book.author.username }}</p>
+              <div class='home-page__book-cover book-cover'>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__item book-cover__cover-image' />
+                <div v-else role='img' :alt='book.title' class='book-cover__item book-cover__cover-text'>
+                  <p class='book-cover__title home-page__book-cover-title'>{{ book.title }}</p>
+                  <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
+                  <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
                 </div>
-                <p class='book-thumbnail__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
               </div>
             </a>
           </div>
