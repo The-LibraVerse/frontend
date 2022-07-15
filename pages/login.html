@@ -10,23 +10,25 @@
 
   <body>
     <div id='menu'></div>
-    <div id='login'>
-      <form @submit.prevent>
-        <label>Username
-          <input type='text' v-model='username' placeholder='Username' />
+    <div id='login' class='page login-page'>
+      <form @submit.prevent class='login-form'>
+        <label class='input-group'>
+          <span class='input-group__label'>Username</span>
+          <input class='input-group__control' type='text' v-model='username' placeholder='Username' />
         </label>
 
-        <label>Password
-          <input type='password' v-model='password' placeholder='Password' />
+        <label class='input-group'>
+          <span class='input-group__label'>Password</span>
+          <input class='input-group__control' type='password' v-model='password' placeholder='Password' />
         </label>
 
         <div class='actions' v-if='showSignup'>
-          <button @click='signup'>Sign up</button>
+          <button class='button' @click='signup'>Sign up</button>
           <button type='button' class='link' @click='showSignup=false'>Have an account? Login</button>
         </div>
 
         <div class='actions' v-else>
-          <button @click='login'>Login</button>
+          <button class='button' @click='login'>Login</button>
           <button type='button' class='link' @click='showSignup=true'>New here? Sign up instead</button>
         </div>
 

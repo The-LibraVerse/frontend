@@ -3,15 +3,28 @@ import * as bookAPI from '/src/api/books.js';
 const app = Vue.createApp({
     data() {
         return {
-            books: []
+            books: {
+                featured: [],
+                popular: [],
+                topPaid: [],
+                topFree: [],
+                continueReading: [],
+            }
         }
     },
     mounted() {
         return bookAPI.fetchAll()
         .then(res => {
-            this.books = res.data;
+            console.log('res:', res);
+            const {featured=[], popular=[], topPaid=[], topFree=[], continueReading=[]} = res;
+
+            this.books.popular = popular;
+            this.books.topPaid = topPaid;
+            this.books.topFree = topFree;
+            this.books.featured = featured;
+            this.books.continueReading = continueReading;
         });
     }
 });
 
-app.mount('#book-grid');
+app.mount('#home');
