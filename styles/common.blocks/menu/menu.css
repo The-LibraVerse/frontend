@@ -1,0 +1,13 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu__item {
+    display: block;
+    font-weight: bold;
+    padding: 0.6em;
+    color: var(--color-primary-dark);
+}

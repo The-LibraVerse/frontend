@@ -8,13 +8,11 @@
     box-sizing: border-box;
 
     background: var(--color-primary-dark);
-    color: var(--color-on-primary-dark);
-    font-weight: bold;
 }
 .book-cover__item {
     border-radius: 5px;
 }
-.book-cover__cover-image {
+.book-cover__image {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,10 +21,11 @@
     object-fit: cover;
 }
 
-.book-cover__cover-text {
+.book-cover__text {
     word-break: break-word;
     text-align: center;
-    height: 100%;
+    color: var(--color-on-primary-dark);
+    font-weight: bold;
 }
 
 .book-cover__title {

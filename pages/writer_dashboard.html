@@ -38,8 +38,8 @@
             <a v-for='book in written' :href='"/book/" + book.id'>
               <div>
                 <div class='book-cover book-cover_thumbnail user-profile__book-cover book-preview__image'>
-                  <img :src='book.cover' class='book-cover__cover-image' v-if='book.cover' />
-                  <div class='book-cover__cover-text' v-else>
+                  <img :src='book.cover' class='book-cover__image' v-if='book.cover' />
+                  <div class='book-cover__text' v-else>
                     <p class='book-cover__title book-cover_thumbnail__title'>{{ book.title }}</p>
                     <p class='book-cover__author'>
                     <span v-if='book.author.name'>{{ book.author.name }}</span>
@@ -68,8 +68,8 @@
           <div class='grid' v-else>
             <a class='grid__item' v-for='book in readingList' :href='"/book/" + book.id'>
               <div class='book-cover book-cover_thumbnail'>
-                <img :src='book.cover' class='book-cover__cover-image' v-if='book.cover' />
-                <div class='book-cover__cover-text' v-else>
+                <img :src='book.cover' class='book-cover__image' v-if='book.cover' />
+                <div class='book-cover__text' v-else>
                   <p class='book-cover__title book-cover_thumbnail__title'>{{ book.title }}</p>
                   <p class='book-cover__author'>
                   <span v-if='book.author.name'>{{ book.author.name }}</span>
@@ -85,8 +85,6 @@
 
     <script type='module' src='/dashboard.vue.js'></script>
     <script type='module' src='/book.vue.js'></script>
-    <!--
-    <script type='module' src='/shared/newBook.vue.js'></script>
     -->
     <script type='module' src='/shared/menu.vue.js'></script>
   </body>

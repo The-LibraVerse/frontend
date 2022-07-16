@@ -10,17 +10,17 @@ const app = Vue.createApp({
                 <span class='site-header__logo-text'>Libraverse</span>
             </a>
 
-            <button @click='expandMenu=!expandMenu' class='button menu-expander mobile-only'>
+            <button @click='expandMenu=!expandMenu' class='button site-header__nav-expander mobile-only'>
                 <span v-if='expandMenu'>Close</span>
                 <span v-else>Menu</span>
             </button>
 
             <img v-if='loggedIn' class='site-header__user-avatar' @click='hideLogoutOnDesktop=!hideLogoutOnDesktop' />
 
-            <div class='site-header__menu menu' :class='{"hide-on-mobile": !expandMenu}'>
-                <a v-if='loggedIn' class='link menu__link' href='/dashboard'>Dashboard</a>
-                <a v-if='loggedIn' class='link menu__link' href='/profile'>Profile</a>
-                <a v-if='!loggedIn' class='link menu__link' href='/login'>Login</a>
+            <div class='site-header__nav nav' :class='{"hide-on-mobile": !expandMenu}'>
+                <a v-if='loggedIn' class='link nav__link' href='/dashboard'>Dashboard</a>
+                <a v-if='loggedIn' class='link nav__link' href='/profile'>Profile</a>
+                <a v-if='!loggedIn' class='link nav__link' href='/login'>Login</a>
             </div>
 
             <ConnectWallet class='site-header__dropdown-item' :class='{"hide-on-mobile": !expandMenu}'>

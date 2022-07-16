@@ -11,7 +11,7 @@ const app = Vue.createApp({
     template: `
       <div v-if='book && book.title && book.author'>
         <div class='book-cover'>
-            <img v-if='book.cover' :src='book.cover' class='book-cover__img' />
+            <img v-if='book.cover' :src='book.cover' class='book-cover__image' />
         </div>
         <h1 class='book-title'>{{ book.title }}</h1>
         <p class='book-author'>by <a class='link' target='_blank' :href='"/writer/" + book.author.id'>@{{ book.author.username }}</a></p>
@@ -56,8 +56,8 @@ const app = Vue.createApp({
             <div v-if='links.sell' ref='sell-book' class='sell-literature sell-literature--dialog'>
                 <p class='sell-literature__title'>Sell "{{ book.title }}" on the Ethereum Blockchain</p>
                 <div class='book-cover'>
-                    <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__cover-image' />
-                    <div v-else role='img' :alt='book.title' class='book-cover__cover-text'>
+                    <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__image' />
+                    <div v-else role='img' :alt='book.title' class='book-cover__text'>
                       <p>{{ book.title }}</p>
                     </div>
                     <p class='book-cover__for-sale-sign'>$</p>
