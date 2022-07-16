@@ -10,8 +10,20 @@ import * as libraverseToken from '/src/api/token.js';
 const app = Vue.createApp({
     template: `
       <div v-if='book && book.title && book.author'>
+
+        <div class='book-metadata-list'>
+            <!-- <p class='book-metadata' v-for='i in 3'> -->
+            <p class='book-metadata'>
+                <span class='book-metadata__value'>{{ book.totalChapters }}</span>
+                <span class='book-metadata__title'>Chapters</span>
+            </p>
+        </div>
         <div class='book-cover'>
             <img v-if='book.cover' :src='book.cover' class='book-cover__image' />
+            <div class='book-cover__text' v-else>
+                <p class='book-cover__title'>{{ book.title }}</p>
+                <p class='book-cover__author'>{{ book.author.name || book.author.username }}</p>
+            </div>
         </div>
         <h1 class='book-title'>{{ book.title }}</h1>
         <p class='book-author'>by <a class='link' target='_blank' :href='"/writer/" + book.author.id'>@{{ book.author.username }}</a></p>
@@ -27,14 +39,6 @@ const app = Vue.createApp({
         <button v-if='links.sell' class='button'
             @click="$refs['sell-book'].scrollIntoView({ behavior: 'smooth' })"
         >Sell your book</button>
-
-        <div class='book-metadata-list'>
-            <!-- <p class='book-metadata' v-for='i in 3'> -->
-            <p class='book-metadata'>
-                <span class='book-metadata__value'>{{ book.totalChapters }}</span>
-                <span class='book-metadata__title'>Chapters</span>
-            </p>
-        </div>
 
         <div class='book-chapter-list'>
             <div v-for='(c, i) in book.chapters' class='book-chapter-list__item'>
@@ -76,7 +80,10 @@ const app = Vue.createApp({
             <button v-if='links.create_chapter' @click='newChapterPopup'>Add Chapter</button>
         </div>
 
-        <ChapterEditor  v-if='showChapterEditor && book && book.id' :bookID='book.id'>
+        <ChapterEditor v-if='showChapterEditor && book && book.id' :bookID='book.id'>
+        </ChapterEditor>
+
+        <ChapterEditor v-if='book && book.id' :bookID='book.id'>
         </ChapterEditor>
 
         <div v-show='showChapterViewer' v-if='currentChapter && currentChapter._links && currentChapter._links._self'

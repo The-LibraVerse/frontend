@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+  <head>
+    <title>Test components | Libraverse</title>
+    <meta charset="utf-8" name="viewport" content= "width=device-width, initial-scale=1.0">
+    <link href='/styles/min.css' rel='stylesheet' />
+    <script src="/dependencies/vue3.global.js"></script>
+  </head>
+
+  <body>
+    <h1>Testing site components</h1>
+    <nav>
+      <h2>Contents</h2>
+      <ul>
+        <li><a href='#word-processor'>Word Processor component</a></li>
+      </ul>
+    </nav>
+
+    <div id='components'>
+      <word-processor id='word-processor' @content='(val) => wordProcessorContent=val'>
+      </word-processor>
+
+      <p>{{ wordProcessorContent }}</p>
+      <div v-html='wordProcessorContent'></div>
+    </div>
+    <script type='module'>
+      import WordProcessor from '/shared/word-processor.vue.js';
+
+      const app = Vue.createApp({
+        components: {'word-processor': WordProcessor },
+        data() {
+            return {
+              wordProcessorContent: null
+            }
+        }
+      });
+
+      app.mount('#components');
+    </script>
+  </body>
+</html>
+

@@ -2,21 +2,25 @@ import * as bookAPI from '/src/api/books.js';
 import chapterStore from '/shared/chapter.store.js';
 import ImageInput from '/shared/imageInput.vue.js';
 import ipfsUpload from '/src/api/ipfsUpload.js';
+import WordProcessor from '/shared/word-processor.vue.js';
 
 // const chapterEditor = {
 export default {
-    components: { ImageInput },
+    components: { ImageInput, WordProcessor },
     template: `
-        <form v-if='popup' @submit.prevent>
+        <form @submit.prevent>
             <button @click='close' type='button'>Close</button>
-            <label>Title
-                <input type='text' v-model='title' placeholder='Chapter title' />
-            </label>
 
-            <textarea v-model='content' placeholder='Start typing...'>
-            </textarea>
             <ImageInput @file='(data) => imgFile = data' title='Book cover'>
             </ImageInput>
+
+            <label class='input-group'>
+                <span class='input-group__label'>Title</span>
+                <input class='input-group__control' type='text' v-model='title' placeholder='Chapter title' />
+            </label>
+
+            <WordProcessor @content='(val) => content=val'>
+            </WordProcessor>
             <button @click='submit'>Create</button>
         </form>
     `,
