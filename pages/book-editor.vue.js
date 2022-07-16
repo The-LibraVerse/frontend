@@ -1,23 +1,14 @@
 import * as bookAPI from '/src/api/books.js';
+import * as userAPI from '/src/api/user.js';
+import store from '/shared/book.store.js';
 import ImageInput from '/shared/imageInput.vue.js';
 import ipfsUpload from '/src/api/ipfsUpload.js';
 
-const newBook = Vue.createApp({
-    components: { ImageInput },
-    template: `
-        <div>
-            <form @submit.prevent>
-                <label>Book Title
-                    <input type='text' v-model='title' />
-                </label>
-                <button @click='submit'>Create Book</button>
-                <ImageInput @file='(data) => imgFile = data' title='Book cover'>
-                </ImageInput>
-            </form>
-        </div>
-    `,
+const bookEditor = Vue.createApp({
+    components: { 'image-input': ImageInput },
     data() {
         return {
+            links: {},
             title: null,
             imgFile: null,
         }
@@ -39,13 +30,23 @@ const newBook = Vue.createApp({
                     if(res)
                         data.cover = res.url;
 
-                    return bookAPI.newBook(data)
+                    return bookAPI.newBook(data, false)
                 })
                 .then(res => {
                     window.location.href = '/book/' + res.id;
                 });
         }
+    },
+
+    mounted() {
+        return userAPI.fetchDashboard()
+        .then(res => {
+            this.links = res._links || {};
+            if(!this.links.create_book)
+                window.location.href = '/';
+        });
     }
 });
 
-newBook.mount('#new-book');
+bookEditor.mount('#book-editor');
+

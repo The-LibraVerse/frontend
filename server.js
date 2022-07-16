@@ -17,6 +17,12 @@ server.use('/assets', express.static(__dirname + '/assets'));
 server.use('/book/:id', function(req, res) {
     res.sendFile(__dirname + '/pages/book.html');
 });
+server.use('/new-book', function(req, res) {
+    res.sendFile(__dirname + '/pages/book-editor.html');
+});
+server.use('/book/:id_or_name/edit', function(req, res) {
+    res.sendFile(__dirname + '/pages/book-editor.html');
+});
 
 server.use('/config.local.js', function(req, res) {
     res.sendFile(__dirname + '/config.local.js');
@@ -26,6 +32,10 @@ server.use('/login', function(req, res) {
     res.sendFile(__dirname + '/pages/login.html');
 });
 
+
+server.use('/profile', function(req, res) {
+    res.sendFile(__dirname + '/pages/writer_dashboard.html');
+});
 server.use('/dashboard', function(req, res) {
     res.sendFile(__dirname + '/pages/writer_dashboard.html');
 });

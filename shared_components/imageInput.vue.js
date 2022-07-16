@@ -2,10 +2,17 @@ import ipfsUpload from '/src/api/ipfsUpload.js';
 
 export default {
     template: `
-        <div>
-            <img v-if='preview' :src='preview' />
-            <label>{{ title || "Select Image" }}:
-                <input name='image-upload' id='upload' type='file' ref='fileUpload' accept="image/*,.gif">
+        <div class='image-upload input-group'>
+            <div class='image-preview image-upload__preview'>
+                <img class='image image-preview image-upload__preview-image' v-if='preview' :src='preview' />
+            </div>
+
+            <label>
+                <span class='input-group__label' >
+                {{ title || "Select Image" }}:
+                </span>
+
+                <input class='input-group__control' name='image-upload' id='upload' type='file' ref='fileUpload' accept="image/*,.gif">
             </label>
         </div>
     `,
