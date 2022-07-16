@@ -6,23 +6,27 @@ import * as libraverseToken from '/src/api/token.js';
 export default {
     template: `
         <div>
-            <div class='chapter__actions'>
-                <h3 class='chapter__title'>{{ title }}</h3>
+            <h3 class='chapter__title'>{{ title }}</h3>
 
-                <button v-if='links.publish' @click='publish' class='button'>Publish Chapter</button>
-            </div>
+            <div class='dashboard'>
+                <div class='chapter__actions'>
+                    <button v-if='links.publish' @click='publish' class='button'>Publish Chapter</button>
+                </div>
 
-            <div v-if='links.list_for_sale' class='sell-literature'>
-                <p class='sell-literature__title'>Sell your this chapter on the Ethereum Blockchain</p>
-                <p class='sell-literature__content'>Click the button below to create an ERC1155 token of your book.
-                    You will be able to sell your book tokens on any of the web3 marketplaces.</p>
-                    
-                    <label>How many tokens would you like to mint? 
-                        <input type='number' min='1' v-model='tokenMints' />
-                    </label>
-                    <button class='button sell-literature__submit' @click='createToken'>Create token</button>
+                <div v-if='links.list_for_sale' class='sell-literature'>
+                    <p class='sell-literature__title'>Sell your this chapter on the Ethereum Blockchain</p>
+                    <p class='sell-literature__content'>Click the button below to create an ERC1155 token of your book.
+                        You will be able to sell your book tokens on any of the web3 marketplaces.</p>
+                        
+                        <label class='input-group'><span class='input-group__label'>How many tokens would you like to mint? </span>
+                            <input class='input-group__controle' type='number' min='1' v-model='tokenMints' />
+                        </label>
+                        <button class='button sell-literature__submit' @click='createToken'>Create token</button>
+                </div>
             </div>
-            <div class='chapter__content' v-html='content'>
+            <div class='reader'>
+                <div class='chapter__content' v-html='content'>
+                </div>
             </div>
             <div class='chapter-actions'>
             </div>

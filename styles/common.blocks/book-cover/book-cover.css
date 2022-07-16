@@ -4,6 +4,7 @@
     width: 240px;
     height: 360px;
     font-size: 1.5em;
+    padding-top: 2rem;
 
     box-sizing: border-box;
 
@@ -31,6 +32,8 @@
 .book-cover__title {
     margin: 0;
     font-size: 2.4em;
+    text-align: center;
+    font-weight: bold;
 }
 
 .book-cover__author {
@@ -39,6 +42,7 @@
     width: 100%;
     left: 0;
     margin: 0;
+    text-align: center;
 }
 
 .book-cover__for-sale-sign {

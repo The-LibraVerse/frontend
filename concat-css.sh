@@ -1,7 +1,16 @@
+mkdir dist/styles -p;
+mkdir dist/assets/fonts -p;
+
+rsync styles/library.blocks/fontawesome-free-6.1.1-web/ \
+        dist/assets/fontawesome-free-6.1.1-web -r;
+
 cat  \
+        styles/library.blocks/font-awesome-4.7.0/css/font-awesome.min.css \
+        styles/library.blocks/fontawesome-free-6.1.1-web/css/all.min.css \
         styles/site-variables.colors.css \
         styles/common.blocks/general.css \
         styles/common.blocks/button/button.css \
+        styles/common.blocks/tag.css \
         styles/common.blocks/form/form.css \
         styles/common.blocks/menu/menu.css \
         styles/common.blocks/popup/popup.css \
@@ -16,4 +25,4 @@ cat  \
         styles/other.css \
         styles/book.page.css \
         styles/reader.css \
-        > styles/min.css
+        > dist/styles/min.css

@@ -12,6 +12,10 @@ server.use('/dependencies', express.static(__dirname + '/dependencies'));
 
 server.use('/styles', express.static(__dirname + '/styles'));
 
+server.use('/dist/styles', express.static(__dirname + '/dist/styles'));
+
+server.use('/dist', express.static(__dirname + '/dist/assets/fontawesome-free-6.1.1-web'));
+
 server.use('/assets', express.static(__dirname + '/assets'));
 
 server.use('/book/:id', function(req, res) {

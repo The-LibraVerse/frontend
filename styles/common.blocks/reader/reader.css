@@ -1,0 +1,12 @@
+.reader {
+    background: white;
+}
+
+.reader_overlay {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+
+    overflow: scroll;
+}
+

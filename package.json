@@ -32,6 +32,7 @@
   "nodemonConfig": {
     "ext": "*.js, *.html, *.css",
     "ignore": [
+      "dist",
       "node_modules",
       "styles/min.css"
     ]

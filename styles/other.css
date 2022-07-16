@@ -190,6 +190,17 @@ a, a:visited, a:hover, a:focus {
     flex-wrap: wrap;
     grid-gap: 2em;
 }
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 2em;
+}
+
+.flex_bottom-center {
+    justify-content: center;
+    align-items: flex-end;
+}
 .list {
     display: grid;
     grid-gap: 2em;
