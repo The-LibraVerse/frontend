@@ -2,6 +2,7 @@ import * as bookAPI from '/src/api/books.js';
 import server from '/src/api/server.js';
 import chapterStore from '/shared/chapter.store.js';
 import * as libraverseToken from '/src/api/token.js';
+import { loginWithWallet } from '/src/api/user.js';
 
 export default {
     template: `
@@ -24,6 +25,19 @@ export default {
                         <button class='button sell-literature__submit' @click='createToken'>Create token</button>
                 </div>
             </div>
+            
+            <div class='notice' v-if='notice'>
+                <p class='notice__title'>{{ notice.title || "Notice!" }}</p>
+                <p class='notice__message'>{{ notice.message }}</p>
+                <p>Buy this on the ethereum blockchain</p>
+                <div v-if='notice.code == "TOKEN_REQUIRED"' class='token'>
+                    <p class='token__contract-address'>{{ tokenContract }}</p>
+                    <p class='token__id'>{{ tokenID }}</p>
+
+                    <button class='button' @click='loginWithWallet'>Sign in with your wallet address</button>
+                </div>
+            </div>
+                
             <div class='reader'>
                 <div class='chapter__content' v-html='content'>
                 </div>
@@ -38,8 +52,11 @@ export default {
             title: null,
             content: null,
             metadataURI: null,
+            tokenID: null,
+            tokenContract: null,
             tokenMints: 1,
             links: {},
+            notice: null,
         }
     },
     props: ['bookID', 'chapter'],
@@ -49,6 +66,7 @@ export default {
     },
 
     methods: {
+        loginWithWallet,
         close() {
             chapterStore.commit('closeEditor');
         },
@@ -59,9 +77,12 @@ export default {
             // return bookAPI.fetchChapter(this.bookID, this.chapterID)
                 .then(res => {
                     this.id = res.id;
+                    this.notice = res._notice;
                     this.title = res.title;
                     this.content = res.content;
                     this.metadataURI = res.metadataURI;
+                    this.tokenID = res.tokenID;
+                    this.tokenContract = res.tokenContract;
                     this.links = res._links || {};
                 });
         },

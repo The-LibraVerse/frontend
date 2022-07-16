@@ -43,7 +43,6 @@ export function connect(walletType) {
         store.commit('provider', provider);
     }
 
-
     if(provider) {
         return provider.send('eth_requestAccounts', [])
             .then(() => {
@@ -57,6 +56,7 @@ export function connect(walletType) {
                 return signer.getChainId()
             }).then(res => {
                 cacheProvider('metamask');
+                return signer;
             });
     } else return Promise.reject('failed');
 }
@@ -66,6 +66,23 @@ export function disconnect() {
     window.localStorage.removeItem('walletType');
 
     window.location.reload();
+}
+
+export function signMessage(message) {
+    let promiseChain = Promise.resolve();
+        if(!signer)
+            promiseChain = connect()
+
+    return promiseChain
+        .then(() => {
+            if(!signer)
+                throw new Error('No signer');
+            
+            return signer.signMessage(message)
+            .then(res => {
+                return res;
+            });
+        });
 }
 
 function main() {

@@ -6,6 +6,7 @@ import pageTitle from '/shared/pageTitle.js';
 import ChapterEditor from '/shared/chapterEditor.vue.js';
 import Reader from '/shared/chapterViewer.vue.js';
 import * as libraverseToken from '/src/api/token.js';
+import { loginWithWallet } from '/src/api/user.js';
 
 const app = Vue.createApp({
     template: `
@@ -69,12 +70,14 @@ const app = Vue.createApp({
         </div>
 
         <div v-if='book._notice' class='notice'>
-            <p class='notice__title'>{{ book._notice.title }}</p>
+            <p class='notice__title'>{{ book._notice.title || "Notice!" }}</p>
             <p class='notice__message'>{{ book._notice.message }}</p>
             <p>Buy this book on the ethereum blockchain</p>
             <div v-if='book._notice.code == "TOKEN_REQUIRED"' class='token'>
                 <p class='token__contract-address'>{{ book.tokenContract }}</p>
                 <p class='token__id'>{{ book.tokenID }}</p>
+
+                <button class='button' @click='signInWallet'>Sign in with your wallet address</button>
             </div>
         </div>
 
@@ -187,6 +190,9 @@ const app = Vue.createApp({
         }
     },
     methods: {
+        signInWallet() {
+            return loginWithWallet()
+        },
         callServer(link, data) {
             if(!data && link.method !='GET')
                 data = {};
@@ -210,9 +216,6 @@ const app = Vue.createApp({
                     this.showChapterViewer = true;
                 }
             }
-        },
-        openBook() {
-            // calls readChapter with first chapter
         },
         nextChapter() {
             const index = this.nextChapterIndex;

@@ -17,6 +17,9 @@
     </nav>
 
     <div id='components'>
+      <input v-model='messageToSign' />
+      <button @click='signMessage'>Sign this message</button>
+
       <word-processor id='word-processor' @content='(val) => wordProcessorContent=val'>
       </word-processor>
 
@@ -25,14 +28,21 @@
     </div>
     <script type='module'>
       import WordProcessor from '/shared/word-processor.vue.js';
+      import { signMessage } from '/src/api/wallet.js';
 
       const app = Vue.createApp({
         components: {'word-processor': WordProcessor },
         data() {
             return {
-              wordProcessorContent: null
+              wordProcessorContent: null,
+              messageToSign: "Fancy seseing you here!",
             }
-        }
+        },
+        methods: {
+          signMessage() {
+            return signMessage(this.messageToSign);
+          }
+        },
       });
 
       app.mount('#components');
