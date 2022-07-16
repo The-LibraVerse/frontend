@@ -1,13 +1,14 @@
 import * as bookAPI from '/src/api/books.js';
 import * as userAPI from '/src/api/user.js';
 import store from '/shared/book.store.js';
-import NewBook from '/shared/newBook.vue.js';
 // import { Written, ReadingList } from  '/shared/userBooks.vue.js';
 
 const dashboard = Vue.createApp({
-    components: {'new-book': NewBook},
     data() {
         return {
+            name: null,
+            username: null,
+            avatar: '/assets/empty-avatar.png',
             actions: [],
             readingList: null,
             written: null,
@@ -34,6 +35,9 @@ const dashboard = Vue.createApp({
 
         return userAPI.fetchDashboard(writerID)
         .then(res => {
+            this.name = res.name;
+            this.username = res.username;
+
             store.commit('currentWriter', {
                 id: res.id,
                 username: res.username
