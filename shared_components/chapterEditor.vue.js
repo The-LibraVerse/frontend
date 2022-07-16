@@ -8,20 +8,19 @@ import WordProcessor from '/shared/word-processor.vue.js';
 export default {
     components: { ImageInput, WordProcessor },
     template: `
-        <form @submit.prevent>
-            <button @click='close' type='button'>Close</button>
-
-            <ImageInput @file='(data) => imgFile = data' title='Book cover'>
-            </ImageInput>
-
+        <form @submit.prevent class='form chapter-editor'>
             <label class='input-group'>
-                <span class='input-group__label'>Title</span>
-                <input class='input-group__control' type='text' v-model='title' placeholder='Chapter title' />
+                <span class='input-group__label input-group_minimalist__label'>Title</span>
+                <input class='input-group__control input-group_minimalist__control' type='text' v-model='title' placeholder='Chapter title' />
             </label>
+
+            <ImageInput @file='(data) => imgFile = data' title='Chapter cover image'>
+            </ImageInput>
 
             <WordProcessor @content='(val) => content=val'>
             </WordProcessor>
-            <button @click='submit'>Create</button>
+
+            <button class='form__submit form__button_submit button button_submit' @click='submit'>Create</button>
         </form>
     `,
     data() {
@@ -29,20 +28,11 @@ export default {
             title: null,
             content: null,
             imgFile: null,
-            // bookID: null,
-            // popup: false,
         }
     },
     props: ['bookID'],
 
-    computed: {
-        popup: () => chapterStore.getters.showEditor
-    },
-
     methods: {
-        close() {
-            chapterStore.commit('closeEditor');
-        },
         submit() {
             const data = {
                 title: this.title,

@@ -80,11 +80,15 @@ const app = Vue.createApp({
             <button v-if='links.create_chapter' @click='newChapterPopup'>Add Chapter</button>
         </div>
 
-        <ChapterEditor v-if='showChapterEditor && book && book.id' :bookID='book.id'>
-        </ChapterEditor>
+        <!-- <div v-if='showChapterEditor' class='popup popup_fullscreen'> -->
+        <div class='popup popup_fullscreen'>
+            <div class='page__item'>
+                <button class='button' @click='showChapterEditor = false' type='button'>Close</button>
 
-        <ChapterEditor v-if='book && book.id' :bookID='book.id'>
-        </ChapterEditor>
+                <ChapterEditor v-if='book && book.id' :bookID='book.id'>
+                </ChapterEditor>
+            </div>
+        </div>
 
         <div v-show='showChapterViewer' v-if='currentChapter && currentChapter._links && currentChapter._links._self'
             class='chapter-reader chapter-reader--overlay'>

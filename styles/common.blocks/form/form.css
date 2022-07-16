@@ -21,6 +21,11 @@
     border-color: var(--color-ui-ok);
     font-size: 1.1em;
 }
+.form__button_submit {
+    margin: auto;
+    margin-top: 2rem;
+    display: block;
+}
 .form__submit:hover {
     border-color: var(--color-ui-ok-lite);
     background: var(--color-ui-ok-lite);

@@ -205,6 +205,11 @@
     border-color: var(--color-ui-ok);
     font-size: 1.1em;
 }
+.form__button_submit {
+    margin: auto;
+    margin-top: 2rem;
+    display: block;
+}
 .form__submit:hover {
     border-color: var(--color-ui-ok-lite);
     background: var(--color-ui-ok-lite);
@@ -256,6 +261,17 @@
     padding: 0.6em;
     color: var(--color-primary-dark);
 }
+.popup {
+    position: absolute;
+    background: var(--color-primary-lite);
+}
+
+.popup_fullscreen {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
 .input {
     border: 2px solid var(--color-primary);
 }
@@ -268,7 +284,7 @@
     padding: 0.5em 1em;
     border: 2px solid var(--color-secondary-lite);
     border-radius: 6px;
-    background: white;
+    background: none;
     display: block;
     width: 100%;
     box-sizing: border-box;

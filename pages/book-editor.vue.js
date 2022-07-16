@@ -11,13 +11,15 @@ const bookEditor = Vue.createApp({
             links: {},
             title: null,
             imgFile: null,
+            description: null,
         }
     },
 
     methods: {
         submit() {
             const data = {
-                title: this.title
+                title: this.title,
+                description: this.description,
             }
 
             return ipfsUpload(this.imgFile, 'cover_for_book')
@@ -49,4 +51,3 @@ const bookEditor = Vue.createApp({
 });
 
 bookEditor.mount('#book-editor');
-

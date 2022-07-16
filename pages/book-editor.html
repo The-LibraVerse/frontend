@@ -25,7 +25,9 @@
           </label>
 
           <label class='input-group'><span class='input-group__label'>Description</span>
-              <textarea class='input-group__control text-editor text-editor_minimalist' placeholder='Write a short description about your book'></textarea>
+              <textarea class='input-group__control text-editor text-editor_minimalist'
+                v-model='description'
+                placeholder='Write a short description about your book'></textarea>
           </label>
 
           <button class='button' @click='submit'>Create Book</button>

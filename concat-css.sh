@@ -4,6 +4,7 @@ cat  \
         styles/common.blocks/button/button.css \
         styles/common.blocks/form/form.css \
         styles/common.blocks/menu/menu.css \
+        styles/common.blocks/popup/popup.css \
         styles/common.blocks/input-group/input-group.css \
         styles/common.blocks/input-group/input-group_minimalist.css \
         styles/common.blocks/text-editor/text-editor.css \
