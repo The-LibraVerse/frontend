@@ -1,0 +1,12 @@
+.text-editor {
+    border: 2px solid var(--color-secondary-lite);
+    resize: none;
+    min-height: 15vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.text-editor_minimalist {
+    background: none;
+    border-radius: 0;
+}

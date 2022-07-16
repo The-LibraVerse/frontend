@@ -97,18 +97,54 @@
 
     --color-text-link: blue;
 }
+.text {
+    color: var(--color-primary-dark);
+}
 
-body {
+.link {
+    color: var(--color-text-link);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.link:hover {
+    text-decoration: underline;
+}
+
+
+.page {
+    background: var(--color-primary-lite);
+}
+.page__title {
     margin: 0;
     padding: 0;
 }
-
-/* RESETS */
-
-a, a:visited, a:hover, a:focus {
-    text-decoration: none;
+.page__item {
+    padding: 2rem;
 }
-
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.image-preview {
+    border: 1px solid var(--color-primary-dim);
+    width: 10em;
+    height: 15em;
+    position: relative;
+}
+.image-preview::before {
+    content: "+";
+    font-size: 6rem;
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
 .button {
     background: white;
     padding: 0.5em;
@@ -145,21 +181,92 @@ a, a:visited, a:hover, a:focus {
     background: var(--color-ui-danger-dim);
     color: white;
 }
+
+.form-notice {
+    border: 1px solid var(--color-ui-info);
+    background: var(--color-ui-info-hilite);
+    color: var(--color-on-ui-info-lite);
+    border-radius: 5px;
+    padding: 0.8em;
+}
+.form-notice_error {
+    border-color: var(--color-ui-danger-hilite);
+    background: var(--color-ui-danger-lite);
+    color: var(--color-on-ui-danger-lite);
+}
+
+.form-notice__message {
+    margin: 0;
+    text-align: center;
+}
+.form__submit {
+    background: var(--color-ui-ok);
+    color: var(--color-on-ui-ok);
+    border-color: var(--color-ui-ok);
+    font-size: 1.1em;
+}
+.form__submit:hover {
+    border-color: var(--color-ui-ok-lite);
+    background: var(--color-ui-ok-lite);
+    color: var(--color-on-ui-ok-lite);
+}
+.form__submit:focus {
+    border: 2px solid var(--color-on-ui-ok-lite);
+    background: var(--color-ui-ok-lite);
+    color: var(--color-on-ui-ok-lte);
+}
+.form__submit:active {
+    background: var(--color-ui-ok-dark);
+    color: var(--color-on-ui-ok-dark);
+}
+
+.form_login__body {
+    border-radius: 5px;
+    margin: 1rem 0;
+    padding: 2rem;
+    background: var(--color-secondary-lite);
+    border: 1px solid var(--color-primary-hilite);
+}
+
+.form_login__input-group {
+    display: block;
+}
+.form_login__input-control {
+    width: 100%;
+    box-sizing: border-box;
+}
+.form_login__submit {
+    width: 100%;
+    margin-top: 1em;
+}
+.form_login__switch-context {
+    background: none;
+    border-color: var(--color-primary);
+}
 .input {
     border: 2px solid var(--color-primary);
 }
 .input-group {
     margin-top: 1em;
+    display: block;
 }
 
 .input-group__control {
     padding: 0.5em 1em;
-    border: 1.5px solid var(--color-secondary-lite);
+    border: 2px solid var(--color-secondary-lite);
     border-radius: 6px;
     background: white;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
 }
 .input-group__control::placeholder {
     color: var(--color-primary-dim);
+}
+
+.input-group__control:focus-visible {
+    outline: none;
+    border-color: var(--color-primary-dim);
 }
 
 .input-group__label {
@@ -168,15 +275,143 @@ a, a:visited, a:hover, a:focus {
     font-weight: bold;
     font-size: 0.9em;
 }
-
-.link {
-    color: var(--color-text-link);
+.input-group_minimalist__control {
+    border-top: none;
+    border-left: none;
+    border-right: none;
     background: none;
-    border: none;
-    cursor: pointer;
+    border-radius: 0;
 }
-.link:hover {
-    text-decoration: underline;
+.input-group_minimalist__control::placeholder {
+}
+
+
+.text-editor {
+    border: 2px solid var(--color-secondary-lite);
+    resize: none;
+    min-height: 15vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.text-editor_minimalist {
+    background: none;
+    border-radius: 0;
+}
+
+@media screen and (max-width:400px) and (min-height: 810px) {
+    .image-upload__preview {
+        width: 100%;
+        height: 40vh;
+    }
+}
+.book-cover {
+    position: relative;
+    border-radius: 5px;
+    width: 240px;
+    height: 360px;
+    font-size: 1.5em;
+
+    box-sizing: border-box;
+
+    background: var(--color-primary-dark);
+    color: var(--color-on-primary-dark);
+    font-weight: bold;
+}
+.book-cover__item {
+    border-radius: 5px;
+}
+.book-cover__cover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-cover__cover-text {
+    word-break: break-word;
+    text-align: center;
+    height: 100%;
+}
+
+.book-cover__title {
+    margin: 0;
+    font-size: 2.4em;
+}
+
+.book-cover__author {
+    position: absolute;
+    bottom: 1em;
+    width: 100%;
+    left: 0;
+    margin: 0;
+}
+
+.book-cover__for-sale-sign {
+    padding: 0.5em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: white;
+    background: var(--color-brand-main);
+}
+@media (min-width: 1024px) {
+    .book-cover {
+        width: 240px;
+        height: 360px;
+    }
+}
+.book-cover_thumbnail {
+    width: 120px;
+    height: 180px;
+    font-size: 1rem;
+}
+
+.book-cover_thumbnail__title {
+    font-size: 1.3rem;
+}
+.home-page__book-cover {
+    width: 100px;
+    height: 150px;
+    font-size: 0.8em;
+}
+.home-page__book-cover-title {
+    font-size: 1.3em;
+}
+
+@media (min-width: 800px) {
+    .home-page__book-cover {
+        width: 150px;
+        height: 225px;
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 1024px) {
+    .home-page__book-cover {
+        font-size: 1.5em;
+    }
+    .home-page__book-cover-title {
+        font-size: 2.4em;
+    }
+    .home-page__book-cover {
+        width: 240px;
+        height: 360px;
+    }
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* RESETS */
+
+a, a:visited, a:hover, a:focus {
+    text-decoration: none;
 }
 
 .site-logo__image {
@@ -234,7 +469,6 @@ a, a:visited, a:hover, a:focus {
     left: 0;
     object-fit: cover;
 }
-
 
 .avatar {
     width: 100%;
@@ -352,17 +586,6 @@ a, a:visited, a:hover, a:focus {
     font-weight: bold;
 }
 
-.page {
-    background: var(--color-primary-lite);
-}
-.page__title {
-    margin: 0;
-    padding: 0;
-}
-.page__item {
-    padding: 2rem;
-}
-
 .home-page {
     padding: 0;
 }
@@ -387,7 +610,8 @@ a, a:visited, a:hover, a:focus {
     margin: 0;
     margin-bottom: 0.2em;
 }
-.book-preview__text {
+.book-preview__author {
+    font-size: 0.8em;
 }
 
 .cta {
@@ -424,44 +648,6 @@ a, a:visited, a:hover, a:focus {
     overflow: hidden;
     overflow-x: scroll;
 }
-
-.form-notice {
-    border: 1px solid var(--color-ui-info);
-    background: var(--color-ui-info-hilite);
-    color: var(--color-on-ui-info-lite);
-    border-radius: 5px;
-    padding: 0.8em;
-}
-.form-notice_error {
-    border-color: var(--color-ui-danger-hilite);
-    background: var(--color-ui-danger-lite);
-    color: var(--color-on-ui-danger-lite);
-}
-
-.form-notice__message {
-    margin: 0;
-    text-align: center;
-}
-.form__submit {
-    background: var(--color-ui-ok);
-    color: var(--color-on-ui-ok);
-    border-color: var(--color-ui-ok);
-    font-size: 1.1em;
-}
-.form__submit:hover {
-    border-color: var(--color-ui-ok-lite);
-    background: var(--color-ui-ok-lite);
-    color: var(--color-on-ui-ok-lite);
-}
-.form__submit:focus {
-    border: 2px solid var(--color-on-ui-ok-lite);
-    background: var(--color-ui-ok-lite);
-    color: var(--color-on-ui-ok-lte);
-}
-.form__submit:active {
-    background: var(--color-ui-ok-dark);
-    color: var(--color-on-ui-ok-dark);
-}
 .login-page__site-logo {
     margin: auto;
     width: fit-content;
@@ -474,33 +660,6 @@ a, a:visited, a:hover, a:focus {
     margin: auto;
 }
 
-.login-form {
-}
-
-.login-form__body {
-    border-radius: 5px;
-    margin: 1rem 0;
-    padding: 2rem;
-    background: var(--color-secondary-lite);
-    border: 1px solid var(--color-primary-hilite);
-}
-
-.login-form__input-group {
-    display: block;
-}
-.login-form__input-control {
-    width: 100%;
-    box-sizing: border-box;
-}
-.login-form__submit {
-    width: 100%;
-    margin-top: 1em;
-}
-.login-form__switch-context {
-    background: none;
-    border-color: var(--color-primary);
-}
-
 @media (min-width: 400px) {
     .login-page__item {
         max-width: 300px;
@@ -509,15 +668,15 @@ a, a:visited, a:hover, a:focus {
 
 @media (max-width: 600px) {
     .hide-on-mobile {
-        display: none;
+        display: none !important;
     }
 }
 @media (min-width: 600px) {
     .hide-on-desktop {
-        display: none;
+        display: none !important;
     }
     .mobile-only {
-        display: none;
+        display: none !important;
     }
     .site-header {
         display: flex;
@@ -587,102 +746,6 @@ a, a:visited, a:hover, a:focus {
     .page__item {
         width: 80vw;
         margin: auto;
-    }
-}
-.book-cover {
-    position: relative;
-    border-radius: 5px;
-    width: 240px;
-    height: 360px;
-    font-size: 1.5em;
-
-    box-sizing: border-box;
-
-    background: var(--color-primary-dark);
-    color: var(--color-on-primary-dark);
-    font-weight: bold;
-}
-.book-cover_thumbnail {
-    width: 120px;
-    height: 180px;
-    font-size: 1rem;
-}
-.book-cover__item {
-    border-radius: 5px;
-}
-.book-cover__cover-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.book-cover__cover-text {
-    padding-top: 2rem;
-
-    word-break: break-word;
-    text-align: center;
-    height: 100%;
-}
-
-.book-cover__title {
-    margin: 0;
-    font-size: 2.4em;
-}
-.book-cover_thumbnail__title {
-    font-size: 1.3rem;
-}
-
-.book-cover__author {
-    position: absolute;
-    bottom: 1em;
-    width: 100%;
-    left: 0;
-    margin: 0;
-}
-
-.book-cover__for-sale-sign {
-    padding: 0.5em;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-weight: bold;
-    font-size: 0.8rem;
-    color: white;
-    background: var(--color-brand-main);
-}
-
-@media (min-width: 1024px) {
-    .book-cover {
-        width: 240px;
-        height: 360px;
-    }
-}
-.home-page__book-cover {
-    width: 100px;
-    height: 150px;
-    font-size: 0.8em;
-}
-.home-page__book-cover-title {
-    font-size: 1.3em;
-}
-
-@media (min-width: 800px) {
-    .home-page__book-cover {
-        width: 150px;
-        height: 225px;
-        font-size: 1em;
-    }
-}
-
-@media (min-width: 1024px) {
-    .home-page__book-cover {
-        font-size: 1.5em;
-    }
-    .home-page__book-cover-title {
-        font-size: 2.4em;
     }
 }
 .book-cover {

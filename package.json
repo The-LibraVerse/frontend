@@ -29,6 +29,13 @@
     "url": "https://github.com/The-LibraVerse/frontend/issues"
   },
   "homepage": "https://github.com/The-LibraVerse/frontend#readme",
+  "nodemonConfig": {
+    "ext": "*.js, *.html, *.css",
+    "ignore": [
+      "node_modules",
+      "styles/min.css"
+    ]
+  },
   "dependencies": {
     "express": "^4.18.1"
   }

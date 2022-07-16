@@ -1,0 +1,345 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* RESETS */
+
+a, a:visited, a:hover, a:focus {
+    text-decoration: none;
+}
+
+.site-logo__image {
+    max-width: 100%;
+    max-height: 100%;
+}
+.site-logo__text {
+    color: var(--color-brand-main);
+    text-align: center;
+}
+.page-title {
+    text-align: center;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    background-color: var(--color-primary);
+    font-size: 1em;
+    box-sizing: border-box;
+}
+.hero__text {
+    box-sizing: border-box;
+    width: 100%;
+    height: fit-content;
+    color: var(--color-on-primary);
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1em;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    background-color: #000000b3;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.hero__title {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0;
+}
+.hero__subtitle {
+    font-size: 0.8em;
+    margin: 0;
+}
+.hero__image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.menu-expander {
+    position: absolute;
+    top: 1rem;
+    right: 80px;
+}
+
+
+.site-header {
+    position: relative;
+    background: var(--color-primary-lite);
+    border-bottom: 1px solid var(--color-primary-dim);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 65px;
+    box-sizing: border-box;
+}
+.site-header__logo {
+    display: flex;
+    align-items: center;
+    width: min-content;
+    width: 64px;
+}
+.site-header__logo-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit:contain;
+}
+.site-header__logo-text {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-brand-main);
+    display: none;
+}
+
+.site-header__user-avatar{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-secondary-lite);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.site-header__dropdown-item {
+    align-self: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu__link {
+    display: block;
+    font-weight: bold;
+    padding: 0.6em;
+    color: var(--color-primary-dark);
+}
+
+.user-wallet__connect-button {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.user-wallet__address {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.site-header__item_hide {
+}
+/** Done with all in site header */
+
+.dashboard {
+    border: 1px solid var(--color-secondary-lite);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    grid-gap: 2em;
+}
+
+.user-profile {
+    padding-top: 2em;
+}
+.user-profile__header-item {
+    margin: auto;
+    width: fit-content;
+}
+
+.user-profile-avatar {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+.user-profile__name {
+    color: var(--color-secondary);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.user-profile__username {
+    color: var(--color-secondary);
+    font-weight: bold;
+}
+
+.home-page {
+    padding: 0;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 2em;
+}
+.list {
+    display: grid;
+    grid-gap: 2em;
+}
+
+.book-preview {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: min-content auto;
+}
+.book-preview__book-title {
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 0.2em;
+}
+.book-preview__author {
+    font-size: 0.8em;
+}
+
+.cta {
+    background: var(--color-secondary-lite);
+    padding: 2em;
+}
+.cta__title {
+    color: var(--color-accent);
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.cta__copy {
+    text-align: center;
+}
+.cta__button-group {
+    display: flex;
+    justify-content: center;
+    grid-gap: 1em 2em;
+    flex-wrap: wrap;
+}
+.cta-button {
+    font-size: 1.2em;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: bold;
+    border: none;
+}
+
+.carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    grid-gap: 2em;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+.login-page__site-logo {
+    margin: auto;
+    width: fit-content;
+    height: 100px;
+    padding-left: 2.5rem;
+}
+
+.login-page__item {
+    max-width: 85vw;
+    margin: auto;
+}
+
+@media (min-width: 400px) {
+    .login-page__item {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+@media (min-width: 600px) {
+    .hide-on-desktop {
+        display: none !important;
+    }
+    .mobile-only {
+        display: none !important;
+    }
+    .site-header {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid var(--color-primary-lite);
+        padding: 1rem;
+        padding-right: 5em;
+    }
+    .site-header__logo {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .site-header__logo-image {
+        width: 64px;
+        height: 64px;
+    }
+    .site-header__logo-text {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .site-header__user-avatar{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 28px;
+        right: 1rem;
+    }
+    .site-header__logout {
+        position: absolute;
+        right: 1rem;
+        top: 80px;
+        background: white;
+        border: 1px solid grey;
+        padding: 0.5em 1em;
+        width: 14em;
+    }
+    .hero {
+        height: 45vh;
+    }
+    .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        width: calc(100% - 120px);
+    }
+    .menu__link {
+        margin: 0 3em 0 0;
+    }
+}
+@media (min-width: 800px) {
+    .book-preview-list {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+    .book-preview {
+        display: grid;
+        grid-gap: 1em;
+    }
+    .page {
+    }
+}
+@media (min-width: 1024px) {
+    .page__item {
+        width: 80vw;
+        margin: auto;
+    }
+}

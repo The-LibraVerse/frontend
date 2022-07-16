@@ -1,0 +1,11 @@
+.input-group_minimalist__control {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: none;
+    border-radius: 0;
+}
+.input-group_minimalist__control::placeholder {
+}
+
+

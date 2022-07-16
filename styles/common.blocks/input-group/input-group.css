@@ -1,0 +1,32 @@
+.input {
+    border: 2px solid var(--color-primary);
+}
+.input-group {
+    margin-top: 1em;
+    display: block;
+}
+
+.input-group__control {
+    padding: 0.5em 1em;
+    border: 2px solid var(--color-secondary-lite);
+    border-radius: 6px;
+    background: white;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+.input-group__control::placeholder {
+    color: var(--color-primary-dim);
+}
+
+.input-group__control:focus-visible {
+    outline: none;
+    border-color: var(--color-primary-dim);
+}
+
+.input-group__label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    font-size: 0.9em;
+}

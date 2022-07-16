@@ -1,0 +1,9 @@
+.book-cover_thumbnail {
+    width: 120px;
+    height: 180px;
+    font-size: 1rem;
+}
+
+.book-cover_thumbnail__title {
+    font-size: 1.3rem;
+}

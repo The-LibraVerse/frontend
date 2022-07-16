@@ -1,0 +1,7 @@
+
+@media screen and (max-width:400px) and (min-height: 810px) {
+    .image-upload__preview {
+        width: 100%;
+        height: 40vh;
+    }
+}

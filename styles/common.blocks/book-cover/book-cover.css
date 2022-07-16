@@ -11,11 +11,6 @@
     color: var(--color-on-primary-dark);
     font-weight: bold;
 }
-.book-cover_thumbnail {
-    width: 120px;
-    height: 180px;
-    font-size: 1rem;
-}
 .book-cover__item {
     border-radius: 5px;
 }
@@ -29,8 +24,6 @@
 }
 
 .book-cover__cover-text {
-    padding-top: 2rem;
-
     word-break: break-word;
     text-align: center;
     height: 100%;
@@ -39,9 +32,6 @@
 .book-cover__title {
     margin: 0;
     font-size: 2.4em;
-}
-.book-cover_thumbnail__title {
-    font-size: 1.3rem;
 }
 
 .book-cover__author {
@@ -62,7 +52,6 @@
     color: white;
     background: var(--color-brand-main);
 }
-
 @media (min-width: 1024px) {
     .book-cover {
         width: 240px;

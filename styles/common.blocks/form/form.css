@@ -1,0 +1,61 @@
+.form-notice {
+    border: 1px solid var(--color-ui-info);
+    background: var(--color-ui-info-hilite);
+    color: var(--color-on-ui-info-lite);
+    border-radius: 5px;
+    padding: 0.8em;
+}
+.form-notice_error {
+    border-color: var(--color-ui-danger-hilite);
+    background: var(--color-ui-danger-lite);
+    color: var(--color-on-ui-danger-lite);
+}
+
+.form-notice__message {
+    margin: 0;
+    text-align: center;
+}
+.form__submit {
+    background: var(--color-ui-ok);
+    color: var(--color-on-ui-ok);
+    border-color: var(--color-ui-ok);
+    font-size: 1.1em;
+}
+.form__submit:hover {
+    border-color: var(--color-ui-ok-lite);
+    background: var(--color-ui-ok-lite);
+    color: var(--color-on-ui-ok-lite);
+}
+.form__submit:focus {
+    border: 2px solid var(--color-on-ui-ok-lite);
+    background: var(--color-ui-ok-lite);
+    color: var(--color-on-ui-ok-lte);
+}
+.form__submit:active {
+    background: var(--color-ui-ok-dark);
+    color: var(--color-on-ui-ok-dark);
+}
+
+.form_login__body {
+    border-radius: 5px;
+    margin: 1rem 0;
+    padding: 2rem;
+    background: var(--color-secondary-lite);
+    border: 1px solid var(--color-primary-hilite);
+}
+
+.form_login__input-group {
+    display: block;
+}
+.form_login__input-control {
+    width: 100%;
+    box-sizing: border-box;
+}
+.form_login__submit {
+    width: 100%;
+    margin-top: 1em;
+}
+.form_login__switch-context {
+    background: none;
+    border-color: var(--color-primary);
+}
