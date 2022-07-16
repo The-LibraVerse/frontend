@@ -19,20 +19,19 @@ const app = Vue.createApp({
 
             <p class='tag tag_flex' v-if='book.published != null'>
                 <template v-if='book.published'>
-                    <span class='tag__title tag__text tag_flex__title tag_true tag_true__title'>Published</span>
-                    <i class="fa-solid fa-book tag__icon tag_flex__icon tag_true__icon tag_action__icon"></i>
+                    <span class='tag__title tag__text tag_flex__title tag_true__text tag_true__title'>Published</span>
+                    <i class="fa-solid fa-book tag__icon tag_flex__icon tag_true__icon"></i>
                 </template>
 
                 <template v-else>
-                    <span class='tag__title tag__text tag_flex__title tag_false tag_false__title'>
+                    <span class='tag__title tag__text tag_flex__title tag_false__text tag_false__title'>
                         Not Published
                     </span>
                     <i class="fa-solid fa-book tag__icon tag_flex__icon tag_false__icon"></i>
                 </template>
             </p>
 
-            <!-- <div class='tag' v-if='book.views'> -->
-            <div class='tag tag_flex'>
+            <div class='tag tag_flex' v-if='book.views'>
                 <i class="fa-solid fa-eye tag__icon tag_flex__icon tag_flex__icon"></i>
                 <p class='tag__title tag_flex__title tag__text'>Views</p>
                 <p class='tag__value tag__text tag_flex__value'>{{ book.views || 4 }}</p>
@@ -52,7 +51,7 @@ const app = Vue.createApp({
 
         <div class='dashboard' v-if='links.publish || links.sell'>
 
-            <button v-if='links.publish' @click='publish' class='tag tag_action'>
+            <button v-if='links.publish' @click='callServer(links.publish)' class='tag tag_action'>
                 <span class='tag__text tag__title'>Publish Book</span>
                 <i class="fa-solid fa-paper-plane tag__icon tag_action__icon"></i>
             </button>
@@ -63,13 +62,20 @@ const app = Vue.createApp({
                 <span class='tag__title tag__text'>Sell your book</span>
             </button>
 
-            <button class='tag tag_action'>
-                <i class="fa-solid fa-book-bookmark"></i>
-                <i class="fa-solid fa-book-bookmark tag__icon tag_action__icon"></i>
-                <i class="fa-regular fa-book-bookmark"></i>
-                <i class="fa-regular fa-book-bookmark tag__icon tag_action__icon"></i>
+            <button class='tag tag_action' v-if='links.add_to_library' @click='callServer(links.add_to_library)'>
+                <i class="fa-regular fa-bookmark tag__icon tag_action__icon"></i>
                 <p class='tag__title tag__text'>Add to Library</p>
             </button>
+        </div>
+
+        <div v-if='book._notice' class='notice'>
+            <p class='notice__title'>{{ book._notice.title }}</p>
+            <p class='notice__message'>{{ book._notice.message }}</p>
+            <p>Buy this book on the ethereum blockchain</p>
+            <div v-if='book._notice.code == "TOKEN_REQUIRED"' class='token'>
+                <p class='token__contract-address'>{{ book.tokenContract }}</p>
+                <p class='token__id'>{{ book.tokenID }}</p>
+            </div>
         </div>
 
         <div class='book-chapter-list list'>
@@ -79,6 +85,7 @@ const app = Vue.createApp({
                         {{ c.title }}</button>
                     <button disabled='true' v-else class='book-chapter-list__item'>
                         {{ c.title }}</button>
+                    <i v-if='c.forSale ===true'>$$</i>
                     <a class='link' v-if='c.contentURL' :href='c.contentURL' target='_blank'>Open on IPFS 
                         <i class="fa fa-external-link" aria-hidden="true"></i>
                     </a>
@@ -180,6 +187,20 @@ const app = Vue.createApp({
         }
     },
     methods: {
+        callServer(link, data) {
+            if(!data && link.method !='GET')
+                data = {};
+
+            if(!link)
+                throw new Error('Link missing');
+            else if(!link.method)
+                throw new Eerror('Method missing');
+
+            return api(link.href, data, link.method)
+            .catch(e => {
+                this.error = e;
+            });
+        },
         openChapter(index) {
             if(index != null) {
                 const chapter = this.book.chapters[index];
@@ -219,13 +240,6 @@ const app = Vue.createApp({
 
                     return bookAPI.listForSale(this.book.id, data);
                 });
-        },
-        publish() {
-            const data = null;
-            const link = this.links.publish;
-
-            if(link)
-                return api(link.href, data, link.method)
         }
     },
     mounted() {

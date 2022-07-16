@@ -24,6 +24,7 @@
     font-weight: bold;
     font-size: 1.5rem;
     line-height: 1;
+    color: var(--color-primary);
 }
 .tag__title {
     order: 2;
@@ -34,6 +35,12 @@
 }
 .tag_false__text {
     color: var(--color-ui-danger-dim);
+}
+.tag_false__icon {
+    color: var(--color-ui-danger-dim);
+}
+.tag_true__icon {
+    color: var(--color-ui-ok-dim);
 }
 
 /** tag_action */

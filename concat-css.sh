@@ -5,7 +5,6 @@ rsync styles/library.blocks/fontawesome-free-6.1.1-web/ \
         dist/assets/fontawesome-free-6.1.1-web -r;
 
 cat  \
-        styles/library.blocks/font-awesome-4.7.0/css/font-awesome.min.css \
         styles/library.blocks/fontawesome-free-6.1.1-web/css/all.min.css \
         styles/site-variables.colors.css \
         styles/common.blocks/general.css \
@@ -22,6 +21,7 @@ cat  \
         styles/common.blocks/book-cover/book-cover_list-item.css \
         styles/common.blocks/book-cover/book-cover_thumbnail.css \
         styles/common.blocks/book-cover/home-page.book-cover.css \
+        styles/common.blocks/token/token.css \
         styles/other.css \
         styles/book.page.css \
         styles/reader.css \
