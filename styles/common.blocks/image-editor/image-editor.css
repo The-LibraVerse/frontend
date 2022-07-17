@@ -1,0 +1,23 @@
+.image-editor {
+}
+
+.image-editor__control {
+}
+
+.image-editor__canvas {
+    position: relative;
+}
+.image-editor__layer {
+    display: block;
+    border: 1px solid var(--color-primary-dim);
+}
+.image-editor__layer0 {
+    position: absolute;
+    z-index: 1;
+}
+
+.image-editor__background-layer {
+    position: absolute;
+    z-index: 0;
+
+}

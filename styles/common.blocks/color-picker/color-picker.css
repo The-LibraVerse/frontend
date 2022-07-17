@@ -1,0 +1,11 @@
+.color-picker__color {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+.color-picker__radio {
+    display: none;
+}
+.color-picker__radio:checked + .color-picker__color {
+    border: 1px solid var(--primary-dark);
+}

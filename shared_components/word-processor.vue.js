@@ -1,5 +1,5 @@
-import "https://cdn.tiny.cloud/1/uri86mpxwbkhji9wlc407u0eel7n3l3n71lazd3yffb1hc7c/tinymce/6/tinymce.min.js";
-// <script src="https://cdn.tiny.cloud/1/uri86mpxwbkhji9wlc407u0eel7n3l3n71lazd3yffb1hc7c/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+import "/dist/assets/tinymce/js/tinymce.min.js";
+
 export default {
     template: `
 

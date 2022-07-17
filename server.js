@@ -13,6 +13,7 @@ server.use('/dependencies', express.static(__dirname + '/dependencies'));
 server.use('/styles', express.static(__dirname + '/styles'));
 
 server.use('/dist/styles', express.static(__dirname + '/dist/styles'));
+server.use('/dist/assets', express.static(__dirname + '/dist/assets'));
 
 server.use('/dist', express.static(__dirname + '/dist/assets/fontawesome-free-6.1.1-web'));
 

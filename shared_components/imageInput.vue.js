@@ -3,7 +3,7 @@ import ipfsUpload from '/src/api/ipfsUpload.js';
 export default {
     template: `
         <div class='image-upload input-group'>
-            <div class='image-preview image-upload__preview'>
+            <div class='image-preview image-upload__preview' v-if='showPreview'>
                 <img class='image image-preview image-upload__preview-image' v-if='preview' :src='preview' />
             </div>
 
@@ -16,7 +16,13 @@ export default {
             </label>
         </div>
     `,
-    props: ['title'],
+    props: {
+        title: String,
+        showPreview: {
+            type: Boolean,
+            default: true
+        }
+    },
     data() {
         return {
             preview: null,
@@ -39,6 +45,7 @@ export default {
 
                     self.$emit('file', file);
                     self.$emit('result', file);
+                    self.$emit('dataURL', this.result);
                 });
             }
         },

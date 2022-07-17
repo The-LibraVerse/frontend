@@ -1,8 +1,8 @@
 mkdir dist/styles -p;
 mkdir dist/assets/fonts -p;
 
-rsync styles/library.blocks/fontawesome-free-6.1.1-web/ \
-        dist/assets/fontawesome-free-6.1.1-web -r;
+cp  styles/library.blocks/fontawesome-free-6.1.1-web/ \
+        dist/assets/fontawesome-free-6.1.1-web -ru;
 
 cat  \
         styles/library.blocks/fontawesome-free-6.1.1-web/css/all.min.css \
@@ -11,6 +11,9 @@ cat  \
         styles/common.blocks/button/button.css \
         styles/common.blocks/tag.css \
         styles/common.blocks/form/form.css \
+        \
+        styles/common.blocks/image-editor/image-editor.css \
+        styles/common.blocks/color-picker/color-picker.css \
         styles/common.blocks/menu/menu.css \
         styles/common.blocks/popup/popup.css \
         styles/common.blocks/input-group/input-group.css \
