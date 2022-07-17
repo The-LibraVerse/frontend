@@ -14,7 +14,7 @@
 
 
 .page {
-    background: var(--color-primary-lite);
+    background: rgb(var(--color-rgb-primary), 0.1);
 }
 .page__title {
     margin: 0;

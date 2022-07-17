@@ -24,9 +24,9 @@ cat  \
         styles/common.blocks/book-cover/book-cover_list-item.css \
         styles/common.blocks/book-cover/book-cover_thumbnail.css \
         styles/common.blocks/book-cover/home-page.book-cover.css \
+        styles/common.blocks/reader/reader.css \
         styles/common.blocks/token/token.css \
         styles/common.blocks/notice/notice.css \
         styles/other.css \
         styles/book.page.css \
-        styles/reader.css \
         > dist/styles/min.css

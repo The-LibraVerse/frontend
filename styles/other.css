@@ -254,6 +254,9 @@ a, a:visited, a:hover, a:focus {
     overflow: hidden;
     overflow-x: scroll;
 }
+.login__switch-context {
+    text-align: center;
+}
 .login-page__site-logo {
     margin: auto;
     width: fit-content;

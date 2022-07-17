@@ -8,7 +8,8 @@
 
     box-sizing: border-box;
 
-    background: var(--color-primary-dark);
+    background: rgb(var(--color-rgb-secondary));
+    filter: brightness(95%);
 }
 .book-cover__item {
     border-radius: 5px;
@@ -25,7 +26,7 @@
 .book-cover__text {
     word-break: break-word;
     text-align: center;
-    color: var(--color-on-primary-dark);
+    color: rgb(var(--color-rgb-on-primary-dark));
     font-weight: bold;
 }
 
@@ -34,6 +35,8 @@
     font-size: 2.4em;
     text-align: center;
     font-weight: bold;
+    width: 90%;
+    margin: auto;
 }
 
 .book-cover__author {
@@ -53,7 +56,7 @@
     font-weight: bold;
     font-size: 0.8rem;
     color: white;
-    background: var(--color-brand-main);
+    background: rgb(var(--color-rgb-brand-main));
 }
 @media (min-width: 1024px) {
     .book-cover {

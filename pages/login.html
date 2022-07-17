@@ -8,16 +8,16 @@
     <script src="/dependencies/vue3.global.js"></script>
   </head>
 
-  <body>
+  <body class='page'>
     <div id='menu'></div>
-    <div id='login' class='page login-page'>
+    <div id='login' class='login-page'>
       <div class='site-logo login-page__site-logo'>
         <img class='site-logo__image' src='/assets/logo.png' />
       </div>
       <p class='page-title login-page__page-title'>Sign in to Libraverse</p>
       <form @submit.prevent class='form login-page__item form_login'>
-        <div class='form-notice form-notice_error' v-if='error'>
-          <p class='form-notice__message form-notice_error__message'>
+        <div class='notice notice_error' v-if='error'>
+          <p class='notice__message notice_error__message'>
           <span v-if='error.message'>
             {{ error.message }}
           </span>
@@ -39,21 +39,21 @@
           </label>
 
           <div class='actions' v-if='showSignup'>
-            <button class='button form__submit form_login__submit' @click='signup'>Sign up</button>
+            <button class='button form_login__submit' @click='signup'>Sign up</button>
           </div>
 
           <div class='actions' v-else>
-            <button class='button form__submit form_login__submit' @click='login'>Login</button>
+            <button class='button form_login__submit' @click='login'>Login</button>
           </div>
         </div>
 
-        <div class='form-notice login__switch-context'>
-          <p class='form-notice__message' v-if='showSignup'>
+        <div class='login__switch-context'>
+          <p class='' v-if='showSignup'>
           <span >
             Have an account?
             <button type='button' class='link' @click='showSignup=false'>Login instead</button></p>
 
-          <p class='form-notice__message' v-else> New here?
+          <p class='' v-else> New here?
           <button type='button' class='link' @click='showSignup=true'>Sign up instead</button>
           </p>
         </div>

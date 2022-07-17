@@ -7,7 +7,7 @@ import { loginWithWallet } from '/src/api/user.js';
 export default {
     template: `
         <div>
-            <h3 class='chapter__title'>{{ title }}</h3>
+            <h3 class='chapter__title reader__content reader__title'>{{ title }}</h3>
 
             <div class='dashboard'>
                 <div class='chapter__actions'>
@@ -26,7 +26,7 @@ export default {
                 </div>
             </div>
             
-            <div class='notice' v-if='notice'>
+            <div class='notice reader__content' v-if='notice'>
                 <p class='notice__title'>{{ notice.title || "Notice!" }}</p>
                 <p class='notice__message'>{{ notice.message }}</p>
                 <p>Buy this on the ethereum blockchain</p>
@@ -38,8 +38,8 @@ export default {
                 </div>
             </div>
                 
-            <div class='reader'>
-                <div class='chapter__content' v-html='content'>
+            <div>
+                <div class='reader__content' v-html='content'>
                 </div>
             </div>
             <div class='chapter-actions'>

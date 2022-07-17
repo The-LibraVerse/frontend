@@ -1,11 +1,18 @@
+.color-picker {
+    background: var(--color-primary-lite);
+    padding: 2em;
+    display: flex;
+    grid-gap: 1em;
+}
 .color-picker__color {
     width: 25px;
     height: 25px;
     display: inline-block;
+    box-sizing: border-box;
 }
 .color-picker__radio {
     display: none;
 }
 .color-picker__radio:checked + .color-picker__color {
-    border: 1px solid var(--primary-dark);
+    border: 2px solid var(--color-primary-dark);
 }

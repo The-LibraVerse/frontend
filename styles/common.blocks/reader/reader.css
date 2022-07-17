@@ -1,5 +1,14 @@
 .reader {
     background: white;
+    padding-top: 2rem;
+}
+
+.reader__title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 2rem;
+
 }
 
 .reader_overlay {
@@ -9,4 +18,21 @@
 
     overflow: scroll;
 }
+.reader__content {
+    width: 80%;
+    margin: auto;
+    display: block;
+}
 
+
+@media (min-width: 1024px) {
+    .reader__content {
+        width: 75%;
+    }
+}
+
+@media (min-width: 1300px) {
+    .reader__content {
+        width: 1024px;
+    }
+}

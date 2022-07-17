@@ -12,6 +12,8 @@ export default {
         return {
             selectedColor: null,
             colors: {
+                white: 'white',
+                black: 'black',
                 red: "#DB2828",
                 orange: "#F2711C",
                 yellow: "#FBBD08",

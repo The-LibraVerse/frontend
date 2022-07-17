@@ -10,7 +10,9 @@ import { loginWithWallet } from '/src/api/user.js';
 
 const app = Vue.createApp({
     template: `
-      <div v-if='book && book.title && book.author' class='book-page'>
+      <div v-if='book && book.title && book.author'
+        class='book-page page'
+    >
 
         <div class='flex flex_bottom-center book-page__metadata'>
             <p class='tag tag_flex'>
@@ -69,7 +71,7 @@ const app = Vue.createApp({
             </button>
         </div>
 
-        <div v-if='book._notice' class='notice'>
+        <div v-if='book._notice' class='notice page__item'>
             <p class='notice__title'>{{ book._notice.title || "Notice!" }}</p>
             <p class='notice__message'>{{ book._notice.message }}</p>
             <p>Buy this book on the ethereum blockchain</p>
@@ -81,7 +83,7 @@ const app = Vue.createApp({
             </div>
         </div>
 
-        <div class='book-chapter-list list'>
+        <div class='book-chapter-list list page__item'>
             <div v-for='(c, i) in book.chapters' class='book-chapter-list__item'>
                 <p class='list__item book-chapter-list__item'>
                     <button v-if='c._links && c._links._self' @click='openChapter(i)' class='book-chapter-list__chapter text'>
@@ -96,7 +98,7 @@ const app = Vue.createApp({
             </div>
         </div>
 
-        <div id='actions'>
+        <div id='actions' class='page__item'>
             <div v-if='links.sell' ref='sell-book' class='sell-literature sell-literature--dialog'>
                 <p class='sell-literature__title'>Sell "{{ book.title }}" on the Ethereum Blockchain</p>
                 <div class='book-cover book-cover_thumbnail book-page__book-cover'>
@@ -131,7 +133,7 @@ const app = Vue.createApp({
         </div>
 
         <div v-show='showChapterViewer' v-if='currentChapter && currentChapter._links && currentChapter._links._self'
-            class='chapter-reader chapter-reader--overlay'>
+            class='reader popup popup_fullscreen'>
             <div class='actions'>
                 <button @click='showChapterViewer=false' type='button' class='button'>Close</button>
             </div>
@@ -140,12 +142,12 @@ const app = Vue.createApp({
             :bookID='book.id'>
             </Reader>
             <!--
-            <button v-if='prevChapterID' @click='prevChapter'>Previous Chapter</button>
-            <button v-if='nextChapterID' @click='nextChapter'>Next Chapter</button>
+            <button v-if='prevChapterID' @click='prevChapter' class='button'>Previous Chapter</button>
+            <button v-if='nextChapterID' @click='nextChapter' class='button'>Next Chapter</button>
             -->
-            <div class='chapter-reader__actions'>
-                <button :disabled='prevChapterIndex == null' @click='prevChapter'>Previous Chapter</button>
-                <button :disabled='nextChapterIndex == null' @click='nextChapter'>Next Chapter</button>
+            <div class='reader__actions flex'>
+                <button :disabled='prevChapterIndex == null' @click='prevChapter' class='button button_secondary'>Previous Chapter</button>
+                <button :disabled='nextChapterIndex == null' @click='nextChapter' class='button button_primary'>Next Chapter</button>
             </div>
         </div>
       </div>

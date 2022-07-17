@@ -1,0 +1,18 @@
+.notice {
+    --notice-color: var(--color-rgb-accent);
+    border: 1px solid rgba(var(--notice-color));
+    background: rgba(var(--notice-color), 0.3);
+    color: rgba(var(--notice-color), 1);
+    border-radius: 5px;
+    padding: 0.8em;
+}
+
+.notice__message {
+    margin: 0;
+    text-align: center;
+}
+
+
+.notice_error {
+    --notice-color: var(--color-rgb-ui-danger);
+}

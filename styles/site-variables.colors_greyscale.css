@@ -1,27 +1,15 @@
 :root {
-    --color-primary: rgb(var(--color-rgb-primary));
-    --color-primary-hilite: rgb(var(--color-rgb-primary));
-    --color-primary-lite: rgba(var(--color-rgb-primary), 0.15);
-    --color-primary-dim: rgba(var(--color-rgb-primary), 0.5);
-    --color-primary-dark: rgba(var(--color-rgb-primary),0.8);
+    --color-primary: grey;
+    --color-primary-hilite: #a6a6a6;
+    --color-primary-lite: #eaeaea;
+    --color-primary-dim: #464646;
+    --color-primary-dark: #232323;
 
     --color-on-primary: white;
     --color-on-primary-hilite: black;
     --color-on-primary-lite: var(--color-secondary-dark);
     --color-on-primary-dim: white;
     --color-on-primary-dark: var(--color-primary-lite);
-
-    --color-rgb-primary: 3, 63, 99;
-    --color-rgb-primary-hilite: 166,166,166;
-    --color-rgb-primary-lite: 234, 234, 234;
-    --color-rgb-primary-dim: 70,70,70;
-    --color-rgb-primary-dark: 35,35,35;
-
-    --color-rgb-on-primary: 255,255,255;
-    --color-rgb-on-primary-hilite: 0,0,0;
-    --color-rgb-on-primary-lite: var(--color-rgb-secondary-dark);
-    --color-rgb-on-primary-dim: 255,255,255;
-    --color-rgb-on-primary-dark: var(--color-rgb-primary-lite);
 
 
     --color-secondary: #5e5555;
@@ -30,16 +18,12 @@
     --color-secondary-dim: #3a3535;
     --color-secondary-dark: #161616;
 
-    --color-rgb-secondary: 226, 109, 90;
-    --color-rgb-secondary-dark: 22,22,22;
-
     --color-on-secondary: var(--color-primary-lite);
     --color-on-secondary-hilite: var(--color-secondary-dark);
     --color-on-secondary-lite: var(--color-secondary-dark);
     --color-on-secondary-dim: white;
     --color-on-secondary-dark: var(--color-secondary-lite);
 
-    --color-rgb-accent: 255, 191, 0;
     --color-accent: var(--color-brand-blue);
     --color-on-accent: var(--color-on-brand-blue);
 
@@ -109,13 +93,6 @@
     --color-on-ui-danger-lite: var(--color-secondary-dark);
     --color-on-ui-danger-dim: var(--color-primary-lite);
     --color-on-ui-danger-dark: var(--color-primary-lite);
-
-    --color-rgb-ui-danger-dim: 108,54,54;
-    --color-rgb-ui-danger-dark: 92,0,0;
-    --color-rgb-ui-danger: 255,0,0;
-
-    --color-rgb-on-ui-danger-dark: var(--color-rgb-primary-lite);
-    --color-rgb-on-ui-danger-dim: var(--color-rgb-primary-lite);
 
 
     --color-text-link: blue;
