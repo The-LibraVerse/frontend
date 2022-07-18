@@ -10,12 +10,14 @@ Libraverse is a platform for writers and readers alike. Libraverse implements th
 Libraverse uses IPFS to ensure that writers have access to their content even if the website goes down. It does this in several ways.
 
 #### Store Chapter Content on IPFS
-Libraverse stores the content of every chapter created on IPFS.
+Libraverse stores the content of every chapter created on IPFS. See [Implementation](https://github.com/The-LibraVerse/frontend/blob/77c4b75675eace9e49f8257d2f12e11ce82204bd/shared_components/chapterEditor.vue.js#L36).
 
-See [Implementation](https://github.com/The-LibraVerse/frontend/blob/77c4b75675eace9e49f8257d2f12e11ce82204bd/shared_components/chapterEditor.vue.js#L36). The author is always presented with links to each chapter on IPFS. Only a book's author will get these links.
+An author is always presented with the links to the content every time they view their book. Only a book's author will get these links.
 Other users can only access the book on Libraverse.
-![IPFS urls for each chapter is presented to the author](/documentation/assets/book-chapters-with-ipfs-urls.png)
-![Book chapter list: IPFS urls are not included to other users](/documentation/assets/notice-and-chapter-list-no-ipfs.png);
+<div>
+<img style='width:400px' src="/documentation/assets/book-chapters-with-ipfs-urls.png" alt="IPFS urls for each chapter is presented to the author" />
+<img style='width:400px' src="/documentation/assets/notice-and-chapter-list-no-ipfs.png" alt="Book chapter list: IPFS urls are not included to other users"/>
+</div>
 
 #### Store Book and Chapter Cover Images on IPFS
 Libraverse stores book anad chapter cover images on IPFS.
@@ -37,4 +39,6 @@ The current ERC1155 token been used for the books is deployed on ropsten at [0x6
 ### Book Cover Creator
 Libraverse has a basic image editor for creating book covers. A user can set a background image, or a backgroud color, and type some text over the background.
 The book cover can be downloaded.
-![Book Cover Image Creator: Blue background with black and orange text on it](/documentation/assets/image-editor_bg_text.png)
+<div>
+<img src="/documentation/assets/image-editor_bg_text.png" alt="Book Cover Image Creator: Blue background with black and orange text on it" />
+</div>
