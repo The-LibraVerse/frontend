@@ -1,8 +1,10 @@
 .book-cover {
+    --book-cover-multiplier: 1;
+
+    width: calc(240px * var(--book-cover-multiplier));
+    height: calc(360px * var(--book-cover-multiplier));
     position: relative;
     border-radius: 5px;
-    width: 240px;
-    height: 360px;
     font-size: 1.5em;
     padding-top: 2rem;
 
@@ -33,18 +35,19 @@
 
 .book-cover__title {
     margin: 0;
-    font-size: 2.4em;
+    font-size: calc(2.4em * var(--book-cover-multiplier));
     text-align: center;
     font-weight: bold;
     width: 90%;
     height: 250px;
+    height: calc(360px * var(--book-cover-multiplier) * 0.7);
     margin: auto;
     overflow: hidden;
 }
 
 .book-cover__author {
     position: absolute;
-    bottom: 1.5em;
+    bottom: 1.5rem;
     width: 100%;
     left: 0;
     margin: 0;
@@ -52,7 +55,7 @@
 
     padding: 0 0.5em;
     box-sizing: border-box;
-    font-size: 0.8em;
+    font-size: calc(0.9em * var(--book-cover-multiplier));
 }
 
 .book-cover__for-sale-sign {
@@ -68,7 +71,6 @@
 }
 @media (min-width: 1024px) {
     .book-cover {
-        width: 240px;
-        height: 360px;
+        --book-cover-multiplier: 1;
     }
 }

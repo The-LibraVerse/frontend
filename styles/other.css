@@ -202,20 +202,6 @@ a, a:visited, a:hover, a:focus {
     padding: 0;
 }
 
-.book-preview {
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: min-content auto;
-}
-.book-preview__book-title {
-    font-weight: bold;
-    margin: 0;
-    margin-bottom: 0.2em;
-}
-.book-preview__author {
-    font-size: 0.8em;
-}
-
 .cta {
     background: var(--color-secondary-lite);
     padding: 2em;
