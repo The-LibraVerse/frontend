@@ -8,14 +8,18 @@ export default {
         <div class='image-editor'>
             <div class='image-editor__windows'>
                 <div class='image-editor__dashboard-group image-editor__dashboard1'>
-                    <image-input title='You can upload an image' :showPreview='false' @dataURL='(a) => imageUrl = a' >
+                    <image-input title='Upload Background image' :showPreview='false' @dataURL='(a) => imageUrl = a' >
                     </image-input>
                     <div>
                         <div class='input-group'>
-                            <p>Or set a background color</p>
                             <color-picker @color='(e) => setBackgroundColor(e)' title='Choose Background Color'>
                             </color-picker>
                         </div>
+                    </div>
+
+                    <div class='flex flex_left image-editor__control-group'>
+                        <button class='button' @click='clearBackground'>Clear Background</button>
+                        <button class='button' @click='clearImage'>Clear Entire Canvas</button>
                     </div>
                 </div>
 
@@ -24,19 +28,19 @@ export default {
                         <p>Text color</p>
                     </color-picker>
 
-                    <div class='image-editor__font-control-group'>
+                    <div class='image-editor__control-group'>
                         <button class='button image-editor__font-control image-editor__font-control_tag' @click='newText.font.weight = "bold"; updateNew()'>B</button>
                         <button class='button image-editor__font-control image-editor__font-control_tag' @click='newText.font.weight = "italics"; updateNew()'><em>I</em></button>
                         <button class='button image-editor__font-control image-editor__font-control_tag' @click='newText.font.weight = "underline"; updateNew()'><u>U</u></button>
                     </div>
 
-                    <div class='image-editor__font-control-group'>
+                    <div class='image-editor__control-group'>
                         <button class='button image-editor__font-control' @click='newText.font.size = parseInt(newText.font.size) + 5; redraw(); updateNew()'>Increate Font Size +</button>
                         <button class='button image-editor__font-control' @click='newText.font.size = parseInt(newText.font.size) - 5; redraw(); updateNew()'>Decrease Font Size -</button>
                     </div>
 
-                    <div class='image-editor__font-control-group'>
-                        <select v-model='newText.font.name' class='image-editor__font-picker'>
+                    <div class='image-editor__control-group'>
+                        <select @click='updateNew()' v-model='newText.font.name' class='image-editor__font-picker'>
                             <option v-for='fontName in fontList' :value='fontName'>{{ fontName }}</option>
                         </select>
                     </div>
@@ -95,7 +99,7 @@ export default {
                 font: {
                     weight: 'bold',
                     size: '32',
-                    name: 'Arial',
+                    name: "Ostrich Rounded",
                 },
                 position: ['150', '150'],
             },
@@ -129,6 +133,17 @@ export default {
         }
     },
     methods: {
+        resetImageState() {
+            this.elements = {
+                text: [],
+                image: [],
+                bgImage: {},
+                bgColor: {
+                    type: 'color',
+                    value: 'black',
+                }
+            };
+        },
         updateNew() {
             if(this.newText.value && this.newText.value != "") {
                 this.redraw();
@@ -174,6 +189,7 @@ export default {
         },
 
         wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+            console.log('wrapping text', text);
             x = parseInt(x); y = parseInt(y);
 
             // First, start by splitting all of our text into words, but splitting it into an array split by spaces
@@ -187,7 +203,7 @@ export default {
                 // Create a test line, and measure it..
                 testLine += `${words[n]} `;
                 let metrics = ctx.measureText(testLine);
-                console.log('metrics:', metrics);
+
                 let testWidth = metrics.width;
                 // If the width of this test line is more than the max width
                 if (testWidth > maxWidth && n > 0) {
@@ -213,6 +229,7 @@ export default {
         },
 
         clearCanvas() {
+            console.log('clearing canvas');
             const ctx = this.getCanvasContext();
             const width = this.canvasWidth;
             const height = this.canvasHeight;
@@ -304,7 +321,7 @@ export default {
         },
 
 
-        clearBackground() {
+        _clearBackground() {
             const ctx = this.getBackgroundLayer();
             const width = this.canvasWidth;
             const height = this.canvasHeight;
@@ -312,8 +329,21 @@ export default {
             ctx.clearRect(0, 0, width, height);
         },
 
-        setBackgroundColor(color) {
+        clearBackground() {
+            this._clearBackground();
+            this.setBackgroundColor('white');
+
+        },
+
+        clearImage() {
             this.clearBackground();
+            this.clearCanvas();
+            this.resetImageState();
+            this.text1='';
+        },
+
+        setBackgroundColor(color) {
+            this._clearBackground();
 
             const ctx = this.getBackgroundLayer();
             this.elements.bgColor.value = color ;
@@ -325,7 +355,6 @@ export default {
         },
         setBackgroundImage() {
             this.clearBackground();
-            this.setBackgroundColor('white');
 
             const ctx = this.getBackgroundLayer();
             const src = this.imageUrl;

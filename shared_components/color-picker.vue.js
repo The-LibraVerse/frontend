@@ -1,7 +1,7 @@
 export default {
     template: `
         <div class='color-picker'>
-                <p class='color-picker__title'>{{ title }}</p>
+            <p class='color-picker__title'>{{ title }}</p>
             <div class='color-picker__palette'>
                 <label v-for='color in colors'>
                     <input type='radio' :value='color' v-model='selectedColor' class='radio__control color-picker__radio'>

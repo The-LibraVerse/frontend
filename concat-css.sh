@@ -6,6 +6,7 @@ cp  styles/library.blocks/fontawesome-free-6.1.1-web/ \
 
 cat  \
         styles/library.blocks/fontawesome-free-6.1.1-web/css/all.min.css \
+        styles/common.blocks/fonts.css \
         styles/site-variables.colors.css \
         styles/common.blocks/general.css \
         styles/common.blocks/button/button.css \

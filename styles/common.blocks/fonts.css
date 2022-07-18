@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Abey Dawn;
+  src: url("/assets/fonts/Abbey_Dawn_by_ThaiAvrilLavigne/Font_Abbey_Dawn_by_loveinhoollywood.ttf");
+}
+
+@font-face {
+    font-family: Ostrich Rounded;
+    src: url("/assets/fonts/Ostrich_Sans_Rounded_Medium/ostrich-rounded.woff")
+}
+@font-face {
+  font-family: Inter;
+  src: url("/assets/fonts/Inter/static/Inter-Medium.ttf");
+}
+@font-face {
+    font-family: SpaceMono;
+    src: url("/assets/fonts/SpaceMono/SpaceMono-Regular.ttf");
+}
