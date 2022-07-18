@@ -1,4 +1,5 @@
 import { ethers } from '/dependencies/ethers-5.6.esm.min.js';
+import { showLoader, hideLoader } from '/src/loaderFunctions.js';
 
 import { LIBRAVERSE_TOKEN as _address } from '/config.local.js';
 import artifact from '/dependencies/libraverse.artifact.js';
@@ -7,6 +8,8 @@ import { provider, signer, getProvider, getSigner } from '/src/api/wallet.js';
 export const address = _address;
 
 export function create(metadataURI, amount) {
+    showLoader();
+
     if(!metadataURI)
         return Promise.reject('MetadataURI not present');
     if(!amount)
@@ -27,6 +30,8 @@ export function create(metadataURI, amount) {
             console.log('res:', res);
             return res.wait()
         }).then(res => {
+            hideLoader();
+
             console.log('waited:', res);
             console.log('for events:', res.events);
             const ev = res.events.filter(e => e.event == 'TransferSingle')[0];
@@ -38,6 +43,7 @@ export function create(metadataURI, amount) {
 }
 
 export function mint(tokenID, amount) {
+    showLoader();
     console.log('jfoai ', tokenID);
     if(!tokenID)
         return Promise.reject('Token ID to mint not present');
@@ -53,6 +59,8 @@ export function mint(tokenID, amount) {
             console.log('res:', res);
             return res.wait()
         }).then(res => {
+            hideLoader();
+
             console.log('waited:', res);
             console.log('for events:', res.events);
             const ev = res.events.filter(e => e.event == 'TransferSingle')[0];

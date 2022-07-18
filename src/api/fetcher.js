@@ -1,3 +1,5 @@
+import { showLoader, hideLoader } from '/src/loaderFunctions.js';
+
 export default function(uri, body, method) {
     let isError;
     const otherConfig = {
@@ -9,6 +11,8 @@ export default function(uri, body, method) {
 
     return (() => {
         if(body) {
+            showLoader();
+
             if(!method)
                 method = 'POST';
             body = JSON.stringify(body);
@@ -26,6 +30,8 @@ export default function(uri, body, method) {
             return res.json()
         })
         .then(res => {
+            hideLoader();
+
             if(isError) throw res
             else
                 return res;

@@ -12,6 +12,7 @@ cat  \
         styles/common.blocks/button/button.css \
         styles/common.blocks/tag.css \
         styles/common.blocks/preloader.css \
+        styles/common.blocks/loader.css \
         styles/common.blocks/form/form.css \
         \
         styles/common.blocks/image-editor/image-editor.css \

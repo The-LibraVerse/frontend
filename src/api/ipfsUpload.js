@@ -1,7 +1,9 @@
 import { IPFS_API, IPFS_GATEWAY } from '/config.local.js';
 import IpfsHttpClient from '/dependencies/ipfs-http-client.js';
+import { showLoader, hideLoader } from '/src/loaderFunctions.js';
 
 export default function(data, name) {
+    showLoader();
     if(!data)
         return Promise.reject('No file');
 
@@ -36,6 +38,8 @@ export default function(data, name) {
                 IPFS_GATEWAY.match(/^https?:\/\//)[0] : 'https://';
 
             fileUrl += cidv1 + '.ipfs.' + gatewayUrl
+
+            hideLoader();
 
             return {cidv1, url: fileUrl };
         });
