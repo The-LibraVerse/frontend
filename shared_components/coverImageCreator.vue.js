@@ -40,7 +40,7 @@ export default {
                     </div>
 
                     <div class='image-editor__control-group'>
-                        <select @click='updateNew()' v-model='newText.font.name' class='image-editor__font-picker'>
+                        <select @change='updateNew()' v-model='newText.font.name' class='image-editor__font-picker'>
                             <option v-for='fontName in fontList' :value='fontName'>{{ fontName }}</option>
                         </select>
                     </div>
