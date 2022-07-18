@@ -71,12 +71,6 @@ a, a:visited, a:hover, a:focus {
     border-radius: 50%;
 }
 
-.site-header__nav-expander {
-    position: absolute;
-    top: 1rem;
-    right: 80px;
-}
-
 
 .site-header {
     position: relative;
@@ -87,6 +81,22 @@ a, a:visited, a:hover, a:focus {
     flex-direction: column;
     min-height: 65px;
     box-sizing: border-box;
+}
+.site-header::before {
+    content: " ";
+    background: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.site-header__nav-expander {
+    position: absolute;
+    top: 1rem;
+    right: 80px;
 }
 .site-header__logo {
     display: flex;

@@ -6,71 +6,71 @@ export default {
     components: {'image-input': ImageInput, "color-picker": ColorPicker },
     template: `
         <div class='image-editor'>
-            <div class='image-editor__windows'>
-                <div class='image-editor__dashboard-group image-editor__dashboard1'>
-                    <button class='button'>Upload background Image</button>
-                    <button class='button'>Set background color</button>
-
-                    <image-input title='You can upload an image' :showPreview='false' @dataURL='(a) => imageUrl = a' >
-                    </image-input>
-                    <div>
-                        <div class='input-group'>
-                            <p>Or set a background color</p>
-                            <color-picker @color='(e) => setBackgroundColor(e)'>
-                            </color-picker>
-                        </div>
+            <div class='image-editor__dashboard-group'>
+                <p class='image-editor__section-title'>Choose a background image</p>
+                <image-input title='You can upload an image' :showPreview='false' @dataURL='(a) => imageUrl = a' >
+                </image-input>
+                <div>
+                    <div class='input-group'>
+                        <p>Or set a background color</p>
+                        <color-picker @color='(e) => setBackgroundColor(e)'>
+                        </color-picker>
                     </div>
                 </div>
-
-                <div class='image-editor__dashboard-group image-editor__dashboard2'>
-                    <color-picker @color='(e) => {text1Color = e; updateNew()}'>
-                    </color-picker>
-
-                    <button class='button' @click='newText.font.weight = "bold"; updateNew()'>B</button>
-                    <button class='button' @click='newText.font.weight = "italics"; updateNew()'><em>I</em></button>
-                    <button class='button' @click='newText.font.weight = "underline"; updateNew()'><u>U</u></button>
-
-                    <button class='button' @click='newText.font.size = parseInt(newText.font.size) + 5; redraw(); updateNew()'>+</button>
-                    <button class='button' @click='newText.font.size = parseInt(newText.font.size) - 5; redraw(); updateNew()'>-</button>
-
-                    <button class='button button_primary' @click='addText(newText.value)'>Add text</button>
-
-                    <select v-model='newText.font.name'>
-                        <option v-for='fontName in fontList' :value='fontName'>{{ fontName }}</option>
-                    </select>
-
-                    <div class='list'>
-                        <template v-for='el in elements.text'>
-                            <div v-if='el.type == "text"'>
-                                <p>{{ el.value }}<button @click='elements.text.splice(i, i+1)'>Delete</button>
-                                </p>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-
-                <label class='image-editor__canvas-group'>
-                    <input type='text' v-model='text1' class='image-editor__control image-editor__text-control' placeholder='Type something...'
-                        @keydown.left='moveNew(-2, 0)'
-                        @keydown.up='moveNew(0, -2)'
-                        @keydown.down='moveNew(0, 2)'
-                        @keydown.right='moveNew(2, 0)'
-                        @keyup.enter='addText(newText.value)'
-                    />
-                <div ref='editorCanvas' class='image-editor__canvas' tabindex=1
-                >
-
-                    <canvas ref='background_layer' class='image-editor__layer image-editor__background-layer'>
-                        Preview of your cover image.
-                        If you are seeing this message, your browser might not support this feature.
-                    </canvas>
-                    <canvas ref='layer0' class='image-editor__layer image-editor__layer0'>
-                        Preview of your cover image.
-                        If you are seeing this message, your browser might not support this feature.
-                    </canvas>
-                </div>
-                </label>
             </div>
+
+            <div class='image-editor__dashboard-group'>
+                <p class='image-editor__section-title'>Time to add some text</p>
+
+                <color-picker @color='(e) => {text1Color = e; updateNew()}'>
+                </color-picker>
+
+                <button class='button' @click='newText.font.weight = "bold"; updateNew()'>B</button>
+                <button class='button' @click='newText.font.weight = "italics"; updateNew()'><em>I</em></button>
+                <button class='button' @click='newText.font.weight = "underline"; updateNew()'><u>U</u></button>
+
+                <button class='button' @click='newText.font.size = parseInt(newText.font.size) + 5; redraw(); updateNew()'>+</button>
+                <button class='button' @click='newText.font.size = parseInt(newText.font.size) - 5; redraw(); updateNew()'>-</button>
+
+                <button class='button button_primary' @click='addText(newText.value)'>Add text</button>
+
+                <select v-model='newText.font.name'>
+                    <option v-for='fontName in fontList' :value='fontName'>{{ fontName }}</option>
+                </select>
+
+                <div class='list'>
+                    <template v-for='el in elements.text'>
+                        <div v-if='el.type == "text"'>
+                            <p>{{ el.value }}<button @click='elements.text.splice(i, i+1)'>Delete</button>
+                            </p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <label>
+            <div ref='editorCanvas' class='image-editor__canvas' tabindex=1
+            >
+
+                <input type='text' v-model='text1' class='image-editor__control image-editor__text-control' placeholder='Type something...'
+                    :style='"color:" + text1Color'
+                    @keydown.left='moveNew(-2, 0)'
+                    @keydown.up='moveNew(0, -2)'
+                    @keydown.down='moveNew(0, 2)'
+                    @keydown.right='moveNew(2, 0)'
+                    @keyup.enter='addText(newText.value)'
+                />
+
+                <canvas ref='background_layer' class='image-editor__layer image-editor__background-layer'>
+                    Preview of your cover image.
+                    If you are seeing this message, your browser might not support this feature.
+                </canvas>
+                <canvas ref='layer0' class='image-editor__layer image-editor__layer0'>
+                    Preview of your cover image.
+                    If you are seeing this message, your browser might not support this feature.
+                </canvas>
+            </div>
+            </label>
 
             <div class='flex image-editor__submit-group'>
                 <button @click='save' class='button'>Save Image</button>
@@ -125,11 +125,8 @@ export default {
     },
     methods: {
         updateNew() {
-            if(this.newText.value && this.newText.value != "") {
-                console.log('updating with', this.newText.value);
-                this.redraw();
-                this.drawText(this.newText.value, this.newText);
-            }
+            this.redraw();
+            this.drawText(this.newText.value, this.newText);
         },
         getCanvasContext() {
             const canvas = this.$refs.layer0;
@@ -163,7 +160,6 @@ export default {
                 const file = new File([blob], name + '.png', {type: 'image/png'})
                 self.file = file;
                 self.$emit('file', file);
-                self.text1 = null;
             }, 'image/png');
         },
         download() {
@@ -385,4 +381,3 @@ export default {
         this.setBackgroundColor('white');
     }
 }
-

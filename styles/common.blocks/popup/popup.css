@@ -1,6 +1,16 @@
 .popup {
     position: absolute;
+    background: white;
+}
+.popup::after {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: " ";
     background: var(--color-primary-lite);
+    z-index: -1;
 }
 
 .popup_fullscreen {

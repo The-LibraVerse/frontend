@@ -30,8 +30,8 @@
     --color-secondary-dim: #3a3535;
     --color-secondary-dark: #161616;
 
-    --color-rgb-secondary: 226, 109, 90;
-    --color-rgb-secondary-dark: 22,22,22;
+    --color-rgb-secondary: 139, 38, 53;
+    --color-rgb-secondary-dark: 16, 4, 6;
 
     --color-on-secondary: var(--color-primary-lite);
     --color-on-secondary-hilite: var(--color-secondary-dark);

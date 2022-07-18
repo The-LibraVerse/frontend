@@ -8,17 +8,39 @@
     <script src="/dependencies/vue3.global.js"></script>
   </head>
 
-  <body>
+  <body class='page'>
     <div id='menu'></div>
 
-    <div id='book-editor' class='page'>
+    <div id='book-editor' class='book-edit-page'>
       <div class='editor page__item'>
         <form @submit.prevent>
-          <image-input @file='(data) => imgFile = data' title='Book cover - Upload Image'>
-          </image-input>
+          <div class='flex'>
+            <div class='image-preview'>
+              <img :src='preview' class='image image-preview__image' v-if='preview' />
+            </div>
+            <div>
+              <image-input @file='(data) => imgFile = data'
+                @preview = '(data) => preview = data'
+                :show-preview='false' title='Upload an Image'>
+              </image-input>
+              <div class='input-group'>
+                <p class='input-group__label'>Or create a book cover</p>
+                <button @click='openEditor = true' class='button'>Click to create your book's cover</button>
+              </div>
+            </div>
+          </div>
 
-          <image-editor>
-          </image-editor>
+          <div v-if='openEditor' class='popup popup_fullscreen book-edit-page__popup'>
+            <button @click='openEditor = false' class='button'>< Back</button>
+
+            <image-editor @image='(e) => { preview = e; usedImageEditor=true}'
+              @file='(e) => imgFile = e'
+              class = 'page__item'
+              >
+            </image-editor>
+            
+            <button class='button button_primary' @click='openEditor=false' v-if='usedImageEditor'>Continue</button>
+          </div>
 
           <label class='input-group'><span class='input-group__label'>Title</span>
             <input class='input-group__control input-group_minimalist__control' type='text' placeholder='Name your book' v-model='title' />
@@ -30,7 +52,9 @@
                 placeholder='Write a short description about your book'></textarea>
           </label>
 
-          <button class='button' @click='submit'>Create Book</button>
+          <div class='flex'>
+            <button class='button button_primary' @click='submit'>Create Book</button>
+          </div>
         </form>
       </div>
     </div>

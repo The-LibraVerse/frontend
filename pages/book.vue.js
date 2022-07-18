@@ -16,6 +16,7 @@ const app = Vue.createApp({
 
         <div class='flex flex_bottom-center book-page__metadata'>
             <p class='tag tag_flex'>
+                <i class="fa-solid fa-bars tag__icon tag_flex__icon"></i>
                 <span class='tag__value'>{{ book.totalChapters }}</span>
                 <span class='tag__title'>Chapters</span>
             </p>
@@ -37,7 +38,7 @@ const app = Vue.createApp({
             <div class='tag tag_flex' v-if='book.views'>
                 <i class="fa-solid fa-eye tag__icon tag_flex__icon tag_flex__icon"></i>
                 <p class='tag__title tag_flex__title tag__text'>Views</p>
-                <p class='tag__value tag__text tag_flex__value'>{{ book.views || 4 }}</p>
+                <p class='tag__value tag__text tag_flex__value'>{{ book.views }}</p>
             </div>
         </div>
 
@@ -65,6 +66,12 @@ const app = Vue.createApp({
                 <span class='tag__title tag__text'>Sell your book</span>
             </button>
 
+                <button class='tag tag_action' v-if='links.create_chapter' @click='newChapterPopup'>
+                    <span class='tag__text tag__title'>Add Chapter</span>
+                    <i class="fa-regular fa-plus tag__icon tag_action__icon tag__icon_outline"></i>
+                    <i class="fa-solid fa-circle-plus tag__icon tag_action__icon tag__icon_solid"></i>
+                </button>
+
             <button class='tag tag_action' v-if='links.add_to_library' @click='callServer(links.add_to_library)'>
                 <i class="fa-regular fa-bookmark tag__icon tag_action__icon"></i>
                 <p class='tag__title tag__text'>Add to Library</p>
@@ -74,27 +81,26 @@ const app = Vue.createApp({
         <div v-if='book._notice' class='notice page__item'>
             <p class='notice__title'>{{ book._notice.title || "Notice!" }}</p>
             <p class='notice__message'>{{ book._notice.message }}</p>
-            <p>Buy this book on the ethereum blockchain</p>
             <div v-if='book._notice.code == "TOKEN_REQUIRED"' class='token'>
-                <p class='token__contract-address'>{{ book.tokenContract }}</p>
-                <p class='token__id'>{{ book.tokenID }}</p>
-
-                <button class='button' @click='signInWallet'>Sign in with your wallet address</button>
+                <button class='button button_primary notice__action' @click='signInWallet'>Sign in with your wallet address</button>
             </div>
+
+            <a v-if='book._notice.link' :href='book._notice.link.href' target='_blank' class='notice__link'>{{ book._notice.link.title }}</a>
         </div>
 
         <div class='book-chapter-list list page__item'>
             <div v-for='(c, i) in book.chapters' class='book-chapter-list__item'>
-                <p class='list__item book-chapter-list__item'>
-                    <button v-if='c._links && c._links._self' @click='openChapter(i)' class='book-chapter-list__chapter text'>
-                        {{ c.title }}</button>
-                    <button disabled='true' v-else class='book-chapter-list__item'>
-                        {{ c.title }}</button>
+                <button
+                    class='book-chapter-list__chapter text book-chapter-list__title'
+                    :disabled='!c._links || !c._links._self'
+                @click='openChapter(i)'>
+
+                    {{ c.title }}
                     <i v-if='c.forSale ===true'>$$</i>
-                    <a class='link' v-if='c.contentURL' :href='c.contentURL' target='_blank'>Open on IPFS 
-                        <i class="fa fa-external-link" aria-hidden="true"></i>
-                    </a>
-                </p>
+                </button>
+                <a class='link book-chapter-list__link' v-if='c.contentURL' :href='c.contentURL' target='_blank'>Open on IPFS 
+                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
 
@@ -118,9 +124,10 @@ const app = Vue.createApp({
                         </span>
                         <input class='input sell-literature__input input-group__control' type='number' min='1' v-model='tokenMints' />
                     </label>
-                    <button class='sell-literature__submit button' @click='createBookToken'>Create your book's token</button>
+                    <div class='flex'>
+                    <button class='sell-literature__submit button button_submit' @click='createBookToken'>Create your book's token</button>
+                </div>
             </div>
-            <button v-if='links.create_chapter' @click='newChapterPopup'>Add Chapter</button>
         </div>
 
         <div v-if='showChapterEditor' class='popup popup_fullscreen'>

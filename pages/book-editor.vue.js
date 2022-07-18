@@ -2,16 +2,23 @@ import * as bookAPI from '/src/api/books.js';
 import * as userAPI from '/src/api/user.js';
 import store from '/shared/book.store.js';
 import ImageInput from '/shared/imageInput.vue.js';
+import ImageEditor from '/shared/coverImageCreator.vue.js';
 import ipfsUpload from '/src/api/ipfsUpload.js';
 
 const bookEditor = Vue.createApp({
-    components: { 'image-input': ImageInput },
+    components: { 'image-input': ImageInput, 
+        'image-editor': ImageEditor
+    },
     data() {
         return {
             links: {},
             title: null,
             imgFile: null,
             description: null,
+
+            openEditor: false,
+            preview: null,
+            usedImageEditor: false,
         }
     },
 

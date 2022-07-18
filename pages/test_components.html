@@ -16,8 +16,11 @@
     </nav>
 
     <div id='components'>
+      <new-image-editor> </new-image-editor>
+
       <cover-image-creator @image='(e) => coverPreview=e'>
       </cover-image-creator>
+
       <img class='image image-preview' :src='coverPreview' />
       <input v-model='messageToSign' />
       <button @click='signMessage'>Sign this message</button>
@@ -31,11 +34,12 @@
     <script type='module'>
       // import WordProcessor from '/shared/word-processor.vue.js';
       import CoverImageCreator from '/shared/coverImageCreator.vue.js';
+      import newImageEditor from '/shared/imageEditor.vue.js';
       import { signMessage } from '/src/api/wallet.js';
 
       const app = Vue.createApp({
         /// components: {'word-processor': WordProcessor, 'cover-image-creator': CoverImageCreator },
-        components: {'cover-image-creator': CoverImageCreator },
+        components: {'cover-image-creator': CoverImageCreator, 'new-image-editor': newImageEditor },
         data() {
             return {
               wordProcessorContent: null,

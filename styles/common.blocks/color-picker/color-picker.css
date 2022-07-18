@@ -1,7 +1,8 @@
 .color-picker {
-    background: var(--color-primary-lite);
+    background: rgba(var(--color-rgb-secondary), 0.5);
     padding: 2em;
     display: flex;
+    flex-wrap: wrap;
     grid-gap: 1em;
 }
 .color-picker__color {
@@ -9,6 +10,10 @@
     height: 25px;
     display: inline-block;
     box-sizing: border-box;
+    box-shadow: 1px 1px 4px 0px rgba(var(--color-rgb-primary), 0.3);
+}
+.color-picker__color:hover {
+    box-shadow: none;
 }
 .color-picker__radio {
     display: none;

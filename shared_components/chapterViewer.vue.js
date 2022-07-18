@@ -29,12 +29,12 @@ export default {
             <div class='notice reader__content' v-if='notice'>
                 <p class='notice__title'>{{ notice.title || "Notice!" }}</p>
                 <p class='notice__message'>{{ notice.message }}</p>
-                <p>Buy this on the ethereum blockchain</p>
-                <div v-if='notice.code == "TOKEN_REQUIRED"' class='token'>
+                <p class='notice__message'>Buy this on the ethereum blockchain</p>
+                <div v-if='notice.code == "TOKEN_REQUIRED"' class='token notice__message'>
                     <p class='token__contract-address'>{{ tokenContract }}</p>
                     <p class='token__id'>{{ tokenID }}</p>
 
-                    <button class='button' @click='loginWithWallet'>Sign in with your wallet address</button>
+                    <button class='button button_primary' @click='loginWithWallet'>Sign in with your wallet address</button>
                 </div>
             </div>
                 

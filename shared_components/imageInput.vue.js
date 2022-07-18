@@ -46,6 +46,7 @@ export default {
                     self.$emit('file', file);
                     self.$emit('result', file);
                     self.$emit('dataURL', this.result);
+                    self.$emit('preview', this.result);
                 });
             }
         },

@@ -2,14 +2,31 @@
     --notice-color: var(--color-rgb-accent);
     border: 1px solid rgba(var(--notice-color));
     background: rgba(var(--notice-color), 0.3);
-    color: rgba(var(--notice-color), 1);
+    color: rgba(var(--color-rgb-primary), 1);
     border-radius: 5px;
     padding: 0.8em;
+    padding-bottom: 2rem;
 }
 
 .notice__message {
     margin: 0;
     text-align: center;
+}
+.notice__title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 0.5em;
+}
+.notice__action {
+    margin: auto;
+    margin-top: 2rem;
+    display: block;
+    width: fit-content;
+}
+.notice__link {
+    margin-top: 1em;
+    display: block;
+    text-decoration: underline;
 }
 
 

@@ -5,15 +5,37 @@
 .book-page__author {
     text-align: center;
 }
+.book-chapter-list {
+    padding-top: 5rem;
+}
 .book-chapter-list__item {
     width: 100%;
 }
+.book-chapter-list__title {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(var(--color-rgb-secondary), 0.5);
+
+    padding-bottom: 1rem;
+    margin: 0;
+    display: block;
+    text-align: left;
+    font-size: 1.3rem;
+
+    cursor: pointer;
+}
+.book-chapter-list__link {
+    font-size: 0.9em;
+}
 
 .sell-literature {
+    max-width: 400px;
+    margin: auto;
 }
 
 .sell-literature__title {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     text-align: center;
 }
 
@@ -29,8 +51,18 @@
 .sell-literature__input {
 }
 
-.sell-literature__submmit {
+.sell-literature__submit {
+    margin-top: 2em;
 }
 
 .sell-literature__content {
+}
+
+@media screen and (min-width: 850px) {
+    .book-chapter-list {
+        padding-top: 7rem;
+    }
+    .book-chapter-list__title {
+        font-size: 1.3rem;
+    }
 }
