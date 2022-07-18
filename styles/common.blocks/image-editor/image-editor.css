@@ -16,9 +16,11 @@
     margin-top: 1em;
     margin-bottom: 1em;
 }
+.image-editor__font-control_tag {
+    width: 2rem;
+}
 .image-editor__font-control {
     margin-right: 1em;
-    width: 2rem;
     font-weight: bold;
 }
 

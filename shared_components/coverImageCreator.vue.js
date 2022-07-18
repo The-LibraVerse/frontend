@@ -25,12 +25,14 @@ export default {
                     </color-picker>
 
                     <div class='image-editor__font-control-group'>
-                        <button class='button image-editor__font-control' @click='newText.font.weight = "bold"; updateNew()'>B</button>
-                        <button class='button image-editor__font-control' @click='newText.font.weight = "italics"; updateNew()'><em>I</em></button>
-                        <button class='button image-editor__font-control' @click='newText.font.weight = "underline"; updateNew()'><u>U</u></button>
+                        <button class='button image-editor__font-control image-editor__font-control_tag' @click='newText.font.weight = "bold"; updateNew()'>B</button>
+                        <button class='button image-editor__font-control image-editor__font-control_tag' @click='newText.font.weight = "italics"; updateNew()'><em>I</em></button>
+                        <button class='button image-editor__font-control image-editor__font-control_tag' @click='newText.font.weight = "underline"; updateNew()'><u>U</u></button>
+                    </div>
 
-                        <button class='button image-editor__font-control' @click='newText.font.size = parseInt(newText.font.size) + 5; redraw(); updateNew()'>+</button>
-                        <button class='button image-editor__font-control' @click='newText.font.size = parseInt(newText.font.size) - 5; redraw(); updateNew()'>-</button>
+                    <div class='image-editor__font-control-group'>
+                        <button class='button image-editor__font-control' @click='newText.font.size = parseInt(newText.font.size) + 5; redraw(); updateNew()'>Increate Font Size +</button>
+                        <button class='button image-editor__font-control' @click='newText.font.size = parseInt(newText.font.size) - 5; redraw(); updateNew()'>Decrease Font Size -</button>
                     </div>
 
                     <div class='image-editor__font-control-group'>
