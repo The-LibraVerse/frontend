@@ -27,7 +27,7 @@ When an author clicks `Sell Book`, Libraverse creates a token on the ethereum bl
 After creating and publishing a book, a writer can create and ERC1155 tokens to sell. The writer can mint as many initial copies of the token as they like. Libraverse however, does not handle distribution or sale of tokens and leaves that up to the writer.
 When a reader views a book that has been put for sale in this way, they will either get the book's content, or a notice if they do not have the ERC1155 token that was created and minted by the writer.
 
-The current ERC1155 token been used for the books is deployed on ropsten at [0x625B1D616078160D5Cb0E190cD55504Be32fdbF4](0x625B1D616078160D5Cb0E190cD55504Be32fdbF4)
+The current ERC1155 token been used for the books is deployed on ropsten at [0x625B1D616078160D5Cb0E190cD55504Be32fdbF4](https://ropsten.etherscan.io/address/0x625B1D616078160D5Cb0E190cD55504Be32fdbF4#code)
 
 ![User does not have the token required to read the book](/documentation/assets/book-notice_no-token.png)
 
