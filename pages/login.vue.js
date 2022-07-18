@@ -18,6 +18,9 @@ const app = Vue.createApp({
             const password = this.password;
 
             return userAPI.login({ username, password })
+            .then(res => {
+                window.location.href = '/dashboard'
+            })
             .catch(e => {
                 this.error = e.error;
             });
@@ -27,6 +30,9 @@ const app = Vue.createApp({
             const password = this.password;
 
             return userAPI.signup({ username, password })
+            .then(res => {
+                window.location.href = '/dashboard'
+            })
             .catch(e => {
                 this.error = e.error;
             });
