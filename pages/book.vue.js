@@ -53,8 +53,7 @@ const app = Vue.createApp({
         <h1 class='book-page__title'>{{ book.title }}</h1>
         <p class='book-page__author'>by <a class='link' target='_blank' :href='"/writer/" + book.author.id'>@{{ book.author.username }}</a></p>
 
-        <div class='dashboard' v-if='links.publish || links.sell'>
-
+        <div class='dashboard' v-if='links.publish || links.sell || links.create_chapter || links.add_to_library'>
             <button v-if='links.publish' @click='callServer(links.publish)' class='tag tag_action'>
                 <span class='tag__text tag__title'>Publish Book</span>
                 <i class="fa-solid fa-paper-plane tag__icon tag_action__icon"></i>
@@ -62,15 +61,15 @@ const app = Vue.createApp({
             <button v-if='links.sell' class='tag tag_action'
                 @click="$refs['sell-book'].scrollIntoView({ behavior: 'smooth' })"
             >
-                <i class='tag__icon'>$</i>
+                <i class='tag__icon fa-brands fa-ethereum'></i>
                 <span class='tag__title tag__text'>Sell your book</span>
             </button>
 
-                <button class='tag tag_action' v-if='links.create_chapter' @click='newChapterPopup'>
-                    <span class='tag__text tag__title'>Add Chapter</span>
-                    <i class="fa-regular fa-plus tag__icon tag_action__icon tag__icon_outline"></i>
-                    <i class="fa-solid fa-circle-plus tag__icon tag_action__icon tag__icon_solid"></i>
-                </button>
+            <button class='tag tag_action' v-if='links.create_chapter' @click='newChapterPopup'>
+                <span class='tag__text tag__title'>Add Chapter</span>
+                <i class="fa-regular fa-plus tag__icon tag_action__icon tag__icon_outline"></i>
+                <i class="fa-solid fa-circle-plus tag__icon tag_action__icon tag__icon_solid"></i>
+            </button>
 
             <button class='tag tag_action' v-if='links.add_to_library' @click='callServer(links.add_to_library)'>
                 <i class="fa-regular fa-bookmark tag__icon tag_action__icon"></i>
@@ -91,12 +90,28 @@ const app = Vue.createApp({
         <div class='book-chapter-list list page__item'>
             <div v-for='(c, i) in book.chapters' class='book-chapter-list__item'>
                 <button
-                    class='book-chapter-list__chapter text book-chapter-list__title'
+                    class='book-chapter-list__chapter text'
                     :disabled='!c._links || !c._links._self'
                 @click='openChapter(i)'>
 
-                    {{ c.title }}
-                    <i v-if='c.forSale ===true'>$$</i>
+                    <span class=' book-chapter-list__title'>{{ c.title }}</span>
+                    <div class='flex flex_left flex_small'>
+                        <template v-if='c.forSale === true'>
+                            <p class='tag tag_tiny'>
+                                <i class="tag__icon fa-brands fa-ethereum"></i>
+                            </p>
+                        </template>
+
+                        <p class='tag tag_flex tag_tiny' v-if='c.published != null'>
+                            <template v-if='c.published'>
+                                <i class="fa-solid fa-book tag__icon tag_flex__icon tag_true__icon"></i>
+                            </template>
+
+                            <template v-else>
+                                <i class="fa-solid fa-book tag__icon tag_flex__icon tag_false__icon"></i>
+                            </template>
+                        </p>
+                    </div>
                 </button>
                 <a class='link book-chapter-list__link' v-if='c.contentURL' :href='c.contentURL' target='_blank'>Open on IPFS 
                     <i class="fa fa-external-link" aria-hidden="true"></i>
@@ -113,7 +128,7 @@ const app = Vue.createApp({
                       <p class='book-cover__title book-cover_thumbnail__title'>{{ book.title }}</p>
                       <p class='book-cover__author book-cover_thumbnail__author'>{{ book.author.name || book.author.username }}</p>
                     </div>
-                    <p class='book-cover__for-sale-sign'>$</p>
+                    <icon class='book-cover__for-sale-sign fa-brands fa-ethereum'></icon>
                 </div>
                 <p class='sell-literature__content'>Click the button below to create an ERC1155 token of your book.
                     You will be able to sell your book tokens on any of the web3 marketplaces.</p>

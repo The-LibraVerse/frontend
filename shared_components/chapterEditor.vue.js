@@ -20,7 +20,7 @@ export default {
             <WordProcessor @content='(val) => content=val'>
             </WordProcessor>
 
-            <button class='form__submit form__button_submit button button_submit' @click='submit'>Create</button>
+            <button class='button button_primary' @click='submit'>Create</button>
         </form>
     `,
     data() {

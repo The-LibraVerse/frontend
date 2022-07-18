@@ -5,6 +5,7 @@
 }
 .home-page__book-cover-title {
     font-size: 1.3em;
+    height: 85px;
 }
 
 @media (min-width: 800px) {
@@ -12,6 +13,9 @@
         width: 150px;
         height: 225px;
         font-size: 1em;
+    }
+    .home-page__book-cover-title {
+        height: 145px;
     }
 }
 

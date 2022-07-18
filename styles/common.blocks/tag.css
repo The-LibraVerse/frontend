@@ -35,7 +35,7 @@
     font-style: normal;
     font-weight: var(--tag-icon-font-weight);
     display: var(--tag-icon-display);
-    font-size: 1.5rem;
+    font-size: 1.5em;
     line-height: 1;
     color: var(--tag-icon-color);
 }
@@ -93,4 +93,12 @@
 }
 .tag_flex__value {
     order: 1;
+}
+
+/** tag sizes */
+.tag_small {
+    font-size: 0.8rem;
+}
+.tag_tiny {
+    font-size: 0.6rem;
 }

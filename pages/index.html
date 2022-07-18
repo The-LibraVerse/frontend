@@ -38,7 +38,9 @@
                   <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
                   <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
                 </div>
-                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <icon class='book-cover__for-sale-sign fa-brands fa-ethereum'></icon>
+                </p>
               </div>
             </a>
           </div>
@@ -55,7 +57,9 @@
                   <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
                   <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
                 </div>
-                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <icon class='book-cover__for-sale-sign fa-brands fa-ethereum'></icon>
+                </p>
               </div>
               <div class='text book-preview__text'>
                 <p class='book-preview__book-title'>{{ book.title }}</p>
@@ -76,7 +80,9 @@
                   <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
                   <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
                 </div>
-                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <icon class='book-cover__for-sale-sign fa-brands fa-ethereum'></icon>
+                </p>
               </div>
             </a>
           </div>
@@ -93,7 +99,9 @@
                   <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
                   <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
                 </div>
-                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>$$</p>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <icon class='book-cover__for-sale-sign fa-brands fa-ethereum'></icon>
+                </p>
               </div>
             </a>
           </div>

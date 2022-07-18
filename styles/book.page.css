@@ -12,12 +12,15 @@
     width: 100%;
 }
 .book-chapter-list__title {
+    padding-bottom: 1rem;
+    display: block;
+}
+.book-chapter-list__chapter {
     width: 100%;
     background: none;
     border: none;
     border-bottom: 1px solid rgba(var(--color-rgb-secondary), 0.5);
 
-    padding-bottom: 1rem;
     margin: 0;
     display: block;
     text-align: left;
@@ -32,10 +35,11 @@
 .sell-literature {
     max-width: 400px;
     margin: auto;
+    padding: 2rem;
 }
 
 .sell-literature__title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     text-align: center;
 }
 

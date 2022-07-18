@@ -46,3 +46,32 @@
     width: 100%;
     height: 100%;
 }
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 2em;
+}
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 2em;
+}
+
+.flex_bottom-center {
+    justify-content: center;
+    align-items: flex-end;
+}
+.flex_left {
+    justify-content: start;
+}
+
+.flex_small {
+    font-size: 0.8rem;
+    grid-gap: 1em;
+}
+.list {
+    display: grid;
+    grid-gap: 2em;
+}

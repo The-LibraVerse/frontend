@@ -8,7 +8,7 @@
 
     box-sizing: border-box;
 
-    background: rgb(var(--color-rgb-secondary));
+    background: rgb(var(--color-rgb-primary));
     filter: brightness(95%);
 }
 .book-cover__item {
@@ -24,6 +24,7 @@
 }
 
 .book-cover__text {
+    height: 100%;
     word-break: break-word;
     text-align: center;
     color: rgb(var(--color-rgb-on-primary-dark));
@@ -36,19 +37,26 @@
     text-align: center;
     font-weight: bold;
     width: 90%;
+    height: 250px;
     margin: auto;
+    overflow: hidden;
 }
 
 .book-cover__author {
     position: absolute;
-    bottom: 1em;
+    bottom: 1.5em;
     width: 100%;
     left: 0;
     margin: 0;
     text-align: center;
+
+    padding: 0 0.5em;
+    box-sizing: border-box;
+    font-size: 0.8em;
 }
 
 .book-cover__for-sale-sign {
+    display: block;
     padding: 0.5em;
     position: absolute;
     bottom: 0;
@@ -56,7 +64,7 @@
     font-weight: bold;
     font-size: 0.8rem;
     color: white;
-    background: rgb(var(--color-rgb-brand-main));
+    background: rgb(var(--color-rgb-secondary));
 }
 @media (min-width: 1024px) {
     .book-cover {

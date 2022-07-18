@@ -26,7 +26,7 @@
         </a>
       </div>
 
-      <div id='written-books' class='page__item'>
+      <div id='written-books' class='page__item written-books'>
         <div v-if='written'>
           <h3>Books by {{ name || username }}</h3>
           <div v-if='written.length == 0'>
@@ -36,8 +36,8 @@
           <div v-else class='grid'>
 
             <a v-for='book in written' :href='"/book/" + book.id'>
-              <div>
-                <div class='book-cover book-cover_thumbnail user-profile__book-cover book-preview__image'>
+              <div class='written-books__item'>
+                <div class='book-cover book-cover_thumbnail user-profile__book-cover'>
                   <img :src='book.cover' class='book-cover__image' v-if='book.cover' />
                   <div class='book-cover__text' v-else>
                     <p class='book-cover__title book-cover_thumbnail__title'>{{ book.title }}</p>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div>
-                  <p class='book-preview__title'>{{ book.title }}</p>
+                  <p class='written-books__title'>{{ book.title }}</p>
                 </div>
               </div>
             </a>
@@ -85,7 +85,6 @@
 
     <script type='module' src='/dashboard.vue.js'></script>
     <script type='module' src='/book.vue.js'></script>
-    -->
     <script type='module' src='/shared/menu.vue.js'></script>
   </body>
 </html>
