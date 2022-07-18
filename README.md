@@ -33,4 +33,4 @@ When a reader views a book that has been put for sale in this way, they will eit
 ### Book Cover Creator
 Libraverse has a basic image editor for creating book covers. A user can set a background image, or a backgroud color, and type some text over the background.
 The book cover can be downloaded.
-![Book Cover Image Creator: Blue background with black and orange text on it](/documentation/assets/image-editor_bg_text)
+![Book Cover Image Creator: Blue background with black and orange text on it](/documentation/assets/image-editor_bg_text.png)
