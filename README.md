@@ -15,8 +15,8 @@ Libraverse stores the content of every chapter created on IPFS. See [Implementat
 An author is always presented with the links to the content every time they view their book. Only a book's author will get these links.
 Other users can only access the book on Libraverse.
 <div>
-<img style='width:480px' src="/documentation/assets/book-chapters-with-ipfs-urls.png" alt="IPFS urls for each chapter is presented to the author" />
-<img style='width:480px' src="/documentation/assets/notice-and-chapter-list-no-ipfs.png" alt="Book chapter list: IPFS urls are not included to other users"/>
+<img style='width:400px' src="/documentation/assets/book-chapters-with-ipfs-urls.png" alt="IPFS urls for each chapter is presented to the author" />
+<img style='width:400px' src="/documentation/assets/notice-and-chapter-list-no-ipfs.png" alt="Book chapter list: IPFS urls are not included to other users"/>
 </div>
 
 #### Store Book and Chapter Cover Images on IPFS
