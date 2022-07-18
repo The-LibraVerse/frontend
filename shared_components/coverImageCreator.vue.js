@@ -57,8 +57,7 @@ export default {
                         @keydown.right='moveNew(2, 0)'
                         @keyup.enter='addText(newText.value)'
                     />
-                <div ref='editorCanvas' class='image-editor__canvas' tabindex=1
-                >
+                <div ref='editorCanvas' class='image-editor__canvas' >
 
                     <canvas ref='background_layer' class='image-editor__layer image-editor__background-layer'>
                         Preview of your cover image.
