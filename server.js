@@ -19,6 +19,10 @@ server.use('/dist', express.static(__dirname + '/dist/assets/fontawesome-free-6.
 
 server.use('/assets', express.static(__dirname + '/assets'));
 
+server.use('/books', function(req, res) {
+    res.sendFile(__dirname + '/pages/all-books.html');
+});
+
 server.use('/book/:id', function(req, res) {
     res.sendFile(__dirname + '/pages/book.html');
 });

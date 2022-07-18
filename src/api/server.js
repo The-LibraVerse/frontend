@@ -1,5 +1,6 @@
 import { API } from '/config.local.js';
 import fetcher from './fetcher.js';
+import { hidePreloader, setPreloaderMessage } from '/src/preloaderFunctions.js';
 
 export default function(path, body, method, autoReload) {
     if(!body && ['PUT', 'POST'].includes(method)) {
@@ -17,6 +18,10 @@ export default function(path, body, method, autoReload) {
             if(autoReload)
                 window.location.reload();
 
+            hidePreloader();
             return res;
+        }).catch(e => {
+            // setPreloaderMessage('Failed to load');
+            throw e;
         });
 }

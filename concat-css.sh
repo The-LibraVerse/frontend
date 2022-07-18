@@ -6,11 +6,12 @@ cp  styles/library.blocks/fontawesome-free-6.1.1-web/ \
 
 cat  \
         styles/library.blocks/fontawesome-free-6.1.1-web/css/all.min.css \
-        styles/common.blocks/fonts.css \
         styles/site-variables.colors.css \
+        styles/common.blocks/fonts.css \
         styles/common.blocks/general.css \
         styles/common.blocks/button/button.css \
         styles/common.blocks/tag.css \
+        styles/common.blocks/preloader.css \
         styles/common.blocks/form/form.css \
         \
         styles/common.blocks/image-editor/image-editor.css \

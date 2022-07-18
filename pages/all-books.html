@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+  <head>
+    <title>Libraverse</title>
+    <meta charset="utf-8" name="viewport" content= "width=device-width, initial-scale=1.0">
+    <link href='/dist/styles/min.css' rel='stylesheet' />
+    <link rel="icon" type="image/x-icon" href="/assets/logo.ico" />
+    <script src="/dependencies/vue3.global.js"></script>
+  </head>
+
+  <body>
+    <div id='site-preloader' class='preloader preloader_fullscreen'></div>
+    <div id='menu'></div>
+    <div id='all_books' class='page books-page'>
+      <div id='books'>
+        <section class='page__item'>
+          <h3>Popular Books</h2>
+          <div class='list book-preview-list'>
+            <a v-for='book in books.popular.slice(0,3)' target='_blank' :href='"/book/" + book.id' class='book-preview list__item'>
+              <div class='book-cover book-cover_thumbnail book-preview__image'>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__item book-cover__image' />
+                <div v-else role='img' :alt='book.title' class='book-cover__item book-cover__text'>
+                  <p class='book-cover__title'>{{ book.title }}</p>
+                  <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
+                  <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
+                </div>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <i class='book-cover__for-sale-sign fa-brands fa-ethereum'></i>
+                </p>
+              </div>
+              <div class='text book-preview__text'>
+                <p class='book-preview__book-title'>{{ book.title }}</p>
+                <p>{{ book.description }}</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class='page__item'>
+          <h3>Featured Books</h2>
+          <div class='list book-preview-list'>
+            <a v-for='book in books.featured.slice(0,3)' target='_blank' :href='"/book/" + book.id' class='book-preview list__item'>
+              <div class='book-cover book-preview__image'>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__item book-cover__image' />
+                <div v-else role='img' :alt='book.title' class='book-cover__item book-cover__text'>
+                  <p class='book-cover__title'>{{ book.title }}</p>
+                  <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
+                  <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
+                </div>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <i class='book-cover__for-sale-sign fa-brands fa-ethereum'></i>
+                </p>
+              </div>
+              <div class='text book-preview__text'>
+                <p class='book-preview__book-title'>{{ book.title }}</p>
+                <p>{{ book.description }}</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class='page__item'>
+          <h3>Free</h2>
+          <div class='carousel'>
+            <a v-for='book in books.topFree' target='_blank' :href='"/book/" + book.id' class='carousel__item'>
+              <div class='book-cover'>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__item book-cover__image' />
+                <div v-else role='img' :alt='book.title' class='book-cover__item book-cover__text'>
+                  <p class='book-cover__title'>{{ book.title }}</p>
+                  <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
+                  <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
+                </div>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <i class='book-cover__for-sale-sign fa-brands fa-ethereum'></i>
+                </p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class='page__item'>
+          <h3>Paid</h2>
+          <div id='book-grid' class='grid'>
+            <a v-for='book in books.topPaid' target='_blank' :href='"/book/" + book.id'>
+              <div class='book-cover'>
+                <img v-if='book.cover' :src='book.cover' :alt='book.title' class='book-cover__item book-cover__image' />
+                <div v-else role='img' :alt='book.title' class='book-cover__item book-cover__text'>
+                  <p class='book-cover__title'>{{ book.title }}</p>
+                  <p v-if='book.author.name' class='book-cover__author'>{{ book.author.name }}</p>
+                  <p v-else-if='book.author.username' class='book-cover__author'>@{{ book.author.username }}</p>
+                </div>
+                <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <i class='book-cover__for-sale-sign fa-brands fa-ethereum'></i>
+                </p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script type='module' src='/allBooks.vue.js'></script>
+    <script type='module' src='/shared/menu.vue.js'></script>
+  </body>
+</html>
+
