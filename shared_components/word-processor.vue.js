@@ -1,4 +1,6 @@
-import "/dist/assets/tinymce/js/tinymce.min.js";
+// import "/dist/assets/tinymce/js/tinymce.min.js";
+import "https://cdn.tiny.cloud/1/uri86mpxwbkhji9wlc407u0eel7n3l3n71lazd3yffb1hc7c/tinymce/6/tinymce.min.js";
+
 
 export default {
     template: `
