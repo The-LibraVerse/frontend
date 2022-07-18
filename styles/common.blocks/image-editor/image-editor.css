@@ -8,6 +8,20 @@
 .image-editor__control {
 }
 
+.image-editor__font-picker {
+    padding: 0.8em;
+    display: block;
+}
+.image-editor__font-control-group {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.image-editor__font-control {
+    margin-right: 1em;
+    width: 2rem;
+    font-weight: bold;
+}
+
 .image-editor__canvas {
     position: relative;
     box-sizing: border-box;

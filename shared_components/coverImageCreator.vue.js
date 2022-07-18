@@ -8,44 +8,35 @@ export default {
         <div class='image-editor'>
             <div class='image-editor__windows'>
                 <div class='image-editor__dashboard-group image-editor__dashboard1'>
-                    <button class='button'>Upload background Image</button>
-                    <button class='button'>Set background color</button>
-
                     <image-input title='You can upload an image' :showPreview='false' @dataURL='(a) => imageUrl = a' >
                     </image-input>
                     <div>
                         <div class='input-group'>
                             <p>Or set a background color</p>
-                            <color-picker @color='(e) => setBackgroundColor(e)'>
+                            <color-picker @color='(e) => setBackgroundColor(e)' title='Choose Background Color'>
                             </color-picker>
                         </div>
                     </div>
                 </div>
 
                 <div class='image-editor__dashboard-group image-editor__dashboard2'>
-                    <color-picker @color='(e) => {text1Color = e; updateNew()}'>
+                    <color-picker @color='(e) => {text1Color = e; updateNew()}' title='Choose Text Color'>
+                        <p>Text color</p>
                     </color-picker>
 
-                    <button class='button' @click='newText.font.weight = "bold"; updateNew()'>B</button>
-                    <button class='button' @click='newText.font.weight = "italics"; updateNew()'><em>I</em></button>
-                    <button class='button' @click='newText.font.weight = "underline"; updateNew()'><u>U</u></button>
+                    <div class='image-editor__font-control-group'>
+                        <button class='button image-editor__font-control' @click='newText.font.weight = "bold"; updateNew()'>B</button>
+                        <button class='button image-editor__font-control' @click='newText.font.weight = "italics"; updateNew()'><em>I</em></button>
+                        <button class='button image-editor__font-control' @click='newText.font.weight = "underline"; updateNew()'><u>U</u></button>
 
-                    <button class='button' @click='newText.font.size = parseInt(newText.font.size) + 5; redraw(); updateNew()'>+</button>
-                    <button class='button' @click='newText.font.size = parseInt(newText.font.size) - 5; redraw(); updateNew()'>-</button>
+                        <button class='button image-editor__font-control' @click='newText.font.size = parseInt(newText.font.size) + 5; redraw(); updateNew()'>+</button>
+                        <button class='button image-editor__font-control' @click='newText.font.size = parseInt(newText.font.size) - 5; redraw(); updateNew()'>-</button>
+                    </div>
 
-                    <button class='button button_primary' @click='addText(newText.value)'>Add text</button>
-
-                    <select v-model='newText.font.name'>
-                        <option v-for='fontName in fontList' :value='fontName'>{{ fontName }}</option>
-                    </select>
-
-                    <div class='list'>
-                        <template v-for='el in elements.text'>
-                            <div v-if='el.type == "text"'>
-                                <p>{{ el.value }}<button @click='elements.text.splice(i, i+1)'>Delete</button>
-                                </p>
-                            </div>
-                        </template>
+                    <div class='image-editor__font-control-group'>
+                        <select v-model='newText.font.name' class='image-editor__font-picker'>
+                            <option v-for='fontName in fontList' :value='fontName'>{{ fontName }}</option>
+                        </select>
                     </div>
                 </div>
 
@@ -57,6 +48,8 @@ export default {
                         @keydown.right='moveNew(2, 0)'
                         @keyup.enter='addText(newText.value)'
                     />
+                    <button class='button button_primary' @click='addText(newText.value)'>Finish Typing</button>
+
                 <div ref='editorCanvas' class='image-editor__canvas' >
 
                     <canvas ref='background_layer' class='image-editor__layer image-editor__background-layer'>
@@ -72,7 +65,7 @@ export default {
             </div>
 
             <div class='flex image-editor__submit-group'>
-                <button @click='save' class='button'>Save Image</button>
+                <button @click='save' class='button button_primary'>Save Image</button>
                 <a v-if='downloadUrl' class='button' :href='downloadUrl' download='book-cover'>Download Image</a>
             </div>
         </div>

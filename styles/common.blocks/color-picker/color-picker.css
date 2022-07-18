@@ -1,10 +1,17 @@
 .color-picker {
     background: rgba(var(--color-rgb-secondary), 0.5);
     padding: 2em;
+}
+.color-picker__palette {
     display: flex;
     flex-wrap: wrap;
     grid-gap: 1em;
 }
+.color-picker__title {
+    text-align: center;
+    font-weight: bold;
+}
+
 .color-picker__color {
     width: 25px;
     height: 25px;
