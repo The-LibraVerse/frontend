@@ -40,6 +40,18 @@ export default {
                             <option v-for='fontName in fontList' :value='fontName'>{{ fontName }}</option>
                         </select>
                     </div>
+
+                    <div class='notice image-editor__tips'>
+                        <p class='notice__title'>Tips for using the Image Editor</p>
+
+                        <ul>
+                        <li class='notice__message notice__message_left-align'>Click the canvas to start typing. Press the font controls, and change the font with the font picker, and set the font color</li>
+                        <li class='notice__message notice__message_left-align'>Press "Enter", or click "Finish Typing" when you are done. This will create a new text element on the canvas.</li>
+                        <li class='notice__message notice__message_left-align'>NOTE: Once you press "Enter", or "Finish Typing", you will not be able to edit or style your text</li>
+                        <li class='notice__message notice__message_left-align'>To move the text, select the canvas and press the arrow keys</li>
+                        <li class='notice__message notice__message_left-align'>You can change the color, size, and move your text around, </li>
+                    </ul>
+                    </div>
                 </div>
 
                 <label class='image-editor__canvas-group'>
@@ -53,7 +65,6 @@ export default {
                     <button class='button button_primary' @click='addText(newText.value)'>Finish Typing</button>
 
                 <div ref='editorCanvas' class='image-editor__canvas' >
-
                     <canvas ref='background_layer' class='image-editor__layer image-editor__background-layer'>
                         Preview of your cover image.
                         If you are seeing this message, your browser might not support this feature.
@@ -120,7 +131,6 @@ export default {
     methods: {
         updateNew() {
             if(this.newText.value && this.newText.value != "") {
-                console.log('updating with', this.newText.value);
                 this.redraw();
                 this.drawText(this.newText.value, this.newText);
             }
@@ -271,7 +281,7 @@ export default {
             canvas.focus();
         },
 
-        drawImage(src) {
+        drawBackgroundImage(src) {
             const ctx = this.getBackgroundLayer();
 
             const image = new window.Image();
@@ -285,7 +295,7 @@ export default {
         addImage() {
             const src = this.imageUrl;
 
-            this.drawImage(src);
+            this.drawBackgroundImage(src);
 
             this.elements.image.push({
                 type: 'image',
@@ -294,7 +304,17 @@ export default {
         },
 
 
+        clearBackground() {
+            const ctx = this.getBackgroundLayer();
+            const width = this.canvasWidth;
+            const height = this.canvasHeight;
+
+            ctx.clearRect(0, 0, width, height);
+        },
+
         setBackgroundColor(color) {
+            this.clearBackground();
+
             const ctx = this.getBackgroundLayer();
             this.elements.bgColor.value = color ;
             ctx.fillStyle = color;
@@ -304,11 +324,14 @@ export default {
             ctx.fillRect(0, 0, width, height);
         },
         setBackgroundImage() {
+            this.clearBackground();
+            this.setBackgroundColor('white');
+
             const ctx = this.getBackgroundLayer();
             const src = this.imageUrl;
 
             // ctx.globalCompositeOperation = 'source-over';
-            this.drawImage(src);
+            this.drawBackgroundImage(src);
             // ctx.globalCompositeOperation = 'destination-over';
             this.elements.bgImage = {type: 'image', value: src};
         },
@@ -331,7 +354,7 @@ export default {
                         break;
                     case 'image':
                         console.log('drawing image:', el.value);
-                        this.drawImage(el.value, options);
+                        this.drawBackgroundImage(el.value, options);
                         break;
                 }
             });
@@ -339,7 +362,8 @@ export default {
 
         moveNew(dy, dx) {
             this.moveEl(this.newText, dy, dx);
-            this.drawText(this.newText.value, this.newText);
+            this.updateNew();
+            // this.drawText(this.newText.value, this.newText);
         },
         moveEl(el, dx, dy) {
             console.log('we are moivng', dx, dy);

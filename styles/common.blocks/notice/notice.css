@@ -12,6 +12,9 @@
     margin: 0;
     text-align: center;
 }
+.notice__message_left-align {
+    text-align: left;
+}
 .notice__title {
     text-align: center;
     font-size: 1.5rem;

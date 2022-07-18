@@ -23,6 +23,10 @@
     margin-right: 1em;
     font-weight: bold;
 }
+.image-editor__tip-item {
+    text-align: left;
+    margin-bottom: 0.5em;
+}
 
 .image-editor__canvas {
     position: relative;
