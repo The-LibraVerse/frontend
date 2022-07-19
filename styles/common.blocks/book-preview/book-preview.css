@@ -28,4 +28,11 @@
 }
 
 .book-preview-list {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+@media (min-width: 800px) {
+    .book-preview {
+        display: grid;
+        grid-gap: 1em;
+    }
 }

@@ -1,3 +1,7 @@
+.home-page {
+    padding: 0;
+}
+
 .home-page__book-cover {
     width: 100px;
     height: 150px;
@@ -8,11 +12,22 @@
     height: 85px;
 }
 
+@media (max-width: 800px) {
+    .home-page__book-preview {
+        --preview-height: 180px;
+    }
+}
 @media (min-width: 800px) {
+    .home-page__book-preview-list {
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    }
     .home-page__book-cover {
         width: 150px;
         height: 225px;
         font-size: 1em;
+    }
+    .home-page__book-preview {
+        --preview-height: 216px;
     }
     .home-page__book-cover-title {
         height: 145px;

@@ -1,6 +1,7 @@
 .loader { 
-    display: none;
     --loader-color: rgba(var(--color-rgb-primary));
+
+    display: none;
     margin:0 auto;
     border:4px solid transparent;
     position:relative;

@@ -198,10 +198,6 @@ a, a:visited, a:hover, a:focus {
     font-weight: bold;
 }
 
-.home-page {
-    padding: 0;
-}
-
 .cta {
     background: var(--color-secondary-lite);
     padding: 2em;
@@ -323,13 +319,6 @@ a, a:visited, a:hover, a:focus {
     }
 }
 @media (min-width: 800px) {
-    .book-preview-list {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
-    .book-preview {
-        display: grid;
-        grid-gap: 1em;
-    }
     .page {
     }
 }
