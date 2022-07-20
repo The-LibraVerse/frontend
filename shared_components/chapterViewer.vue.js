@@ -120,7 +120,7 @@ export default {
             const data = null;
             const link = this.links.publish;
             if(link)
-                return api(link.href, data, link.method)
+                return server(link.href, data, link.method)
         },
         callServer(link, data) {
             if(!data && link.method !='GET')
