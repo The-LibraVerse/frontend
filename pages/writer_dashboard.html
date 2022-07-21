@@ -47,6 +47,9 @@
                     <span v-else-if='book.author.username'>@{{ book.author.username }}</span>
                     </p>
                   </div>
+                  <p class='book-cover__for-sale-sign' v-if='book.forSale && book.tokenContract'>
+                    <i class='book-cover__for-sale-sign fa-brands fa-ethereum'></i>
+                  </p>
                 </div>
 
                 <div>
@@ -77,6 +80,10 @@
                   <span v-else-if='book.author.username'>@{{ book.author.username }}</span>
                   </p>
                 </div>
+
+                <p class='book-cover__for-sale-sign' v-if='book.forSale'>
+                  <i class='book-cover__for-sale-sign fa-brands fa-ethereum'></i>
+                </p>
               </div>
             </a>
           </div>
