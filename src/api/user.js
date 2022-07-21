@@ -1,5 +1,5 @@
 import server from '/src/api/server.js';
-import { signMessage } from '/src/api/wallet.js';
+import { signMessage, getAddress } from '/src/api/wallet.js';
 
 export function login(data) {
     return server('/login', data)
@@ -17,7 +17,8 @@ export function loginWithWallet() {
             return signMessage(res.message)
         }).then(res => {
             console.log('do yo uyave it??', res);
-            return server('/connect-wallet', {message: res}, 'PUT');
+            const address = getAddress();
+            return server('/connect-wallet', {message: res, address}, 'PUT');
         });
 }
 
