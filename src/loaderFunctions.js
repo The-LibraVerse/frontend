@@ -1,24 +1,32 @@
 export function hideLoader() {
-    document.getElementById('menu-loader-bar')
-        .style.display = 'none';
+    const loader = document.getElementById('menu-loader-bar')
+    if(loader)
+        loader.style.display = 'none';
 }
 
 export function showLoader() {
-    document.getElementById('menu-loader-bar')
-        .style.background = '#ffffff8c';
+    const loader = document.getElementById('menu-loader-bar')
+    if(loader)
+        loader.style.background = '#ffffff8c';
 
     showPreloader()
 }
 
 export function hidePreloader() {
-    document.getElementById('site-preloader')
-        .style.display = 'none';
+    const loader = document.getElementById('site-preloader')
+
+    if(loader)
+        loader.style.display = 'none';
 }
 
 export function showPreloader() {
-    document.getElementById('menu-loader-bar')
-        .style.display = 'block';
+    const loader = document.getElementById('menu-loader-bar')
+
+    if(loader) 
+        loader.style.display = 'block';
 }
 export function setPreloaderMessage(text) {
-    document.getElementById('site-preloader').innerHTML=text;
+    const loader = document.getElementById('site-preloader')
+    if(loader)
+        loader.innerHTML=text;
 }
