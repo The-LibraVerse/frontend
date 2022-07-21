@@ -3,7 +3,7 @@ import { showLoader, hideLoader } from '/src/loaderFunctions.js';
 
 import { LIBRAVERSE_TOKEN as _address } from '/config.local.js';
 import artifact from '/dependencies/libraverse.artifact.js';
-import { provider, signer, getProvider, getSigner } from '/src/api/wallet.js';
+import { connect as connectWallet, provider, signer, getProvider, getSigner } from '/src/api/wallet.js';
 
 export const address = _address;
 
@@ -21,10 +21,13 @@ export function create(metadataURI, amount) {
     const provider = getProvider();
     const signer = getSigner();
     */
-    const tokenContract = new ethers.Contract(address, artifact.abi, provider);
+    return connectWallet()
+        .then(() => {
+            const tokenContract = new ethers.Contract(address, artifact.abi, provider);
 
-    const cWithSigner = tokenContract.connect(signer)
-    return cWithSigner.create(metadataURI, amount)
+            const cWithSigner = tokenContract.connect(signer)
+            return cWithSigner.create(metadataURI, amount)
+        })
         .then(res => {
             console.log('created token');
             console.log('res:', res);

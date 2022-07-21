@@ -1,6 +1,6 @@
 import { API } from '/config.local.js';
 import fetcher from './fetcher.js';
-import { hidePreloader, setPreloaderMessage } from '/src/preloaderFunctions.js';
+import { hidePreloader, setPreloaderMessage } from '/src/loaderFunctions.js';
 
 export default function(path, body, method, autoReload) {
     if(!body && ['PUT', 'POST'].includes(method)) {

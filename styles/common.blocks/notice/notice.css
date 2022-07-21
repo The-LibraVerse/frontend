@@ -1,11 +1,21 @@
 .notice {
     --notice-color: var(--color-rgb-accent);
+    position:relative;
     border: 1px solid rgba(var(--notice-color));
-    background: rgba(var(--notice-color), 0.3);
     color: rgba(var(--color-rgb-primary), 1);
     border-radius: 5px;
     padding: 0.8em;
     padding-bottom: 2rem;
+}
+.notice::after {
+    z-index: -1;
+    content: " ";
+    width:100%;
+    position:absolute;
+    top: 0;
+    left:0;
+    height: 100%;
+    background: rgba(var(--notice-color), 0.3);
 }
 
 .notice__message {
@@ -35,4 +45,17 @@
 
 .notice_error {
     --notice-color: var(--color-rgb-ui-danger);
+}
+
+.notice_toast {
+    opacity: 1;
+    display: none;
+    position: fixed;
+    top: 2em;
+    right: 2em;
+    max-width: 500px;
+    z-index: 20;
+    background: white;
+    transition: opacity 1s linear;
+    padding: 1em;
 }

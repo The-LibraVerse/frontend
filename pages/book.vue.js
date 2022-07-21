@@ -8,12 +8,11 @@ import Reader from '/shared/chapterViewer.vue.js';
 import * as libraverseToken from '/src/api/token.js';
 import { loginWithWallet } from '/src/api/user.js';
 
+import { showLoader, hideLoader } from '/src/loaderFunctions.js';
+
 const app = Vue.createApp({
     template: `
-      <div v-if='book && book.title && book.author'
-        class='book-page page'
-    >
-
+      <div v-if='book && book.title && book.author' class='book-page page'>
         <div class='flex flex_bottom-center book-page__metadata'>
             <p class='tag tag_flex'>
                 <i class="fa-solid fa-bars tag__icon tag_flex__icon"></i>
@@ -254,11 +253,13 @@ const app = Vue.createApp({
             this.showChapterEditor = true;
         },
         createBookToken() {
+            showLoader();
             const metadataURI = this.book.metadataURI;
             const amount = this.tokenMints;
 
             return libraverseToken.create(metadataURI, amount)
                 .then(res => {
+                    hideLoader();
                     console.log('token id:', res);
                     const data = {
                         tokenContract: libraverseToken.address,

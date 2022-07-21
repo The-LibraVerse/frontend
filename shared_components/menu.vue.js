@@ -1,9 +1,11 @@
+import { hideToast, showToast } from '/src/toastFunctions.js';
 import { isLoggedIn, logout } from '/src/api/user.js';
 import ConnectWallet from '/shared/connectWallet.js';
 
 const app = Vue.createApp({
     components: {ConnectWallet},
-    template: `
+    template: `<div>
+        <div ref='siteToast' @click='hideToast' id='site-toast' class='notice notice_toast'></div>
         <div class='site-header'>
             <a class='site-logo site-header__logo' href='/'>
                 <img class='site-header__logo-image' src='/assets/logo.png' />
@@ -30,10 +32,11 @@ const app = Vue.createApp({
             <button v-if='loggedIn' :class='{"hide-on-mobile": !expandMenu, "hide-on-desktop": hideLogoutOnDesktop}'
                 class='site-header__dropdown-item link site-header__logout' @click='logout'>Logout</button>
         </div>
-    <div id='menu-loader-bar' class='loader'>
-        <div class='loaderBar'></div>
+        <div id='menu-loader-bar' class='loader'>
+            <div class='loaderBar'></div>
         </div>
-    `,
+    </div>`,
+
     data() {
         return {
             loggedIn: null,
@@ -42,6 +45,7 @@ const app = Vue.createApp({
         }
     },
     methods: {
+        hideToast,
         logout() {
             return logout()
                 .then(res => {

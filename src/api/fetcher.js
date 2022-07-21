@@ -1,4 +1,5 @@
-import { showLoader, hideLoader } from '/src/loaderFunctions.js';
+import { showLoader, showPreloader, hideLoader } from '/src/loaderFunctions.js';
+import { hideToast, showToast } from '/src/toastFunctions.js';
 
 export default function(uri, body, method) {
     let isError;
@@ -11,7 +12,7 @@ export default function(uri, body, method) {
 
     return (() => {
         if(body) {
-            showLoader();
+            showPreloader();
 
             if(!method)
                 method = 'POST';
@@ -32,8 +33,20 @@ export default function(uri, body, method) {
         .then(res => {
             hideLoader();
 
-            if(isError) throw res
+            if(isError) {
+                console.log('res:', res);
+                showToast(res);
+                throw res
+            }
             else
                 return res;
+        }).catch(e => {
+            const message = (e.message == "Failed to fetch") ? "Failed to fetch. Please refresh" :
+                (e.error && e.error.message) ? e.error.message :
+                "Error loading resource. Please try again later";
+
+            console.log('res:', e);
+            showToast(message);
+            throw e
         });
 }
