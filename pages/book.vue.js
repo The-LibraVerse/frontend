@@ -51,6 +51,7 @@ const app = Vue.createApp({
 
         <h1 class='book-page__title'>{{ book.title }}</h1>
         <p class='book-page__author'>by <a class='link' target='_blank' :href='"/writer/" + book.author.id'>@{{ book.author.username }}</a></p>
+        <p class='book-page__item notice notice__message page__item' v-if='book.tokenURL'>This book is for sale. View its token at <a :href='book.tokenURL' target='_blank'>{{ book.tokenURL }}</a></p>
 
         <div class='dashboard' v-if='links.publish || links.sell || links.create_chapter || links.add_to_library'>
             <button v-if='links.publish' @click='callServer(links.publish)' class='tag tag_action'>
